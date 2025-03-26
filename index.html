@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club Landing Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        .image-container {
+            margin-bottom: 2rem;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .neon-text {
+            color: #fff;
+            font-size: 4rem;
+            font-weight: bold;
+            text-align: center;
+            text-shadow: 0 0 5px #fff,
+                         0 0 10px #fff,
+                         0 0 20px #ff00de,
+                         0 0 30px #ff00de,
+                         0 0 40px #ff00de;
+            animation: neon 1.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes neon {
+            from {
+                text-shadow: 0 0 5px #fff,
+                            0 0 10px #fff,
+                            0 0 20px #ff00de,
+                            0 0 30px #ff00de,
+                            0 0 40px #ff00de;
+            }
+            to {
+                text-shadow: 0 0 2.5px #fff,
+                            0 0 5px #fff,
+                            0 0 10px #ff00de,
+                            0 0 15px #ff00de,
+                            0 0 20px #ff00de;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="image-container">
+        <img src="IMG_3041.png" alt="Club Image">
+    </div>
+    <div class="neon-text">
+        Coming Soon!
+    </div>
+</body>
+</html> 
