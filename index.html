@@ -85,13 +85,15 @@
             object-fit: contain;
         }
 
-        /* New styles for Instagram links */
+        /* Updated styles for Instagram links */
         .instagram-links {
             display: flex;
             justify-content: center;
             gap: 2rem;
             margin-top: 1rem;
             width: 100%;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+            padding: 0 1rem; /* Add some padding on the sides */
         }
 
         .instagram-link {
@@ -100,10 +102,32 @@
             font-family: 'Kiona', Arial, sans-serif;
             font-size: 0.9rem;
             transition: color 0.3s ease;
+            padding: 0.5rem; /* Add some padding around each link */
+            text-align: center; /* Center the text */
         }
 
         .instagram-link:hover {
             color: #ff00de;
+        }
+
+        /* Add media query for mobile devices */
+        @media screen and (max-width: 768px) {
+            .instagram-links {
+                flex-direction: column; /* Stack links vertically on mobile */
+                gap: 1rem; /* Reduce gap between items */
+                align-items: center; /* Center items */
+            }
+
+            .instagram-link {
+                font-size: 0.8rem; /* Slightly smaller font on mobile */
+                width: auto; /* Allow natural width */
+            }
+
+            .icon-container {
+                flex-wrap: wrap; /* Allow icons to wrap if needed */
+                gap: 1rem; /* Reduce gap between icons */
+                padding: 0 1rem; /* Add padding on sides */
+            }
         }
     </style>
 </head>
