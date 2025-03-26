@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Club Landing Page</title>
+    <title>ClubJetsMX</title>
     <style>
         body {
             margin: 0;
@@ -55,6 +55,29 @@
                             0 0 20px #ff00de;
             }
         }
+
+        /* New styles for the icon container */
+        .icon-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            width: 100%;
+        }
+
+        .icon-link {
+            transition: transform 0.3s ease;
+        }
+
+        .icon-link:hover {
+            transform: scale(1.1);
+        }
+
+        .icon-link img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+        }
     </style>
 </head>
 <body>
@@ -63,6 +86,17 @@
     </div>
     <div class="neon-text">
         Coming Soon!
+    </div>
+    <div class="icon-container">
+        <a href="https://linktr.ee/jetsadventures" class="icon-link" target="_blank">
+            <img src="JetsAdventuresIcon.png" alt="Jet's Adventures">
+        </a>
+        <a href="https://linktr.ee/jetsnakedbeach" class="icon-link" target="_blank">
+            <img src="JetsNakedBeachIcon.png" alt="Jet's Naked Beach">
+        </a>
+        <a href="https://linktr.ee/jetsprivateboattours" class="icon-link" target="_blank">
+            <img src="JetsPrivateBoatToursIcon.png" alt="Jet's Private Boat Tours">
+        </a>
     </div>
 </body>
 </html> 
