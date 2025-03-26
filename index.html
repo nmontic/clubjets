@@ -20,15 +20,21 @@
             align-items: center;
             min-height: 100vh;
             font-family: Arial, sans-serif;
+            width: 100%;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
         }
 
         .image-container {
             margin-bottom: 0.2rem;
+            width: 100%;
+            display: flex;
+            justify-content: center;
         }
 
         img {
             max-width: 100%;
             height: auto;
+            display: block; /* Remove any unwanted space */
         }
 
         .neon-text {
@@ -144,26 +150,30 @@
 
         /* Add media query for mobile devices */
         @media screen and (max-width: 768px) {
-            .instagram-links {
-                flex-direction: column; /* Stack links vertically on mobile */
-                gap: 1rem; /* Reduce gap between items */
-                align-items: center; /* Center items */
-            }
-
-            .instagram-link {
-                font-size: 0.8rem; /* Slightly smaller font on mobile */
-                width: auto; /* Allow natural width */
+            .neon-text, .neon-text-blue {
+                width: 100%;
+                padding: 0 10px;
+                box-sizing: border-box; /* Include padding in width calculation */
             }
 
             .icon-container {
-                flex-wrap: wrap; /* Allow icons to wrap if needed */
-                gap: 1rem; /* Reduce gap between icons */
-                padding: 0 1rem; /* Add padding on sides */
+                flex-wrap: wrap;
+                gap: 1rem;
+                padding: 0;
+                width: 100%;
+                justify-content: center;
             }
 
-            .neon-text-blue {
-                font-size: 1.5rem; /* Smaller font size on mobile */
-                padding: 0 1rem; /* Add some padding */
+            .instagram-links {
+                width: 100%;
+                padding: 0 10px;
+                box-sizing: border-box;
+            }
+
+            .image-container img {
+                width: 100%;
+                max-width: 100%;
+                margin: 0 auto; /* Center the image */
             }
         }
     </style>
