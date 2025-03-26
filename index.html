@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ClubJets MX</title>
     <style>
+        @font-face {
+            font-family: 'Kiona';
+            src: url('Kiona-Regular.ttf') format('truetype');
+        }
+
         body {
             margin: 0;
             padding: 0;
@@ -27,6 +32,7 @@
         }
 
         .neon-text {
+            font-family: 'Kiona', Arial, sans-serif;
             color: #fff;
             font-size: 4rem;
             font-weight: bold;
@@ -78,6 +84,27 @@
             height: 80px;
             object-fit: contain;
         }
+
+        /* New styles for Instagram links */
+        .instagram-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            width: 100%;
+        }
+
+        .instagram-link {
+            color: white;
+            text-decoration: none;
+            font-family: 'Kiona', Arial, sans-serif;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .instagram-link:hover {
+            color: #ff00de;
+        }
     </style>
 </head>
 <body>
@@ -96,6 +123,17 @@
         </a>
         <a href="https://linktr.ee/jetsprivateboattours" class="icon-link" target="_blank">
             <img src="JetsPrivateBoatToursIcon.png" alt="Jet's Private Boat Tours">
+        </a>
+    </div>
+    <div class="instagram-links">
+        <a href="https://www.instagram.com/clubjetsmx" class="instagram-link" target="_blank">
+            @clubjetsmx
+        </a>
+        <a href="https://www.instagram.com/jetsnakedbeachtours" class="instagram-link" target="_blank">
+            @jetsnakedbeachtours
+        </a>
+        <a href="https://www.instagram.com/jetsprivateboattours" class="instagram-link" target="_blank">
+            @jetsprivateboattours
         </a>
     </div>
 </body>
