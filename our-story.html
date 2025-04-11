@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story - ClubJets MX</title>
+    <style>
+        @font-face {
+            font-family: 'Kiona';
+            src: url('Kiona-Regular.ttf') format('truetype');
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            width: 100%;
+            overflow-x: hidden;
+            padding-top: 225px;
+        }
+
+        .nav-menu {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 1rem 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 225px;
+        }
+
+        .nav-logo {
+            height: 225px;
+            margin-left: 1rem;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-grow: 1;
+            margin-right: 169px;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-family: 'Kiona', Arial, sans-serif;
+            font-size: 2rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #ff00de;
+        }
+
+        .content {
+            color: white;
+            font-family: 'Kiona', Arial, sans-serif;
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(5px);
+        }
+
+        .section-title {
+            font-family: 'Kiona', Arial, sans-serif;
+            color: #fff;
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 5px #fff,
+                         0 0 10px #fff,
+                         0 0 20px #ff00de,
+                         0 0 30px #ff00de,
+                         0 0 40px #ff00de;
+            animation: neon 1.5s ease-in-out infinite alternate;
+        }
+
+        .section-content {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .programming-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .programming-list li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .programming-list li:before {
+            content: "•";
+            color: #ff00de;
+            position: absolute;
+            left: 0;
+        }
+
+        @keyframes neon {
+            from {
+                text-shadow: 0 0 5px #fff,
+                            0 0 10px #fff,
+                            0 0 20px #ff00de,
+                            0 0 30px #ff00de,
+                            0 0 40px #ff00de;
+            }
+            to {
+                text-shadow: 0 0 2.5px #fff,
+                            0 0 5px #fff,
+                            0 0 10px #ff00de,
+                            0 0 15px #ff00de,
+                            0 0 20px #ff00de;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .nav-logo {
+                height: 169px;
+            }
+            
+            .nav-menu {
+                height: 169px;
+            }
+
+            body {
+                padding-top: 169px;
+            }
+            
+            .nav-links {
+                margin-right: 169px;
+            }
+            
+            .nav-link {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .section-content {
+                font-size: 1.1rem;
+            }
+        }
+
+        .language-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid #ff00de;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Kiona', Arial, sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .language-toggle:hover {
+            background: rgba(255, 0, 222, 0.2);
+            box-shadow: 0 0 10px #ff00de;
+        }
+    </style>
+</head>
+<body>
+    <button class="language-toggle" onclick="toggleLanguage()">Español</button>
+    <nav class="nav-menu">
+        <a href="index.html"><img src="clubjetsmx.png" alt="ClubJets MX" class="nav-logo"></a>
+        <div class="nav-links">
+            <a href="events.html" class="nav-link">Events</a>
+            <a href="our-story.html" class="nav-link">Our Story</a>
+        </div>
+    </nav>
+    <div class="content">
+        <div class="section">
+            <h2 class="section-title">About Us</h2>
+            <div class="section-content">
+                <p>CLUBJETS MX is more than a venue—it's a movement. We're not just boats and beaches anymore—we're beats.</p>
+                <p>Created by Jet de la Isla, the visionary behind Puerto Vallarta's top-rated boat tours and immersive nude beach experiences, CLUBJETS MX is the next evolution in queer space-making. Rooted in inclusivity, creativity, and a deep love for community, our space blends co-working by day with techno-fueled, sex-positive nightlife by night.</p>
+                <p>We're inspired by the wild freedom of Berlin, the sensual elegance of Lisbon, the intimacy of Tokyo bathhouses, and the vibrant spirit of Vallarta itself. After years of bringing queer joy to the ocean, we're bringing it to land—creating a playground for artists, outcasts, dreamers, and lovers of all kinds.</p>
+                <p>Our programming includes:</p>
+                <ul class="programming-list">
+                    <li>All-gender co-work lounge with premium coffee & fiber internet</li>
+                    <li>Genre-less MainStage performances from international and local queer talent</li>
+                    <li>Ballroom nights curated by Puerto Vallarta's own community leaders</li>
+                    <li>Sex-positive cruise areas rooted in respect and consent</li>
+                    <li>Queer art installations & immersive visual experiences</li>
+                    <li>Community-building events, workshops & DJ residencies</li>
+                </ul>
+                <p>Whether you come for the music, the movement, the freedom, or the people—you'll leave with something real.</p>
+                <p>Come work, dance, cruise, connect. Come as you are. Welcome to CLUBJETS MX.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Mission Statement</h2>
+            <div class="section-content">
+                <p>At CLUBJETS MX, our mission is to fuse queer joy, creative freedom, and radical inclusivity into a living, breathing space unlike any other. Born from the success of Jet's Private Boat Tours and our legendary Naked Beach events, we've spent years crafting unforgettable experiences at sea—now we're bringing that magic to shore.</p>
+                <p>We are a sanctuary and a stage for Vallarta's queer voices: a techno-fueled, sex-positive, body-celebrating space where art, music, and connection collide. Our mission is to uplift the outcasts of the outcasts, offering a choose-your-own-adventure space where co-working, cruising, dancing, healing, and belonging all have room to thrive.</p>
+                <p>From sunrise espresso to midnight lasers—come as you are. Be who you are. You belong here.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Vision Statement</h2>
+            <div class="section-content">
+                <p>We envision CLUBJETS MX as a revolutionary cultural epicenter—where the vibrancy of global queer nightlife meets the intimacy of community-building.</p>
+                <p>Our vision is to expand what nightlife, art, and queer gathering can be. By breaking the binary between day and night, work and play, body and mind, CLUBJETS MX creates a multi-sensory playground that celebrates all forms of queer identity and creativity.</p>
+                <p>Backed by the highest-rated team in Vallarta's tourism industry, our guides-turned-bartenders light the space with signature Jet hospitality. Anchored by our trusted team of DJs—like DJ Trevor, resident DJ Jameson Rabbit, and local liaison Gallo—we bring a deep bench of sound and soul to every night.</p>
+                <p>We don't just want to throw parties—we want to start movements.</p>
+                <p>We're building more than a club. We're building the future of queer joy.</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        const translations = {
+            en: {
+                events: "Events",
+                blog: "Blog",
+                ourStory: "Our Story",
+                aboutUs: "About Us",
+                aboutUsContent: [
+                    "CLUBJETS MX is more than a venue—it's a movement. We're not just boats and beaches anymore—we're beats.",
+                    "Created by Jet de la Isla, the visionary behind Puerto Vallarta's top-rated boat tours and immersive nude beach experiences, CLUBJETS MX is the next evolution in queer space-making. Rooted in inclusivity, creativity, and a deep love for community, our space blends co-working by day with techno-fueled, sex-positive nightlife by night.",
+                    "We're inspired by the wild freedom of Berlin, the sensual elegance of Lisbon, the intimacy of Tokyo bathhouses, and the vibrant spirit of Vallarta itself. After years of bringing queer joy to the ocean, we're bringing it to land—creating a playground for artists, outcasts, dreamers, and lovers of all kinds.",
+                    "Our programming includes:",
+                    "All-gender co-work lounge with premium coffee & fiber internet",
+                    "Genre-less MainStage performances from international and local queer talent",
+                    "Ballroom nights curated by Puerto Vallarta's own community leaders",
+                    "Sex-positive cruise areas rooted in respect and consent",
+                    "Queer art installations & immersive visual experiences",
+                    "Community-building events, workshops & DJ residencies",
+                    "Whether you come for the music, the movement, the freedom, or the people—you'll leave with something real.",
+                    "Come work, dance, cruise, connect. Come as you are. Welcome to CLUBJETS MX."
+                ],
+                missionTitle: "Mission Statement",
+                missionContent: [
+                    "At CLUBJETS MX, our mission is to fuse queer joy, creative freedom, and radical inclusivity into a living, breathing space unlike any other. Born from the success of Jet's Private Boat Tours and our legendary Naked Beach events, we've spent years crafting unforgettable experiences at sea—now we're bringing that magic to shore.",
+                    "We are a sanctuary and a stage for Vallarta's queer voices: a techno-fueled, sex-positive, body-celebrating space where art, music, and connection collide. Our mission is to uplift the outcasts of the outcasts, offering a choose-your-own-adventure space where co-working, cruising, dancing, healing, and belonging all have room to thrive.",
+                    "From sunrise espresso to midnight lasers—come as you are. Be who you are. You belong here."
+                ],
+                visionTitle: "Vision Statement",
+                visionContent: [
+                    "We envision CLUBJETS MX as a revolutionary cultural epicenter—where the vibrancy of global queer nightlife meets the intimacy of community-building.",
+                    "Our vision is to expand what nightlife, art, and queer gathering can be. By breaking the binary between day and night, work and play, body and mind, CLUBJETS MX creates a multi-sensory playground that celebrates all forms of queer identity and creativity.",
+                    "Backed by the highest-rated team in Vallarta's tourism industry, our guides-turned-bartenders light the space with signature Jet hospitality. Anchored by our trusted team of DJs—like DJ Trevor, resident DJ Jameson Rabbit, and local liaison Gallo—we bring a deep bench of sound and soul to every night.",
+                    "We don't just want to throw parties—we want to start movements.",
+                    "We're building more than a club. We're building the future of queer joy."
+                ]
+            },
+            es: {
+                events: "Eventos",
+                blog: "Blog",
+                ourStory: "Nuestra Historia",
+                aboutUs: "Sobre Nosotros",
+                aboutUsContent: [
+                    "CLUBJETS MX es más que un espacio—es un movimiento. Ya no somos solo barcos y playas—ahora también somos beats.",
+                    "Creado por Jet de la Isla, el visionario detrás de los tours en barco mejor valorados de Puerto Vallarta y las experiencias inmersivas en playas nudistas, CLUBJETS MX es la siguiente evolución en la creación de espacios queer. Con raíces en la inclusión, la creatividad y un profundo amor por la comunidad, nuestro espacio combina co-working durante el día con una vida nocturna techno y sex-positive por la noche.",
+                    "Nos inspira la libertad salvaje de Berlín, la elegancia sensual de Lisboa, la intimidad de los baños japoneses de Tokio y el espíritu vibrante de la propia Vallarta. Después de años de llevar alegría queer al mar, ahora la traemos a tierra—creando un parque de juegos para artistas, marginades, soñadores y amantes de todo tipo.",
+                    "Nuestra programación incluye:",
+                    "Lounge de co-working para todos los géneros, con café premium e internet de fibra",
+                    "Escenario principal sin género musical, con talento queer local e internacional",
+                    "Noches de ballroom curadas por líderes de la comunidad de Puerto Vallarta",
+                    "Áreas de cruising sex-positive, con base en el respeto y el consentimiento",
+                    "Instalaciones de arte queer y experiencias visuales inmersivas",
+                    "Eventos para crear comunidad, talleres y residencias de DJs",
+                    "Ya sea que vengas por la música, el movimiento, la libertad o la gente—te llevarás algo real.",
+                    "Ven a trabajar, bailar, ligar, conectar. Ven como eres. Bienvenide a CLUBJETS MX."
+                ],
+                missionTitle: "Declaración de Misión",
+                missionContent: [
+                    "En CLUBJETS MX, nuestra misión es fusionar la alegría queer, la libertad creativa y la inclusión radical en un espacio vivo y vibrante como ningún otro. Nacido del éxito de los Private Boat Tours de Jet y nuestros legendarios eventos de Naked Beach, hemos pasado años creando experiencias inolvidables en el mar—ahora traemos esa magia a tierra firme.",
+                    "Somos un santuario y un escenario para las voces queer de Vallarta: un espacio con beats techno, sex-positive y de celebración del cuerpo, donde el arte, la música y la conexión se encuentran. Nuestra misión es elevar a les marginades de les marginades, ofreciendo un espacio de aventuras a la medida donde el co-working, cruising, baile, sanación y pertenencia puedan florecer.",
+                    "Desde un espresso al amanecer hasta los lasers a medianoche—ven como eres. Sé quien eres. Aquí perteneces."
+                ],
+                visionTitle: "Declaración de Visión",
+                visionContent: [
+                    "Visualizamos a CLUBJETS MX como un epicentro cultural revolucionario—donde la energía de la vida nocturna queer global se encuentra con la intimidad de la construcción comunitaria.",
+                    "Nuestra visión es expandir lo que puede ser la vida nocturna, el arte y los encuentros queer. Al romper la dicotomía entre día y noche, trabajo y juego, cuerpo y mente, CLUBJETS MX crea un parque sensorial que celebra todas las formas de identidad y creatividad queer.",
+                    "Respaldado por el equipo mejor calificado en la industria turística de Vallarta, nuestro personal—guías convertides en bartenders—ilumina el espacio con la hospitalidad característica de Jet. Con el apoyo de nuestro confiable equipo de DJs—como DJ Trevor, el residente DJ Jameson Rabbit y nuestro enlace local Gallo—traemos una profunda riqueza de sonido y alma cada noche.",
+                    "No solo queremos hacer fiestas—queremos iniciar movimientos.",
+                    "No estamos construyendo solo un club. Estamos construyendo el futuro de la alegría queer."
+                ]
+            }
+        };
+
+        // Get the saved language preference or default to English
+        let currentLang = localStorage.getItem('preferredLanguage') || 'en';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'es' : 'en';
+            // Save the language preference
+            localStorage.setItem('preferredLanguage', currentLang);
+            updateLanguage();
+            document.querySelector('.language-toggle').textContent = currentLang === 'en' ? 'Español' : 'English';
+        }
+
+        function updateLanguage() {
+            const lang = translations[currentLang];
+            
+            // Update navigation
+            document.querySelectorAll('.nav-link')[0].textContent = lang.events;
+            document.querySelectorAll('.nav-link')[1].textContent = lang.ourStory;
+
+            // Update About Us section
+            document.querySelectorAll('.section-title')[0].textContent = lang.aboutUs;
+            const aboutContent = document.querySelectorAll('.section-content')[0];
+            aboutContent.innerHTML = '';
+            lang.aboutUsContent.forEach((text, index) => {
+                if (index === 4) { // Start of the list
+                    const ul = document.createElement('ul');
+                    ul.className = 'programming-list';
+                    for (let i = 4; i <= 9; i++) {
+                        const li = document.createElement('li');
+                        li.textContent = lang.aboutUsContent[i];
+                        ul.appendChild(li);
+                    }
+                    aboutContent.appendChild(ul);
+                } else if (index < 4 || index > 9) {
+                    const p = document.createElement('p');
+                    p.textContent = text;
+                    aboutContent.appendChild(p);
+                }
+            });
+
+            // Update Mission section
+            document.querySelectorAll('.section-title')[1].textContent = lang.missionTitle;
+            const missionContent = document.querySelectorAll('.section-content')[1];
+            missionContent.innerHTML = '';
+            lang.missionContent.forEach(text => {
+                const p = document.createElement('p');
+                p.textContent = text;
+                missionContent.appendChild(p);
+            });
+
+            // Update Vision section
+            document.querySelectorAll('.section-title')[2].textContent = lang.visionTitle;
+            const visionContent = document.querySelectorAll('.section-content')[2];
+            visionContent.innerHTML = '';
+            lang.visionContent.forEach(text => {
+                const p = document.createElement('p');
+                p.textContent = text;
+                visionContent.appendChild(p);
+            });
+
+            // Update the toggle button text
+            document.querySelector('.language-toggle').textContent = currentLang === 'en' ? 'Español' : 'English';
+        }
+
+        // Initialize language on page load
+        document.addEventListener('DOMContentLoaded', updateLanguage);
+    </script>
+</body>
+</html> 

@@ -22,6 +22,7 @@
             font-family: Arial, sans-serif;
             width: 100%;
             overflow-x: hidden; /* Prevent horizontal scrolling */
+            padding-top: 2.24rem; /* Reduced from 3.2rem by another 30% */
         }
 
         .image-container {
@@ -40,7 +41,7 @@
         .neon-text {
             font-family: 'Kiona', Arial, sans-serif;
             color: #fff;
-            font-size: 4rem;
+            font-size: 4.8rem;
             font-weight: bold;
             text-align: center;
             text-shadow: 0 0 5px #fff,
@@ -49,15 +50,16 @@
                          0 0 30px #ff00de,
                          0 0 40px #ff00de;
             animation: neon 1.5s ease-in-out infinite alternate;
+            margin: 1rem 0; /* Reduced from 2.4rem */
         }
 
         .neon-text-blue {
             font-family: 'Kiona', Arial, sans-serif;
             color: #fff;
-            font-size: 2rem;
+            font-size: 2.4rem;
             font-weight: bold;
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem; /* Reduced from 2.4rem */
             text-shadow: 0 0 5px #fff,
                          0 0 10px #fff,
                          0 0 20px #00ffff,
@@ -104,8 +106,8 @@
         .icon-container {
             display: flex;
             justify-content: center;
-            gap: 2rem;
-            margin-top: 3rem;
+            gap: 2.4rem;
+            margin-top: 1.5rem; /* Reduced from 3.6rem */
             width: 100%;
         }
 
@@ -118,8 +120,8 @@
         }
 
         .icon-link img {
-            width: 80px;
-            height: 80px;
+            width: 96px;
+            height: 96px;
             object-fit: contain;
         }
 
@@ -127,8 +129,8 @@
         .instagram-links {
             display: flex;
             justify-content: center;
-            gap: 2rem;
-            margin-top: 1rem;
+            gap: 2.4rem;
+            margin-top: 1rem; /* Reduced from 1.2rem */
             width: 100%;
             flex-wrap: wrap; /* Allow wrapping on smaller screens */
             padding: 0 1rem; /* Add some padding on the sides */
@@ -138,7 +140,7 @@
             color: white;
             text-decoration: none;
             font-family: 'Kiona', Arial, sans-serif;
-            font-size: 0.9rem;
+            font-size: 1.08rem;
             transition: color 0.3s ease;
             padding: 0.5rem; /* Add some padding around each link */
             text-align: center; /* Center the text */
@@ -150,6 +152,9 @@
 
         /* Add media query for mobile devices */
         @media screen and (max-width: 768px) {
+            body {
+                padding-top: 1.68rem; /* Reduced from 2.4rem by 30% */
+            }
             .neon-text, .neon-text-blue {
                 width: 100%;
                 padding: 0 10px;
@@ -175,10 +180,85 @@
                 max-width: 100%;
                 margin: 0 auto; /* Center the image */
             }
+
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .nav-link {
+                font-size: 1.8rem;
+            }
+
+            .neon-text {
+                font-size: 3.6rem;
+            }
+
+            .neon-text-blue {
+                font-size: 1.8rem;
+            }
+
+            .instagram-link {
+                font-size: 0.96rem;
+            }
+        }
+
+        /* Navigation styles */
+        .nav-menu {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 1rem 0;
+            z-index: 1000;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-family: 'Kiona', Arial, sans-serif;
+            font-size: 2rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #ff00de;
+        }
+
+        .language-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid #ff00de;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Kiona', Arial, sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .language-toggle:hover {
+            background: rgba(255, 0, 222, 0.2);
+            box-shadow: 0 0 10px #ff00de;
         }
     </style>
 </head>
 <body>
+    <button class="language-toggle" onclick="toggleLanguage()">Español</button>
+    <nav class="nav-menu">
+        <div class="nav-links">
+            <a href="events.html" class="nav-link">Events</a>
+            <a href="our-story.html" class="nav-link">Our Story</a>
+        </div>
+    </nav>
     <div class="image-container">
         <img src="clubjetsmx.png" alt="Club Image">
     </div>
@@ -210,5 +290,45 @@
             @jetsprivateboattours
         </a>
     </div>
+    <script>
+        const translations = {
+            en: {
+                subtitle: "QUEER ELECTRONIC TECHNO HAUS",
+                date: "4.18.25",
+                events: "Events",
+                ourStory: "Our Story"
+            },
+            es: {
+                subtitle: "QUEER ELECTRONIC TECHNO HAUS",
+                date: "18.4.25",
+                events: "Eventos",
+                ourStory: "Nuestra Historia"
+            }
+        };
+
+        // Get the saved language preference or default to English
+        let currentLang = localStorage.getItem('preferredLanguage') || 'en';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'es' : 'en';
+            // Save the language preference
+            localStorage.setItem('preferredLanguage', currentLang);
+            updateLanguage();
+            document.querySelector('.language-toggle').textContent = currentLang === 'en' ? 'Español' : 'English';
+        }
+
+        function updateLanguage() {
+            const lang = translations[currentLang];
+            document.querySelector('.neon-text-blue').textContent = lang.subtitle;
+            document.querySelector('.neon-text').textContent = lang.date;
+            document.querySelectorAll('.nav-link')[0].textContent = lang.events;
+            document.querySelectorAll('.nav-link')[1].textContent = lang.ourStory;
+            // Update the toggle button text
+            document.querySelector('.language-toggle').textContent = currentLang === 'en' ? 'Español' : 'English';
+        }
+
+        // Initialize language on page load
+        document.addEventListener('DOMContentLoaded', updateLanguage);
+    </script>
 </body>
 </html> 

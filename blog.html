@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - ClubJets MX</title>
+    <style>
+        @font-face {
+            font-family: 'Kiona';
+            src: url('Kiona-Regular.ttf') format('truetype');
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            width: 100%;
+            overflow-x: hidden;
+            padding-top: 225px;
+        }
+
+        .nav-menu {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 1rem 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 225px;
+        }
+
+        .nav-logo {
+            height: 225px;
+            margin-left: 1rem;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-grow: 1;
+            margin-right: 169px;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-family: 'Kiona', Arial, sans-serif;
+            font-size: 2rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #ff00de;
+        }
+
+        .language-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid #ff00de;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Kiona', Arial, sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .language-toggle:hover {
+            background: rgba(255, 0, 222, 0.2);
+            box-shadow: 0 0 10px #ff00de;
+        }
+
+        .blog-container {
+            width: 90%;
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .blog-title {
+            font-family: 'Kiona', Arial, sans-serif;
+            color: #fff;
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 5px #fff,
+                         0 0 10px #fff,
+                         0 0 20px #ff00de,
+                         0 0 30px #ff00de,
+                         0 0 40px #ff00de;
+            animation: neon 1.5s ease-in-out infinite alternate;
+        }
+
+        .blog-posts {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .blog-post {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s ease;
+        }
+
+        .blog-post:hover {
+            transform: translateY(-5px);
+        }
+
+        .post-date {
+            color: #ff00de;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .post-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: white;
+            text-shadow: 0 0 10px #00ffff;
+        }
+
+        .post-content {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: white;
+        }
+
+        .post-content img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin: 1rem 0;
+        }
+
+        .post-content p {
+            margin-bottom: 1rem;
+        }
+
+        @keyframes neon {
+            from {
+                text-shadow: 0 0 5px #fff,
+                            0 0 10px #fff,
+                            0 0 20px #ff00de,
+                            0 0 30px #ff00de,
+                            0 0 40px #ff00de;
+            }
+            to {
+                text-shadow: 0 0 2.5px #fff,
+                            0 0 5px #fff,
+                            0 0 10px #ff00de,
+                            0 0 15px #ff00de,
+                            0 0 20px #ff00de;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .nav-logo {
+                height: 169px;
+            }
+            
+            .nav-menu {
+                height: 169px;
+            }
+
+            body {
+                padding-top: 169px;
+            }
+            
+            .nav-links {
+                margin-right: 169px;
+            }
+            
+            .nav-link {
+                font-size: 1.8rem;
+            }
+
+            .blog-title {
+                font-size: 2rem;
+            }
+
+            .post-title {
+                font-size: 1.5rem;
+            }
+
+            .post-content {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="language-toggle" onclick="toggleLanguage()">Español</button>
+    <nav class="nav-menu">
+        <a href="index.html"><img src="clubjetsmx.png" alt="ClubJets MX" class="nav-logo"></a>
+        <div class="nav-links">
+            <a href="events.html" class="nav-link">Events</a>
+            <a href="blog.html" class="nav-link">Blog</a>
+            <a href="our-story.html" class="nav-link">Our Story</a>
+        </div>
+    </nav>
+    <div class="blog-container">
+        <h1 class="blog-title">Blog</h1>
+        <div class="blog-posts" id="blog-posts">
+            <!-- Blog posts will be loaded here -->
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            en: {
+                events: "Events",
+                blog: "Blog",
+                ourStory: "Our Story",
+                loading: "Loading posts...",
+                noPosts: "No posts found",
+                error: "Error loading posts"
+            },
+            es: {
+                events: "Eventos",
+                blog: "Blog",
+                ourStory: "Nuestra Historia",
+                loading: "Cargando publicaciones...",
+                noPosts: "No se encontraron publicaciones",
+                error: "Error al cargar las publicaciones"
+            }
+        };
+
+        // Get the saved language preference or default to English
+        let currentLang = localStorage.getItem('preferredLanguage') || 'en';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'es' : 'en';
+            // Save the language preference
+            localStorage.setItem('preferredLanguage', currentLang);
+            updateLanguage();
+            document.querySelector('.language-toggle').textContent = currentLang === 'en' ? 'Español' : 'English';
+        }
+
+        function updateLanguage() {
+            const lang = translations[currentLang];
+            
+            // Update navigation
+            document.querySelectorAll('.nav-link')[0].textContent = lang.events;
+            document.querySelectorAll('.nav-link')[1].textContent = lang.blog;
+            document.querySelectorAll('.nav-link')[2].textContent = lang.ourStory;
+
+            // Update the toggle button text
+            document.querySelector('.language-toggle').textContent = currentLang === 'en' ? 'Español' : 'English';
+
+            // Reload blog posts with current language
+            loadBlogPosts();
+        }
+
+        // Load posts when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            updateLanguage(); // Set initial language
+            loadBlogPosts();
+        });
+
+        // Ghost API Configuration
+        const GHOST_API_URL = 'https://clubjets-mx.ghost.io/ghost/api/content';
+        const GHOST_API_KEY = '83c1031b64852b8df089ace3c3';
+
+        async function loadBlogPosts() {
+            const postsContainer = document.getElementById('blog-posts');
+            postsContainer.innerHTML = `<p style="color: white; text-align: center;">${translations[currentLang].loading}</p>`;
+
+            try {
+                console.log('Fetching posts from:', `${GHOST_API_URL}/posts/?key=${GHOST_API_KEY}&include=tags,authors`);
+                const response = await fetch(`${GHOST_API_URL}/posts/?key=${GHOST_API_KEY}&include=tags,authors`);
+                console.log('Response status:', response.status);
+                const data = await response.json();
+                console.log('Received data:', data);
+                
+                if (!data.posts || data.posts.length === 0) {
+                    console.log('No posts found in response');
+                    postsContainer.innerHTML = `<p style="color: white; text-align: center;">${translations[currentLang].noPosts}</p>`;
+                    return;
+                }
+
+                const posts = data.posts;
+                postsContainer.innerHTML = ''; // Clear loading message
+                
+                posts.forEach(post => {
+                    const postElement = document.createElement('div');
+                    postElement.className = 'blog-post';
+                    
+                    // Format the date based on current language
+                    const postDate = new Date(post.published_at);
+                    const formattedDate = postDate.toLocaleDateString(currentLang === 'en' ? 'en-US' : 'es-MX', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                    });
+
+                    // Create HTML content
+                    postElement.innerHTML = `
+                        <div class="post-date">${formattedDate}</div>
+                        <h2 class="post-title">${post.title}</h2>
+                        <div class="post-content">${post.html}</div>
+                    `;
+                    
+                    postsContainer.appendChild(postElement);
+                });
+            } catch (error) {
+                console.error('Error loading blog posts:', error);
+                postsContainer.innerHTML = `<p style="color: white; text-align: center;">${translations[currentLang].error}</p>`;
+            }
+        }
+    </script>
+</body>
+</html> 
