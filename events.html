@@ -272,7 +272,7 @@
                 margin: 0.5rem 0;
             }
 
-            .ticket-link {
+            .ticket-link, .info-link {
                 margin: 0.5rem 0;
                 width: 50%;
                 text-align: center;
@@ -283,11 +283,13 @@
             .event-images {
                 flex-direction: column;
                 align-items: center;
+                max-width: 100%;
             }
 
             .event-images .event-image {
                 width: 100%;
                 max-width: 300px;
+                margin-bottom: 1rem;
             }
 
             .event-subtitle {
@@ -304,9 +306,13 @@
                 padding: 0.25rem 0.5rem;
                 font-size: 0.9rem;
             }
+
+            .info-link-container {
+                margin-top: 0.5rem;
+            }
         }
 
-        .ticket-link {
+        .ticket-link, .info-link {
             display: inline-block;
             padding: 0.5rem 1.5rem;
             background: rgba(0, 255, 255, 0.2);
@@ -320,7 +326,7 @@
             margin-left: 2rem;
         }
 
-        .ticket-link:hover {
+        .ticket-link:hover, .info-link:hover {
             background: rgba(0, 255, 255, 0.3);
             transform: translateY(-2px);
             box-shadow: 0 0 10px #00ffff;
@@ -349,14 +355,16 @@
 
         .event-images {
             display: flex;
+            flex-direction: row;
             gap: 1rem;
-            margin: 1rem 0;
             justify-content: center;
+            width: auto;
+            max-width: 600px;
         }
 
         .event-images .event-image {
-            width: 45%;
-            max-width: 200px;
+            width: 280px;
+            max-width: 280px;
             height: auto;
             object-fit: cover;
             border-radius: 8px;
@@ -424,6 +432,20 @@
         .instagram-link:hover {
             color: #ff00de;
         }
+
+        .event-images-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .info-link-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+            width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -468,13 +490,13 @@
             <div class="event-details">
                 <div class="event-title">Kinky Queer Night</div>
                 <div class="event-subtitle">Presenta Semana Santa No Tan Santa</div>
-                <div class="event-images">
-                    <img src="images/KinkyNight1.png" alt="Kinky Queer Night 1" class="event-image">
-                    <img src="images/KinkyNight2.png" alt="Kinky Queer Night 2" class="event-image">
+                <div class="event-content">
+                    <div class="event-images">
+                        <img src="images/KinkyNight1.png" alt="Kinky Queer Night 1" class="event-image">
+                        <img src="images/KinkyNight2.png" alt="Kinky Queer Night 2" class="event-image">
+                    </div>
+                    <a href="https://www.instagram.com/p/DIQQ1aMMzyh/?igsh=amx2c2ptMm0xeTE0" class="info-link" target="_blank">Event Info</a>
                 </div>
-                <a href="https://www.instagram.com/kqnights" class="instagram-link" target="_blank">
-                    @kqnights
-                </a>
             </div>
         </div>
     </div>
@@ -517,6 +539,7 @@
                 ourStory: "Our Story",
                 specialEvents: "Special Events",
                 getTickets: "Get Tickets",
+                eventInfo: "Event Info",
                 kinkyQueerNight: "Kinky Queer Night",
                 kinkySubtitle: "Presenta Semana Santa No Tan Santa",
                 kqInstagram: "@kqnights",
@@ -528,6 +551,7 @@
                 ourStory: "Nuestra Historia",
                 specialEvents: "Eventos Especiales",
                 getTickets: "Obtener Boletos",
+                eventInfo: "Info del Evento",
                 kinkyQueerNight: "Noche Queer Kinky",
                 kinkySubtitle: "Presenta Semana Santa No Tan Santa",
                 kqInstagram: "@kqnights",
@@ -561,6 +585,9 @@
             document.querySelectorAll('.ticket-link').forEach(link => {
                 link.textContent = lang.getTickets;
             });
+
+            // Update info link
+            document.querySelector('.info-link').textContent = lang.eventInfo;
 
             // Update event titles
             document.querySelectorAll('.event-title')[1].textContent = lang.kinkyQueerNight;
