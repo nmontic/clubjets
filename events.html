@@ -265,6 +265,7 @@
                 flex-direction: column;
                 gap: 1rem;
                 align-items: center;
+                width: 100%;
             }
 
             .event-image {
@@ -273,7 +274,8 @@
             }
 
             .event-images {
-                flex-direction: column;
+                display: flex;
+                flex-direction: column !important;
                 align-items: center;
                 width: 100%;
                 max-width: none;
@@ -287,11 +289,12 @@
             }
 
             .ticket-link, .info-link {
-                margin: 0.5rem 0;
+                margin: 0.5rem auto;
                 width: 50%;
                 text-align: center;
                 padding: 0.25rem 0.75rem;
                 font-size: 0.9rem;
+                display: block;
             }
 
             .event-subtitle {
@@ -443,6 +446,28 @@
             justify-content: center;
             margin-top: 1rem;
             width: 100%;
+        }
+
+        /* Mobile-specific styles that will override desktop styles */
+        @media only screen and (max-width: 768px) {
+            .event-images {
+                display: block !important;
+                flex-direction: column !important;
+                width: 100% !important;
+            }
+            
+            .event-images .event-image {
+                display: block !important;
+                width: 100% !important;
+                max-width: 280px !important;
+                margin: 0 auto 0.5rem auto !important;
+            }
+            
+            .ticket-link, .info-link {
+                display: block !important;
+                margin: 0.5rem auto !important;
+                text-align: center !important;
+            }
         }
     </style>
 </head>
