@@ -140,6 +140,13 @@
             text-transform: uppercase;
         }
 
+        .date-weekday {
+            font-size: 0.8rem;
+            color: #fff;
+            text-transform: uppercase;
+            margin-bottom: 2px;
+        }
+
         .event-details {
             flex-grow: 1;
             display: flex;
@@ -250,8 +257,8 @@
                 font-size: 1.2rem;
             }
 
-            .date-month {
-                font-size: 0.8rem;
+            .date-month, .date-weekday {
+                font-size: 0.7rem;
             }
 
             .event-content {
@@ -439,6 +446,7 @@
         
         <div class="event-card special-event">
             <div class="date-circle">
+                <div class="date-weekday">Fri</div>
                 <div class="date-day">18</div>
                 <div class="date-month">Apr</div>
             </div>
@@ -453,6 +461,7 @@
 
         <div class="event-card special-event">
             <div class="date-circle">
+                <div class="date-weekday">Sun</div>
                 <div class="date-day">20</div>
                 <div class="date-month">Apr</div>
             </div>
@@ -510,7 +519,9 @@
                 getTickets: "Get Tickets",
                 kinkyQueerNight: "Kinky Queer Night",
                 kinkySubtitle: "Presenta Semana Santa No Tan Santa",
-                kqInstagram: "@kqnights"
+                kqInstagram: "@kqnights",
+                fri: "Fri",
+                sun: "Sun"
             },
             es: {
                 events: "Eventos",
@@ -519,7 +530,9 @@
                 getTickets: "Obtener Boletos",
                 kinkyQueerNight: "Noche Queer Kinky",
                 kinkySubtitle: "Presenta Semana Santa No Tan Santa",
-                kqInstagram: "@kqnights"
+                kqInstagram: "@kqnights",
+                fri: "Vie",
+                sun: "Dom"
             }
         };
 
@@ -552,6 +565,10 @@
             // Update event titles
             document.querySelectorAll('.event-title')[1].textContent = lang.kinkyQueerNight;
             document.querySelectorAll('.event-subtitle')[0].textContent = lang.kinkySubtitle;
+
+            // Update weekdays in date circles
+            document.querySelectorAll('.date-weekday')[0].textContent = lang.fri;
+            document.querySelectorAll('.date-weekday')[1].textContent = lang.sun;
 
             // Update Instagram handle
             document.querySelector('.instagram-link').textContent = lang.kqInstagram;
