@@ -164,12 +164,12 @@
 
             .story-container {
                 padding: 0 1rem;
-                margin-top: 1rem;
+                margin-top: 0;
             }
 
             .story-title {
                 font-size: 2.5rem;
-                margin: 0.5rem 0;
+                margin: 0 0 0.5rem 0;
             }
 
             .story-content {
@@ -206,6 +206,28 @@
         .language-toggle:hover {
             background: rgba(255, 0, 222, 0.2);
             box-shadow: 0 0 10px #ff00de;
+        }
+
+        .story-container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 0 2rem;
+            margin-top: 0;
+        }
+
+        .story-title {
+            font-family: 'Kiona', Arial, sans-serif;
+            color: #fff;
+            font-size: 3.6rem;
+            font-weight: bold;
+            text-align: center;
+            text-shadow: 0 0 5px #fff,
+                         0 0 10px #fff,
+                         0 0 20px #ff00de,
+                         0 0 30px #ff00de,
+                         0 0 40px #ff00de;
+            animation: neon 1.5s ease-in-out infinite alternate;
+            margin: 0 0 1rem 0;
         }
     </style>
 </head>
