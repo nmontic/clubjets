@@ -22,7 +22,7 @@
             font-family: Arial, sans-serif;
             width: 100%;
             overflow-x: hidden; /* Prevent horizontal scrolling */
-            padding-top: 2.24rem; /* Reduced from 3.2rem by another 30% */
+            padding-top: 200px;
         }
 
         .image-container {
@@ -153,7 +153,7 @@
         /* Add media query for mobile devices */
         @media screen and (max-width: 768px) {
             body {
-                padding-top: 1.68rem; /* Reduced from 2.4rem by 30% */
+                padding-top: 150px;
             }
             .neon-text, .neon-text-blue {
                 width: 100%;
@@ -200,16 +200,28 @@
             .instagram-link {
                 font-size: 0.96rem;
             }
+
+            .nav-menu {
+                top: 30px;
+                height: 100px;
+                padding: 0.5rem 0;
+            }
+
+            .language-toggle {
+                padding: 0.25rem 0.5rem;
+                font-size: 0.9rem;
+            }
         }
 
         /* Navigation styles */
         .nav-menu {
             position: fixed;
-            top: 0;
+            top: 40px;
             width: 100%;
             background-color: rgba(0, 0, 0, 0.8);
             padding: 1rem 0;
             z-index: 1000;
+            height: 169px;
         }
 
         .nav-links {
@@ -232,9 +244,9 @@
 
         .language-toggle {
             position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1001;
+            top: 0;
+            right: 0;
+            z-index: 1002;
             background: rgba(0, 0, 0, 0.8);
             border: 1px solid #ff00de;
             color: white;
@@ -243,6 +255,7 @@
             cursor: pointer;
             font-family: 'Kiona', Arial, sans-serif;
             transition: all 0.3s ease;
+            margin: 5px;
         }
 
         .language-toggle:hover {
