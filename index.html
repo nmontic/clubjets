@@ -136,12 +136,16 @@
             .language-toggle-container {
                 height: 35px;
                 padding-top: 3px;
+                background-color: rgba(0, 0, 0, 0.8);
+                z-index: 1100;
             }
 
             .nav-menu {
                 height: 80px;
                 padding: 0.15rem 0;
                 margin-top: 35px;
+                position: relative;
+                z-index: 10;
             }
 
             .image-container {
@@ -150,6 +154,7 @@
 
             .nav-links {
                 gap: 0.75rem;
+                justify-content: center;
             }
             
             .nav-link {
@@ -174,6 +179,8 @@
                 padding: 0.25rem 0.5rem;
                 font-size: 0.9rem;
                 margin: 3px;
+                position: relative;
+                z-index: 20;
             }
 
             .icon-link img {
@@ -216,7 +223,7 @@
             top: 0;
             width: 100%;
             background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1003;
+            z-index: 1100;
             height: 40px;
             display: flex;
             justify-content: flex-end;
