@@ -104,13 +104,13 @@
             }
         }
 
-        /* New styles for the icon container */
+        /* Icon container styles */
         .icon-container {
             display: flex;
             justify-content: center;
             gap: 2rem;
-            margin-top: 0.1rem;
             width: 100%;
+            margin-bottom: 1rem;
         }
 
         .icon-link {
@@ -122,34 +122,9 @@
         }
 
         .icon-link img {
-            width: 96px;
-            height: 96px;
+            width: 64px;
+            height: 64px;
             object-fit: contain;
-        }
-
-        /* Updated styles for Instagram links */
-        .instagram-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 0.1rem;
-            width: 100%;
-            flex-wrap: wrap;
-            padding: 0 1rem;
-        }
-
-        .instagram-link {
-            color: white;
-            text-decoration: none;
-            font-family: 'Kiona', Arial, sans-serif;
-            font-size: 1.08rem;
-            transition: color 0.3s ease;
-            padding: 0.5rem; /* Add some padding around each link */
-            text-align: center; /* Center the text */
-        }
-
-        .instagram-link:hover {
-            color: #ff00de;
         }
 
         /* Add media query for mobile devices */
@@ -192,12 +167,6 @@
             }
 
             .icon-container {
-                margin-top: 0.05rem;
-                gap: 0.75rem;
-            }
-
-            .instagram-links {
-                margin-top: 0.05rem;
                 gap: 0.75rem;
             }
 
@@ -205,6 +174,11 @@
                 padding: 0.25rem 0.5rem;
                 font-size: 0.9rem;
                 margin: 3px;
+            }
+
+            .icon-link img {
+                width: 48px;
+                height: 48px;
             }
         }
 
@@ -266,6 +240,51 @@
             background: rgba(255, 0, 222, 0.2);
             box-shadow: 0 0 10px #ff00de;
         }
+
+        /* Footer Styles */
+        footer {
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+            font-family: 'Kiona', Arial, sans-serif;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-address {
+            font-size: 0.9rem;
+        }
+
+        .footer-contact {
+            color: #ff00de;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-contact:hover {
+            color: white;
+            text-shadow: 0 0 5px #ff00de;
+        }
+
+        @media screen and (max-width: 768px) {
+            footer {
+                padding: 0.75rem 0;
+                margin-top: 1rem;
+            }
+
+            .footer-address, .footer-contact {
+                font-size: 0.8rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -275,6 +294,7 @@
     <nav class="nav-menu">
         <div class="nav-links">
             <a href="events.html" class="nav-link">Events</a>
+            <a href="blog.html" class="nav-link">Blog</a>
             <a href="our-story.html" class="nav-link">Our Story</a>
         </div>
     </nav>
@@ -287,41 +307,41 @@
     <div class="neon-text">
         4.18.25
     </div>
-    <div class="icon-container">
-        <a href="https://linktr.ee/jetsadventures" class="icon-link" target="_blank">
-            <img src="images/JetsAdventuresIcon.png" alt="Jet's Adventures">
-        </a>
-        <a href="https://linktr.ee/jetsnakedbeach" class="icon-link" target="_blank">
-            <img src="images/NakedBeachIcon.png" alt="Jet's Naked Beach">
-        </a>
-        <a href="https://linktr.ee/jetsprivateboattours" class="icon-link" target="_blank">
-            <img src="images/JetsPrivateBoatToursIcon.png" alt="Jet's Private Boat Tours">
-        </a>
-    </div>
-    <div class="instagram-links">
-        <a href="https://www.instagram.com/clubjetsmx" class="instagram-link" target="_blank">
-            @clubjetsmx
-        </a>
-        <a href="https://www.instagram.com/jetsnakedbeachtours" class="instagram-link" target="_blank">
-            @jetsnakedbeachtours
-        </a>
-        <a href="https://www.instagram.com/jetsprivateboattours" class="instagram-link" target="_blank">
-            @jetsprivateboattours
-        </a>
-    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="icon-container">
+                <a href="https://linktr.ee/jetsadventures" class="icon-link" target="_blank">
+                    <img src="images/JetsAdventuresIcon.png" alt="Jet's Adventures">
+                </a>
+                <a href="https://linktr.ee/jetsnakedbeach" class="icon-link" target="_blank">
+                    <img src="images/NakedBeachIcon.png" alt="Jet's Naked Beach">
+                </a>
+                <a href="https://linktr.ee/jetsprivateboattours" class="icon-link" target="_blank">
+                    <img src="images/JetsPrivateBoatToursIcon.png" alt="Jet's Private Boat Tours">
+                </a>
+            </div>
+            <div class="footer-address">Basilio Badillo 339, Zona Romántica, Puerto Vallarta</div>
+            <a href="mailto:info@clubjetsmx.com" class="footer-contact">Contact Us</a>
+        </div>
+    </footer>
     <script>
         const translations = {
             en: {
                 subtitle: "QUEER ELECTRONIC TECHNO HAUS",
                 date: "4.18.25",
                 events: "Events",
-                ourStory: "Our Story"
+                blog: "Blog",
+                ourStory: "Our Story",
+                contactUs: "Contact Us"
             },
             es: {
                 subtitle: "QUEER ELECTRONIC TECHNO HAUS",
                 date: "18.4.25",
                 events: "Eventos",
-                ourStory: "Nuestra Historia"
+                blog: "Blog",
+                ourStory: "Nuestra Historia",
+                contactUs: "Contáctanos"
             }
         };
 
@@ -341,7 +361,10 @@
             document.querySelector('.neon-text-blue').textContent = lang.subtitle;
             document.querySelector('.neon-text').textContent = lang.date;
             document.querySelectorAll('.nav-link')[0].textContent = lang.events;
-            document.querySelectorAll('.nav-link')[1].textContent = lang.ourStory;
+            document.querySelectorAll('.nav-link')[1].textContent = lang.blog;
+            document.querySelectorAll('.nav-link')[2].textContent = lang.ourStory;
+            // Update footer
+            document.querySelector('.footer-contact').textContent = lang.contactUs;
             // Update the toggle button text
             document.querySelector('.language-toggle').textContent = currentLang === 'en' ? 'Español' : 'English';
         }

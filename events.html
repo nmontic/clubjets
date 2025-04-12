@@ -154,6 +154,21 @@
             align-items: center;
         }
 
+        .event-title {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .event-subtitle {
+            color: #00ffff;
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+            text-align: center;
+            width: 100%;
+        }
+
         .event-content {
             display: flex;
             align-items: center;
@@ -168,12 +183,6 @@
             height: auto;
             border-radius: 8px;
             margin: 1rem 0;
-        }
-
-        .event-title {
-            font-size: 1.2rem;
-            color: #fff;
-            margin-bottom: 0.5rem;
         }
 
         .event-description {
@@ -316,6 +325,15 @@
                 padding: 0.25rem 0.5rem;
                 font-size: 0.9rem;
             }
+
+            footer {
+                padding: 0.75rem 0;
+                margin-top: 1rem;
+            }
+
+            .footer-address, .footer-contact {
+                font-size: 0.8rem;
+            }
         }
 
         .ticket-link, .info-link {
@@ -382,11 +400,74 @@
             transform: scale(1.05);
         }
 
-        .event-subtitle {
-            color: #00ffff;
-            font-size: 1.2rem;
-            margin: 0.5rem 0;
+        .event-images-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .info-link-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+            width: 100%;
+        }
+
+        /* Mobile-specific styles that will override desktop styles */
+        @media only screen and (max-width: 768px) {
+            .event-images {
+                display: block !important;
+                flex-direction: column !important;
+                width: 100% !important;
+            }
+            
+            .event-images .event-image {
+                display: block !important;
+                width: 100% !important;
+                max-width: 280px !important;
+                margin: 0 auto 0.5rem auto !important;
+            }
+            
+            .ticket-link, .info-link {
+                display: block !important;
+                margin: 0.5rem auto !important;
+                text-align: center !important;
+            }
+        }
+
+        /* Footer Styles */
+        footer {
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
             text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+            font-family: 'Kiona', Arial, sans-serif;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-address {
+            font-size: 0.9rem;
+        }
+
+        .footer-contact {
+            color: #ff00de;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-contact:hover {
+            color: white;
+            text-shadow: 0 0 5px #ff00de;
         }
 
         /* Modal styles */
@@ -438,42 +519,6 @@
         .instagram-link:hover {
             color: #ff00de;
         }
-
-        .event-images-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .info-link-container {
-            display: flex;
-            justify-content: center;
-            margin-top: 1rem;
-            width: 100%;
-        }
-
-        /* Mobile-specific styles that will override desktop styles */
-        @media only screen and (max-width: 768px) {
-            .event-images {
-                display: block !important;
-                flex-direction: column !important;
-                width: 100% !important;
-            }
-            
-            .event-images .event-image {
-                display: block !important;
-                width: 100% !important;
-                max-width: 280px !important;
-                margin: 0 auto 0.5rem auto !important;
-            }
-            
-            .ticket-link, .info-link {
-                display: block !important;
-                margin: 0.5rem auto !important;
-                text-align: center !important;
-            }
-        }
     </style>
 </head>
 <body>
@@ -488,6 +533,7 @@
         <a href="index.html"><img src="images/clubjetsmx.png" alt="ClubJets MX" class="nav-logo"></a>
         <div class="nav-links">
             <a href="events.html" class="nav-link">Events</a>
+            <a href="blog.html" class="nav-link">Blog</a>
             <a href="our-story.html" class="nav-link">Our Story</a>
         </div>
     </nav>
@@ -544,6 +590,14 @@
             </div>
         </div>
     </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-address">Basilio Badillo 339, Zona Romántica, Puerto Vallarta</div>
+            <a href="mailto:info@clubjetsmx.com" class="footer-contact">Contact Us</a>
+        </div>
+    </footer>
+    
     <script>
         // Add modal functionality
         const modal = document.getElementById('imageModal');
@@ -580,6 +634,7 @@
         const translations = {
             en: {
                 events: "Events",
+                blog: "Blog",
                 ourStory: "Our Story",
                 specialEvents: "Special Events",
                 getTickets: "Get Tickets",
@@ -590,10 +645,12 @@
                 agujeroSubtitle: "GRAND DEBUT: TECHNO ALL NIGHT",
                 fri: "Fri",
                 sat: "Sat",
-                sun: "Sun"
+                sun: "Sun",
+                contactUs: "Contact Us"
             },
             es: {
                 events: "Eventos",
+                blog: "Blog",
                 ourStory: "Nuestra Historia",
                 specialEvents: "Eventos Especiales",
                 getTickets: "Obtener Boletos",
@@ -604,7 +661,8 @@
                 agujeroSubtitle: "GRAN DEBUT: TECHNO TODA LA NOCHE",
                 fri: "Vie",
                 sat: "Sáb",
-                sun: "Dom"
+                sun: "Dom",
+                contactUs: "Contáctanos"
             }
         };
 
@@ -624,7 +682,8 @@
             
             // Update navigation
             document.querySelectorAll('.nav-link')[0].textContent = lang.events;
-            document.querySelectorAll('.nav-link')[1].textContent = lang.ourStory;
+            document.querySelectorAll('.nav-link')[1].textContent = lang.blog;
+            document.querySelectorAll('.nav-link')[2].textContent = lang.ourStory;
 
             // Update section titles
             document.querySelector('.events-title').textContent = lang.specialEvents;
@@ -647,6 +706,9 @@
             document.querySelectorAll('.date-weekday')[0].textContent = lang.fri;
             document.querySelectorAll('.date-weekday')[1].textContent = lang.sat;
             document.querySelectorAll('.date-weekday')[2].textContent = lang.sun;
+
+            // Update footer
+            document.querySelector('.footer-contact').textContent = lang.contactUs;
 
             // Update the toggle button text
             document.querySelector('.language-toggle').textContent = currentLang === 'en' ? 'Español' : 'English';

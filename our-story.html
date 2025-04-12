@@ -185,6 +185,15 @@
                 max-width: 100%;
                 margin: 1rem 0;
             }
+
+            footer {
+                padding: 0.75rem 0;
+                margin-top: 1rem;
+            }
+
+            .footer-address, .footer-contact {
+                font-size: 0.8rem;
+            }
         }
 
         .language-toggle {
@@ -229,6 +238,40 @@
             animation: neon 1.5s ease-in-out infinite alternate;
             margin: 0 0 1rem 0;
         }
+
+        /* Footer Styles */
+        footer {
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+            font-family: 'Kiona', Arial, sans-serif;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-address {
+            font-size: 0.9rem;
+        }
+
+        .footer-contact {
+            color: #ff00de;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-contact:hover {
+            color: white;
+            text-shadow: 0 0 5px #ff00de;
+        }
     </style>
 </head>
 <body>
@@ -237,6 +280,7 @@
         <a href="index.html"><img src="images/clubjetsmx.png" alt="ClubJets MX" class="nav-logo"></a>
         <div class="nav-links">
             <a href="events.html" class="nav-link">Events</a>
+            <a href="blog.html" class="nav-link">Blog</a>
             <a href="our-story.html" class="nav-link">Our Story</a>
         </div>
     </nav>
@@ -244,42 +288,39 @@
         <div class="section">
             <h2 class="section-title">About Us</h2>
             <div class="section-content">
-                <p>CLUBJETS is more than a venue—it's a movement. We're not just boats and beaches anymore—we're beats.</p>
-                <p>Created by Jet de la Isla, the visionary behind Puerto Vallarta's top-rated boat tours and immersive nude beach experiences, CLUBJETS is the next evolution in queer space-making. Rooted in inclusivity, creativity, and a deep love for community.</p>
-                <p>We're inspired by the wild freedom of Berlin, the sensual elegance of Lisbon, the intimacy of Tokyo bathhouses, and the vibrant spirit of Vallarta itself. After years of bringing queer joy to the ocean, we're bringing it to land—creating a playground for artists, outcasts, dreamers, and lovers of all kinds.</p>
-                <p>Our programming includes:</p>
-                <ul class="programming-list">
-                    <li>Genre-less MainStage performances from international and local queer talent</li>
-                    <li>Ballroom nights curated by Puerto Vallarta's own community leaders</li>
-                    <li>Sex-positive cruise areas rooted in respect and consent</li>
-                    <li>Queer art installations & immersive visual experiences</li>
-                    <li>Community-building events, workshops & DJ residencies</li>
-                </ul>
-                <p>Whether you come for the music, the movement, the freedom, or the people—you'll leave with something real.</p>
-                <p>Come work, dance, cruise, connect. Come as you are. Welcome to CLUBJETS.</p>
+                <p>Welcome to Club Jets — a bold new playground in Puerto Vallarta's queer underground.</p>
+                <p>Tucked inside a repurposed warehouse, this space is the brainchild of Jet de la Isla and Chaka Paradise—two forces of nightlife and sex-positive tourism finally coming together on land. After nearly a decade leading Puerto Vallarta's most daring experiences—from five-star boat tours and naked beach takeovers to youth hostels for queer travelers—we've fused our roots, passions, and grit to build something new.</p>
+                <p>Club Jets is a dual-world experience.</p>
+                <p>🎶 The front entrance leads to our MainStage: a rotating lineup of neo-reggaetón, ballroom, techno, indie, and experimental queer sounds. Think underground rave meets queer performance art—where DJs, dancers, and local creatives can finally take up space. Want to collaborate? Slide into our DMs.</p>
+                <p>🖤 The back entrance is SX Club Jets: an all-male fantasy realm of dark techno, playrooms, and labyrinths designed for connection, freedom, and sensual exploration. Voyeurism welcome. Consent is key. Bring your full self.</p>
+                <p>One warehouse. Two doors. A thousand ways to belong.</p>
             </div>
         </div>
 
         <div class="section">
             <h2 class="section-title">Mission Statement</h2>
             <div class="section-content">
-                <p>At CLUBJETS, our mission is to fuse queer joy, creative freedom, and radical inclusivity into a living, breathing space unlike any other. Born from the success of Jet's Private Boat Tours and our legendary Naked Beach events, we've spent years crafting unforgettable experiences at sea—now we're bringing that magic to shore.</p>
-                <p>We are a sanctuary and a stage for Vallarta's queer voices: a techno-fueled, sex-positive, body-celebrating space where art, music, and connection collide. Our mission is to uplift the outcasts of the outcasts, offering a choose-your-own-adventure space where co-working, cruising, dancing, healing, and belonging all have room to thrive.</p>
-                <p>From sunrise espresso to midnight lasers—come as you are. Be who you are. You belong here.</p>
+                <p>To create a raw, inclusive, and liberating venue where queer music, art, and bodies are celebrated.</p>
+                <p>We're building the stage that didn't exist—for local DJs, underground artists, and the men craving a safe, sex-positive world of their own.</p>
             </div>
         </div>
 
         <div class="section">
             <h2 class="section-title">Vision Statement</h2>
             <div class="section-content">
-                <p>We envision CLUBJETS as a revolutionary cultural epicenter—where the vibrancy of global queer nightlife meets the intimacy of community-building.</p>
-                <p>Our vision is to expand what nightlife, art, and queer gathering can be. By breaking the binary between day and night, work and play, body and mind, CLUBJETS MX creates a multi-sensory playground that celebrates all forms of queer identity and creativity.</p>
-                <p>Backed by the highest-rated team in Vallarta's tourism industry, our guides-turned-bartenders light the space with signature Jet hospitality. Anchored by our trusted team of DJs—like DJ Trevor, resident DJ Jameson Rabbit, and local liaison Gallo—we bring a deep bench of sound and soul to every night.</p>
-                <p>We don't just want to throw parties—we want to start movements.</p>
-                <p>We're building more than a club. We're building the future of queer joy.</p>
+                <p>We see Puerto Vallarta as a global destination for queer expression, where underground music meets body freedom.</p>
+                <p>Our vision is to nurture a self-sustaining hub for LGBTQ+ creatives, partygoers, and explorers—rooted in radical authenticity, accessible pricing, and unapologetic joy.</p>
             </div>
         </div>
     </div>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-address">Basilio Badillo 339, Zona Romántica, Puerto Vallarta</div>
+            <a href="mailto:info@clubjetsmx.com" class="footer-contact">Contact Us</a>
+        </div>
+    </footer>
+    
     <script>
         const translations = {
             en: {
@@ -288,32 +329,24 @@
                 ourStory: "Our Story",
                 aboutUs: "About Us",
                 aboutUsContent: [
-                    "CLUBJETS is more than a venue—it's a movement. We're not just boats and beaches anymore—we're beats.",
-                    "Created by Jet de la Isla, the visionary behind Puerto Vallarta's top-rated boat tours and immersive nude beach experiences, CLUBJETS is the next evolution in queer space-making. Rooted in inclusivity, creativity, and a deep love for community.",
-                    "We're inspired by the wild freedom of Berlin, the sensual elegance of Lisbon, the intimacy of Tokyo bathhouses, and the vibrant spirit of Vallarta itself. After years of bringing queer joy to the ocean, we're bringing it to land—creating a playground for artists, outcasts, dreamers, and lovers of all kinds.",
-                    "Our programming includes:",
-                    "Genre-less MainStage performances from international and local queer talent",
-                    "Ballroom nights curated by Puerto Vallarta's own community leaders",
-                    "Sex-positive cruise areas rooted in respect and consent",
-                    "Queer art installations & immersive visual experiences",
-                    "Community-building events, workshops & DJ residencies",
-                    "Whether you come for the music, the movement, the freedom, or the people—you'll leave with something real.",
-                    "Come dance, cruise, connect. Come as you are. Welcome to CLUBJETS."
+                    "Welcome to Club Jets — a bold new playground in Puerto Vallarta's queer underground.",
+                    "Tucked inside a repurposed warehouse, this space is the brainchild of Jet de la Isla and Chaka Paradise—two forces of nightlife and sex-positive tourism finally coming together on land. After nearly a decade leading Puerto Vallarta's most daring experiences—from five-star boat tours and naked beach takeovers to youth hostels for queer travelers—we've fused our roots, passions, and grit to build something new.",
+                    "Club Jets is a dual-world experience.",
+                    "🎶 The front entrance leads to our MainStage: a rotating lineup of neo-reggaetón, ballroom, techno, indie, and experimental queer sounds. Think underground rave meets queer performance art—where DJs, dancers, and local creatives can finally take up space. Want to collaborate? Slide into our DMs.",
+                    "🖤 The back entrance is SX Club Jets: an all-male fantasy realm of dark techno, playrooms, and labyrinths designed for connection, freedom, and sensual exploration. Voyeurism welcome. Consent is key. Bring your full self.",
+                    "One warehouse. Two doors. A thousand ways to belong."
                 ],
                 missionTitle: "Mission Statement",
                 missionContent: [
-                    "At CLUBJETS, our mission is to fuse queer joy, creative freedom, and radical inclusivity into a living, breathing space unlike any other. Born from the success of Jet's Private Boat Tours and our legendary Naked Beach events, we've spent years crafting unforgettable experiences at sea—now we're bringing that magic to shore.",
-                    "We are a sanctuary and a stage for Vallarta's queer voices: a techno-fueled, sex-positive, body-celebrating space where art, music, and connection collide. Our mission is to uplift the outcasts of the outcasts, cruising, dancing, healing, and belonging all have room to thrive.",
-                    "From sunrise espresso to midnight lasers—come as you are. Be who you are. You belong here."
+                    "To create a raw, inclusive, and liberating venue where queer music, art, and bodies are celebrated.",
+                    "We're building the stage that didn't exist—for local DJs, underground artists, and the men craving a safe, sex-positive world of their own."
                 ],
                 visionTitle: "Vision Statement",
                 visionContent: [
-                    "We envision CLUBJETS as a revolutionary cultural epicenter—where the vibrancy of global queer nightlife meets the intimacy of community-building.",
-                    "Our vision is to expand what nightlife, art, and queer gathering can be. By breaking the binary between day and night, work and play, body and mind, CLUBJETS creates a multi-sensory playground that celebrates all forms of queer identity and creativity.",
-                    "Backed by the highest-rated team in Vallarta's tourism industry, our guides-turned-bartenders light the space with signature Jet hospitality. Anchored by our trusted team of DJs—like DJ Trevor, resident DJ Jameson Rabbit, and local liaison Gallo—we bring a deep bench of sound and soul to every night.",
-                    "We don't just want to throw parties—we want to start movements.",
-                    "We're building more than a club. We're building the future of queer joy."
-                ]
+                    "We see Puerto Vallarta as a global destination for queer expression, where underground music meets body freedom.",
+                    "Our vision is to nurture a self-sustaining hub for LGBTQ+ creatives, partygoers, and explorers—rooted in radical authenticity, accessible pricing, and unapologetic joy."
+                ],
+                contactUs: "Contact Us"
             },
             es: {
                 events: "Eventos",
@@ -321,32 +354,25 @@
                 ourStory: "Nuestra Historia",
                 aboutUs: "Sobre Nosotros",
                 aboutUsContent: [
-                    "CLUBJETS es más que un espacio—es un movimiento. Ya no somos solo barcos y playas—ahora también somos beats.",
-                    "Creado por Jet de la Isla, el visionario detrás de los tours en barco mejor valorados de Puerto Vallarta y las experiencias inmersivas en playas nudistas, CLUBJETS es la siguiente evolución en la creación de espacios queer. Con raíces en la inclusión, la creatividad y un profundo amor por la comunidad.",
-                    "Nos inspira la libertad salvaje de Berlín, la elegancia sensual de Lisboa, la intimidad de los baños japoneses de Tokio y el espíritu vibrante de la propia Vallarta. Después de años de llevar alegría queer al mar, ahora la traemos a tierra—creando un parque de juegos para artistas, marginades, soñadores y amantes de todo tipo.",
-                    "Nuestra programación incluye:",
-                    "Escenario principal sin género musical, con talento queer local e internacional",
-                    "Noches de ballroom curadas por líderes de la comunidad de Puerto Vallarta",
-                    "Áreas de cruising sex-positive, con base en el respeto y el consentimiento",
-                    "Instalaciones de arte queer y experiencias visuales inmersivas",
-                    "Eventos para crear comunidad, talleres y residencias de DJs",
-                    "Ya sea que vengas por la música, el movimiento, la libertad o la gente—te llevarás algo real.",
-                    "Ven a trabajar, bailar, ligar, conectar. Ven como eres. Bienvenide a CLUBJETS."
+                    "Bienvenides a Club Jets — un nuevo y atrevido playground en el underground queer de Puerto Vallarta.",
+                    "Escondido dentro de una bodega reconvertida, este espacio nace de la mente de Jet de la Isla y Chaka Paradise—dos potencias de la vida nocturna y el turismo sex-positive que por fin se unen en tierra firme.",
+                    "Después de casi una década liderando las experiencias más atrevidas de Vallarta—desde tours en yates cinco estrellas y tomas nudistas de playas, hasta hostales para viajeres queer—fusionamos nuestras raíces, pasiones y agallas para crear algo completamente nuevo.",
+                    "Club Jets es una experiencia de dos mundos:",
+                    "🎶 La entrada principal lleva a nuestro MainStage: una programación rotativa de neo-reggaetón, ballroom, techno, indie y sonidos queer experimentales. Piensa en un rave underground que se encuentra con el arte performático queer—donde DJs, bailarines y creativxs locales por fin pueden tomar su lugar. ¿Quieres colaborar? Mándanos DM.",
+                    "🖤 La entrada trasera es SX Club Jets: un reino de fantasía solo para hombres, con dark techno, cuartos de juego y laberintos diseñados para la conexión, la libertad y la exploración sensorial. El voyeurismo es bienvenido. El consentimiento es clave. Trae tu ser completo.",
+                    "Una bodega. Dos puertas. Mil maneras de pertenecer."
                 ],
                 missionTitle: "Declaración de Misión",
                 missionContent: [
-                    "En CLUBJETS, nuestra misión es fusionar la alegría queer, la libertad creativa y la inclusión radical en un espacio vivo y vibrante como ningún otro. Nacido del éxito de los Private Boat Tours de Jet y nuestros legendarios eventos de Naked Beach, hemos pasado años creando experiencias inolvidables en el mar—ahora traemos esa magia a tierra firme.",
-                    "Somos un santuario y un escenario para las voces queer de Vallarta: un espacio con beats techno, sex-positive y de celebración del cuerpo, donde el arte, la música y la conexión se encuentran. Nuestra misión es elevar a les marginades de les marginades,  cruising, baile, sanación y pertenencia puedan florecer.",
-                    "Desde un espresso al amanecer hasta los lasers a medianoche—ven como eres. Sé quien eres. Aquí perteneces."
+                    "Crear un espacio crudo, inclusivo y liberador donde la música, el arte y los cuerpos queer sean celebrados.",
+                    "Estamos construyendo el escenario que antes no existía—para DJs locales, artistas del underground, y hombres que anhelan un mundo propio, seguro y sex-positive."
                 ],
                 visionTitle: "Declaración de Visión",
                 visionContent: [
-                    "Visualizamos a CLUBJETS como un epicentro cultural revolucionario—donde la energía de la vida nocturna queer global se encuentra con la intimidad de la construcción comunitaria.",
-                    "Nuestra visión es expandir lo que puede ser la vida nocturna, el arte y los encuentros queer. Al romper la dicotomía entre día y noche, trabajo y juego, cuerpo y mente, CLUBJETS crea un parque sensorial que celebra todas las formas de identidad y creatividad queer.",
-                    "Respaldado por el equipo mejor calificado en la industria turística de Vallarta, nuestro personal—guías convertides en bartenders—ilumina el espacio con la hospitalidad característica de Jet. Con el apoyo de nuestro confiable equipo de DJs—como DJ Trevor, el residente DJ Jameson Rabbit y nuestro enlace local Gallo—traemos una profunda riqueza de sonido y alma cada noche.",
-                    "No solo queremos hacer fiestas—queremos iniciar movimientos.",
-                    "No estamos construyendo solo un club. Estamos construyendo el futuro de la alegría queer."
-                ]
+                    "Vemos a Puerto Vallarta como un destino global de expresión queer, donde la música underground se encuentra con la libertad corporal.",
+                    "Nuestra visión es cultivar un centro autosustentable para creativxs LGBTQ+, fiesterxs y exploradores—con raíces en la autenticidad radical, precios accesibles y una alegría sin disculpas."
+                ],
+                contactUs: "Contáctanos"
             }
         };
 
@@ -366,27 +392,17 @@
             
             // Update navigation
             document.querySelectorAll('.nav-link')[0].textContent = lang.events;
-            document.querySelectorAll('.nav-link')[1].textContent = lang.ourStory;
+            document.querySelectorAll('.nav-link')[1].textContent = lang.blog;
+            document.querySelectorAll('.nav-link')[2].textContent = lang.ourStory;
 
             // Update About Us section
             document.querySelectorAll('.section-title')[0].textContent = lang.aboutUs;
             const aboutContent = document.querySelectorAll('.section-content')[0];
             aboutContent.innerHTML = '';
-            lang.aboutUsContent.forEach((text, index) => {
-                if (index === 4) { // Start of the list
-                    const ul = document.createElement('ul');
-                    ul.className = 'programming-list';
-                    for (let i = 4; i <= 9; i++) {
-                        const li = document.createElement('li');
-                        li.textContent = lang.aboutUsContent[i];
-                        ul.appendChild(li);
-                    }
-                    aboutContent.appendChild(ul);
-                } else if (index < 4 || index > 9) {
-                    const p = document.createElement('p');
-                    p.textContent = text;
-                    aboutContent.appendChild(p);
-                }
+            lang.aboutUsContent.forEach(text => {
+                const p = document.createElement('p');
+                p.textContent = text;
+                aboutContent.appendChild(p);
             });
 
             // Update Mission section
@@ -408,6 +424,9 @@
                 p.textContent = text;
                 visionContent.appendChild(p);
             });
+
+            // Update footer
+            document.querySelector('.footer-contact').textContent = lang.contactUs;
 
             // Update the toggle button text
             document.querySelector('.language-toggle').textContent = currentLang === 'en' ? 'Español' : 'English';
