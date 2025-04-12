@@ -273,14 +273,14 @@
             }
 
             .subscription-section {
-                padding: 1.5rem;
-                margin: 2rem auto 1.5rem;
+                padding: 1.2rem;
+                margin: 1.5rem auto 1rem;
                 max-width: calc(100% - 2rem);
             }
 
             .subscription-title {
-                font-size: 1.8rem;
-                margin-bottom: 0.75rem;
+                font-size: 1.5rem;
+                margin-bottom: 0.5rem;
             }
             
             .loading-message {
@@ -335,9 +335,9 @@
         /* Subscription Form Styles */
         .subscription-section {
             width: 100%;
-            max-width: 800px;
-            margin: 4rem auto 0;
-            padding: 2rem;
+            max-width: 450px;
+            margin: 2rem auto 0;
+            padding: 1rem;
             background: rgba(255, 0, 222, 0.1);
             border-radius: 15px;
             backdrop-filter: blur(5px);
@@ -347,8 +347,8 @@
 
         .subscription-title {
             font-family: 'Kiona', Arial, sans-serif;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
             color: #fff;
             text-shadow: 0 0 5px #fff,
                          0 0 10px #fff,
@@ -358,16 +358,40 @@
             animation: neon 1.5s ease-in-out infinite alternate;
         }
         
+        .subscription-section p {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .signup-form-container {
+            min-height: 40px;
+            max-width: 280px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
         @media screen and (max-width: 768px) {
             /* ... existing mobile styles ... */
             
             .subscription-section {
-                padding: 1.5rem;
-                margin-top: 2.5rem;
+                padding: 0.8rem;
+                margin: 1rem auto;
+                max-width: calc(100% - 2rem);
             }
 
             .subscription-title {
-                font-size: 1.8rem;
+                font-size: 1.2rem;
+                margin-bottom: 0.3rem;
+            }
+            
+            .subscription-section p {
+                font-size: 0.8rem;
+                margin-bottom: 0.4rem;
+            }
+            
+            .signup-form-container {
+                max-width: 250px;
+                min-height: 35px;
             }
         }
     </style>
@@ -399,7 +423,9 @@
             <p>Stay up to date with the latest events, news, and exclusive content.</p>
             
             <!-- Ghost Signup Form -->
-            <div style="min-height: 58px;max-width: 440px;margin: 0 auto;width: 100%"><script src="https://cdn.jsdelivr.net/ghost/signup-form@~0.2/umd/signup-form.min.js" data-button-color="#ff00de" data-button-text-color="#FFFFFF" data-site="https://clubjets-mx.ghost.io/" data-locale="en" async></script></div>
+            <div class="signup-form-container">
+                <div style="min-height: 40px;max-width: 280px;margin: 0 auto;width: 100%"><script src="https://cdn.jsdelivr.net/ghost/signup-form@~0.2/umd/signup-form.min.js" data-button-color="#ff00de" data-button-text-color="#FFFFFF" data-site="https://clubjets-mx.ghost.io/" data-locale="en" async></script></div>
+            </div>
         </div>
     </div>
 
