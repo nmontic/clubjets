@@ -231,6 +231,7 @@
                 height: 35px;
                 padding-top: 3px;
                 background-color: rgba(0, 0, 0, 0.8);
+                z-index: 1100;
             }
 
             .nav-menu {
@@ -384,11 +385,20 @@
             box-shadow: 0 0 10px #00ffff;
         }
 
-        .language-toggle {
+        .language-toggle-container {
             position: fixed;
             top: 0;
-            right: 0;
-            z-index: 1002;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1100;
+            height: 40px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding-top: 5px;
+        }
+
+        .language-toggle {
             background: rgba(0, 0, 0, 0.8);
             border: 1px solid #ff00de;
             color: white;
@@ -601,19 +611,6 @@
         .instagram-link:hover {
             color: #ff00de;
         }
-
-        .language-toggle-container {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1100;
-            height: 40px;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            padding-top: 5px;
-        }
     </style>
 </head>
 <body>
@@ -623,7 +620,9 @@
         <img class="modal-content" id="modalImage">
     </div>
 
-    <button class="language-toggle" onclick="toggleLanguage()">Español</button>
+    <div class="language-toggle-container">
+        <button class="language-toggle" onclick="toggleLanguage()">Español</button>
+    </div>
     <nav class="nav-menu">
         <a href="index.html"><img src="images/clubjetsmx.png" alt="ClubJets MX" class="nav-logo"></a>
         <div class="nav-links">
