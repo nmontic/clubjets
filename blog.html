@@ -38,7 +38,7 @@
             top: 0;
             width: 100%;
             background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1003;
+            z-index: 1100;
             height: 40px;
             display: flex;
             justify-content: flex-end;
@@ -134,6 +134,8 @@
             border-radius: 10px;
             padding: 2rem;
             color: white;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         .blog-post-title {
@@ -141,6 +143,7 @@
             font-size: 2rem;
             color: #ff00de;
             margin-bottom: 0.5rem;
+            word-wrap: break-word;
         }
 
         .blog-post-date {
@@ -192,21 +195,27 @@
             .language-toggle-container {
                 height: 35px;
                 padding-top: 3px;
+                background-color: rgba(0, 0, 0, 0.8);
             }
 
             .nav-menu {
                 height: 80px;
                 padding: 0.15rem 0;
                 margin-top: 35px;
+                position: relative;
+                z-index: 10;
             }
 
             .nav-logo {
-                height: 100px;
+                height: 80px;
+                margin-left: 0.5rem;
             }
 
             .nav-links {
                 margin-right: 0;
                 gap: 1rem;
+                justify-content: flex-end;
+                padding-right: 1rem;
             }
             
             .nav-link {
@@ -215,20 +224,34 @@
 
             .blog-container {
                 padding: 0 1rem;
-                margin-top: 0;
+                margin-top: 15px;
+                width: calc(100% - 2rem);
             }
 
             .blog-title {
                 font-size: 2.5rem;
-                margin: 0 0 0.5rem 0;
+                margin: 1.5rem 0 1rem 0;
             }
 
             .blog-post {
-                padding: 1rem;
+                padding: 1.2rem;
+                margin-bottom: 1.5rem;
             }
 
             .blog-post-title {
                 font-size: 1.5rem;
+                line-height: 1.3;
+            }
+            
+            .blog-post-content {
+                font-size: 1rem;
+                line-height: 1.5;
+            }
+
+            .blog-post img {
+                max-width: 100%;
+                height: auto !important;
+                object-fit: contain;
             }
 
             .language-toggle {
@@ -247,11 +270,27 @@
 
             .subscription-section {
                 padding: 1.5rem;
-                margin-top: 2.5rem;
+                margin: 2rem auto 1.5rem;
+                max-width: calc(100% - 2rem);
             }
 
             .subscription-title {
                 font-size: 1.8rem;
+                margin-bottom: 0.75rem;
+            }
+            
+            .loading-message {
+                font-size: 1.2rem;
+                margin: 1.5rem 0;
+            }
+            
+            .blog-posts {
+                gap: 1.5rem;
+            }
+            
+            .language-toggle {
+                position: relative;
+                z-index: 20;
             }
         }
 
