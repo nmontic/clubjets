@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ClubJets - Our Story</title>
+    <title>ClubJets - Story</title>
     <link rel="icon" href="images/favicon.png" type="image/png">
     <style>
         @font-face {
@@ -281,12 +281,12 @@
         <div class="nav-links">
             <a href="events.html" class="nav-link">Events</a>
             <a href="blog.html" class="nav-link">Blog</a>
-            <a href="our-story.html" class="nav-link">Our Story</a>
+            <a href="our-story.html" class="nav-link">Story</a>
         </div>
     </nav>
     <div class="content">
         <div class="section">
-            <h2 class="section-title">About Us</h2>
+            <h2 class="section-title" id="about-us-title">About Us</h2>
             <div class="section-content">
                 <p>Welcome to Club Jets — a bold new playground in Puerto Vallarta's queer underground.</p>
                 <p>Tucked inside a repurposed warehouse, this space is the brainchild of Jet de la Isla and Chaka Paradise—two forces of nightlife and sex-positive tourism finally coming together on land. After nearly a decade leading Puerto Vallarta's most daring experiences—from five-star boat tours and naked beach takeovers to youth hostels for queer travelers—we've fused our roots, passions, and grit to build something new.</p>
@@ -298,7 +298,7 @@
         </div>
 
         <div class="section">
-            <h2 class="section-title">Mission Statement</h2>
+            <h2 class="section-title" id="mission-title">Mission Statement</h2>
             <div class="section-content">
                 <p>To create a raw, inclusive, and liberating venue where queer music, art, and bodies are celebrated.</p>
                 <p>We're building the stage that didn't exist—for local DJs, underground artists, and the men craving a safe, sex-positive world of their own.</p>
@@ -306,7 +306,7 @@
         </div>
 
         <div class="section">
-            <h2 class="section-title">Vision Statement</h2>
+            <h2 class="section-title" id="vision-title">Vision Statement</h2>
             <div class="section-content">
                 <p>We see Puerto Vallarta as a global destination for queer expression, where underground music meets body freedom.</p>
                 <p>Our vision is to nurture a self-sustaining hub for LGBTQ+ creatives, partygoers, and explorers—rooted in radical authenticity, accessible pricing, and unapologetic joy.</p>
@@ -324,9 +324,10 @@
     <script>
         const translations = {
             en: {
+                storyTitle: "Story",
                 events: "Events",
                 blog: "Blog",
-                ourStory: "Our Story",
+                ourStory: "Story",
                 aboutUs: "About Us",
                 aboutUsContent: [
                     "Welcome to Club Jets — a bold new playground in Puerto Vallarta's queer underground.",
@@ -349,9 +350,10 @@
                 contactUs: "Contact Us"
             },
             es: {
+                storyTitle: "Historia",
                 events: "Eventos",
                 blog: "Blog",
-                ourStory: "Nuestra Historia",
+                ourStory: "Historia",
                 aboutUs: "Sobre Nosotros",
                 aboutUsContent: [
                     "Bienvenides a Club Jets — un nuevo y atrevido playground en el underground queer de Puerto Vallarta.",
@@ -390,13 +392,20 @@
         function updateLanguage() {
             const lang = translations[currentLang];
             
+            // Update story title
+            document.querySelector('.story-title').textContent = lang.storyTitle;
+            
             // Update navigation
             document.querySelectorAll('.nav-link')[0].textContent = lang.events;
             document.querySelectorAll('.nav-link')[1].textContent = lang.blog;
             document.querySelectorAll('.nav-link')[2].textContent = lang.ourStory;
-
-            // Update About Us section
-            document.querySelectorAll('.section-title')[0].textContent = lang.aboutUs;
+            
+            // Update section titles
+            document.getElementById('about-us-title').textContent = lang.aboutUs;
+            document.getElementById('mission-title').textContent = lang.missionTitle;
+            document.getElementById('vision-title').textContent = lang.visionTitle;
+            
+            // Update About Us section content
             const aboutContent = document.querySelectorAll('.section-content')[0];
             aboutContent.innerHTML = '';
             lang.aboutUsContent.forEach(text => {
@@ -405,8 +414,7 @@
                 aboutContent.appendChild(p);
             });
 
-            // Update Mission section
-            document.querySelectorAll('.section-title')[1].textContent = lang.missionTitle;
+            // Update Mission section content
             const missionContent = document.querySelectorAll('.section-content')[1];
             missionContent.innerHTML = '';
             lang.missionContent.forEach(text => {
@@ -415,8 +423,7 @@
                 missionContent.appendChild(p);
             });
 
-            // Update Vision section
-            document.querySelectorAll('.section-title')[2].textContent = lang.visionTitle;
+            // Update Vision section content
             const visionContent = document.querySelectorAll('.section-content')[2];
             visionContent.innerHTML = '';
             lang.visionContent.forEach(text => {
@@ -424,7 +431,7 @@
                 p.textContent = text;
                 visionContent.appendChild(p);
             });
-
+            
             // Update footer
             document.querySelector('.footer-contact').textContent = lang.contactUs;
 

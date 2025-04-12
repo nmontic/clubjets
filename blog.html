@@ -338,7 +338,7 @@
         <div class="nav-links">
             <a href="events.html" class="nav-link">Events</a>
             <a href="blog.html" class="nav-link">Blog</a>
-            <a href="our-story.html" class="nav-link">Our Story</a>
+            <a href="our-story.html" class="nav-link">Story</a>
         </div>
     </nav>
     <div class="blog-container">
@@ -372,7 +372,7 @@
             en: {
                 events: "Events",
                 blog: "Blog",
-                ourStory: "Our Story",
+                ourStory: "Story",
                 loadingMessage: "Loading blog posts...",
                 noPosts: "No posts found. Check back soon!",
                 errorLoading: "Error loading blog posts. Please try again later.",
@@ -383,23 +383,25 @@
                 emailPlaceholder: "Your Email",
                 subscribeButton: "Subscribe",
                 subscribeSuccess: "Thank you for subscribing!",
-                subscribeError: "Something went wrong. Please try again."
+                subscribeError: "Something went wrong. Please try again.",
+                blogTitle: "Latest News"
             },
             es: {
                 events: "Eventos",
                 blog: "Blog",
-                ourStory: "Nuestra Historia",
+                ourStory: "Historia",
                 loadingMessage: "Cargando publicaciones del blog...",
                 noPosts: "No se encontraron publicaciones. ¡Vuelve pronto!",
                 errorLoading: "Error al cargar las publicaciones del blog. Por favor, inténtalo de nuevo más tarde.",
                 contactUs: "Contáctanos",
-                subscribe: "Suscríbete a Actualizaciones",
+                subscribe: "Suscribirse",
                 subscribeInfo: "Mantente al día con los últimos eventos, noticias y contenido exclusivo.",
                 namePlaceholder: "Tu Nombre",
                 emailPlaceholder: "Tu Email",
                 subscribeButton: "Suscribirse",
                 subscribeSuccess: "¡Gracias por suscribirte!",
-                subscribeError: "Algo salió mal. Por favor, inténtalo de nuevo."
+                subscribeError: "Algo salió mal. Por favor, inténtalo de nuevo.",
+                blogTitle: "Últimas Noticias"
             }
         };
 
@@ -426,7 +428,7 @@
             document.querySelectorAll('.nav-link')[2].textContent = lang.ourStory;
 
             // Update blog title
-            document.querySelector('.blog-title').textContent = lang.blog;
+            document.querySelector('.blog-title').textContent = lang.blogTitle;
 
             // Update loading message if it exists
             const loadingMessage = document.querySelector('.loading-message');
@@ -435,7 +437,7 @@
             }
 
             // Update subscription section (only the static text, not the form)
-            document.querySelector('.subscription-title').textContent = lang.subscribe;
+            document.querySelector('.subscription-title').textContent = lang.subscribeTitle;
             document.querySelector('.subscription-section p').textContent = lang.subscribeInfo;
 
             // Update footer
