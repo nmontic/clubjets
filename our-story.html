@@ -227,16 +227,16 @@
         .story-title {
             font-family: 'Kiona', Arial, sans-serif;
             color: #fff;
-            font-size: 3.6rem;
+            font-size: 4rem;
             font-weight: bold;
             text-align: center;
+            margin-bottom: 2rem;
             text-shadow: 0 0 5px #fff,
                          0 0 10px #fff,
                          0 0 20px #ff00de,
                          0 0 30px #ff00de,
                          0 0 40px #ff00de;
             animation: neon 1.5s ease-in-out infinite alternate;
-            margin: 0 0 1rem 0;
         }
 
         /* Footer Styles */
@@ -322,6 +322,8 @@
     </footer>
     
     <script>
+        let currentLang = 'en';
+        
         const translations = {
             en: {
                 storyTitle: "Story",
@@ -378,8 +380,15 @@
             }
         };
 
-        // Get the saved language preference or default to English
-        let currentLang = localStorage.getItem('preferredLanguage') || 'en';
+        // Initialize language on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set the initial language based on stored preference
+            currentLang = localStorage.getItem('preferredLanguage') || 'en';
+            // Update the language toggle button text
+            document.querySelector('.language-toggle').textContent = currentLang === 'en' ? 'Español' : 'English';
+            // Apply the translations
+            updateLanguage();
+        });
 
         function toggleLanguage() {
             currentLang = currentLang === 'en' ? 'es' : 'en';
@@ -391,9 +400,6 @@
 
         function updateLanguage() {
             const lang = translations[currentLang];
-            
-            // Update story title
-            document.querySelector('.story-title').textContent = lang.storyTitle;
             
             // Update navigation
             document.querySelectorAll('.nav-link')[0].textContent = lang.events;
@@ -438,9 +444,6 @@
             // Update the toggle button text
             document.querySelector('.language-toggle').textContent = currentLang === 'en' ? 'Español' : 'English';
         }
-
-        // Initialize language on page load
-        document.addEventListener('DOMContentLoaded', updateLanguage);
     </script>
 </body>
 </html> 
