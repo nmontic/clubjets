@@ -5,24 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ClubJets - Blog</title>
     <link rel="icon" href="images/favicon.png" type="image/png">
+    <script src="particles.js" defer></script>
     <style>
         @font-face {
             font-family: 'Kiona';
             src: url('Kiona-Regular.ttf') format('truetype');
         }
 
-        /* Mobile-specific styles that will override desktop styles */
-        @media only screen and (max-width: 768px) {
-            .blog-post img {
-                max-width: 100% !important;
-                height: auto !important;
-            }
-        }
-
         body {
             margin: 0;
             padding: 0;
-            background-color: black;
+            background: linear-gradient(-45deg, #000000, #0a0a0a, #050505, #000000);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -33,30 +28,22 @@
             padding-top: 0;
         }
 
-        .language-toggle-container {
-            position: fixed;
-            top: 0;
-            right: 0;
-            background-color: transparent;
-            z-index: 1100;
-            padding-top: 5px;
-            width: auto;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .nav-menu {
             position: static;
             width: 100%;
             background-color: transparent;
-            padding: 0.25rem 0;
+            padding: 1rem 0;
             z-index: 1000;
-            height: 100px;
-            margin-top: 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            height: 169px;
         }
 
         .nav-logo {
@@ -77,97 +64,90 @@
             text-decoration: none;
             font-family: 'Kiona', Arial, sans-serif;
             font-size: 2rem;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 1rem;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #ff00de;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-link:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
         }
 
         .nav-link:hover {
             color: #ff00de;
+            text-shadow: 0 0 5px #ff00de,
+                         0 0 10px #ff00de;
         }
 
-        .language-toggle {
-            background: rgba(0, 0, 0, 0.8);
-            border: 1px solid #ff00de;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            cursor: pointer;
-            font-family: 'Kiona', Arial, sans-serif;
-            transition: all 0.3s ease;
-            margin: 5px;
-        }
-
-        .language-toggle:hover {
-            background: rgba(255, 0, 222, 0.2);
-            box-shadow: 0 0 10px #ff00de;
-        }
-
-        .blog-container {
-            width: 100%;
-            max-width: 1200px;
-            padding: 0 2rem;
-            margin-top: 0;
-        }
-
-        .blog-title {
+        .neon-text {
             font-family: 'Kiona', Arial, sans-serif;
             color: #fff;
-            font-size: 3.6rem;
+            font-size: 4.8rem;
             font-weight: bold;
             text-align: center;
             text-shadow: 0 0 5px #fff,
                          0 0 10px #fff,
                          0 0 20px #ff00de,
                          0 0 30px #ff00de,
-                         0 0 40px #ff00de;
+                         0 0 40px #ff00de,
+                         0 0 50px #ff00de,
+                         0 0 60px #ff00de;
             animation: neon 1.5s ease-in-out infinite alternate;
-            margin: 0 0 1rem 0;
+            margin: 0.1rem 0;
+            position: relative;
+            transition: all 0.3s ease;
         }
 
-        .blog-posts {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
+        .neon-text:hover {
+            transform: scale(1.05);
+            text-shadow: 0 0 10px #fff,
+                         0 0 20px #fff,
+                         0 0 30px #ff00de,
+                         0 0 40px #ff00de,
+                         0 0 50px #ff00de,
+                         0 0 60px #ff00de,
+                         0 0 70px #ff00de;
         }
 
-        .blog-post {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            padding: 2rem;
-            color: white;
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-        }
-
-        .blog-post-title {
+        .neon-text-blue {
             font-family: 'Kiona', Arial, sans-serif;
-            font-size: 2rem;
-            color: #ff00de;
-            margin-bottom: 0.5rem;
-            word-wrap: break-word;
-        }
-
-        .blog-post-date {
-            font-size: 0.9rem;
-            color: #999;
-            margin-bottom: 1.5rem;
-        }
-
-        .blog-post-content {
-            line-height: 1.6;
-        }
-
-        .blog-post img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin: 1rem 0;
-        }
-
-        .loading-message {
+            color: #fff;
+            font-size: 2.4rem;
+            font-weight: bold;
             text-align: center;
-            color: white;
-            font-size: 1.5rem;
-            margin: 2rem 0;
+            margin-bottom: 0.1rem;
+            text-shadow: 0 0 5px #fff,
+                         0 0 10px #fff,
+                         0 0 20px #00ffff,
+                         0 0 30px #00ffff,
+                         0 0 40px #00ffff,
+                         0 0 50px #00ffff;
+            animation: neon-blue 1.5s ease-in-out infinite alternate;
+            transition: all 0.3s ease;
+        }
+
+        .neon-text-blue:hover {
+            transform: scale(1.05);
+            text-shadow: 0 0 10px #fff,
+                         0 0 20px #fff,
+                         0 0 30px #00ffff,
+                         0 0 40px #00ffff,
+                         0 0 50px #00ffff,
+                         0 0 60px #00ffff;
         }
 
         @keyframes neon {
@@ -187,16 +167,115 @@
             }
         }
 
+        @keyframes neon-blue {
+            from {
+                text-shadow: 0 0 5px #fff,
+                            0 0 10px #fff,
+                            0 0 20px #00ffff,
+                            0 0 30px #00ffff,
+                            0 0 40px #00ffff;
+            }
+            to {
+                text-shadow: 0 0 2.5px #fff,
+                            0 0 5px #fff,
+                            0 0 10px #00ffff,
+                            0 0 15px #00ffff,
+                            0 0 20px #00ffff;
+            }
+        }
+
+        .language-toggle-container {
+            position: fixed;
+            top: 0;
+            right: 0;
+            background-color: transparent;
+            z-index: 1100;
+            padding-top: 5px;
+            width: auto;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .language-toggle {
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid #ff00de;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Kiona', Arial, sans-serif;
+            transition: all 0.3s ease;
+            margin: 5px;
+        }
+
+        .language-toggle:hover {
+            background: rgba(255, 0, 222, 0.2);
+            box-shadow: 0 0 10px #ff00de;
+        }
+
+        /* Remove the globe emoji */
+        .language-toggle::before {
+            display: none;
+        }
+
+        /* Footer Styles */
+        footer {
+            width: 100%;
+            background-color: transparent;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            font-family: 'Kiona', Arial, sans-serif;
+            position: relative;
+            margin-top: auto;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, 
+                rgba(0, 0, 0, 0) 0%,
+                rgba(0, 0, 0, 0.3) 50%,
+                rgba(0, 0, 0, 0.6) 100%);
+            z-index: -1;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-address {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .footer-contact {
+            color: #ff00de;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            text-shadow: 0 0 5px #ff00de;
+        }
+
+        .footer-contact:hover {
+            color: white;
+            text-shadow: 0 0 10px #ff00de;
+        }
+
+        /* Add media query for mobile devices */
         @media screen and (max-width: 768px) {
             body {
                 padding-top: 0;
-            }
-
-            .language-toggle-container {
-                background-color: transparent;
-                z-index: 1100;
-                top: 5px;
-                right: 5px;
             }
 
             .nav-menu {
@@ -207,149 +286,115 @@
                 z-index: 10;
             }
 
-            .nav-logo {
-                height: 80px;
-                margin-left: 0.5rem;
-            }
-
             .nav-links {
-                margin-right: 0;
-                gap: 1rem;
-                justify-content: flex-end;
-                padding-right: 1rem;
+                gap: 0.75rem;
+                justify-content: center;
             }
             
             .nav-link {
                 font-size: 1.5rem;
             }
 
-            .blog-container {
-                padding: 0 1rem;
-                margin-top: 15px;
-                width: calc(100% - 2rem);
+            .neon-text {
+                font-size: 3.6rem;
+                margin: 0.05rem 0;
             }
 
-            .blog-title {
-                font-size: 2.5rem;
-                margin: 1.5rem 0 1rem 0;
-            }
-
-            .blog-post {
-                padding: 1.2rem;
-                margin-bottom: 1.5rem;
-            }
-
-            .blog-post-title {
-                font-size: 1.5rem;
-                line-height: 1.3;
-            }
-            
-            .blog-post-content {
-                font-size: 1rem;
-                line-height: 1.5;
-            }
-
-            .blog-post img {
-                max-width: 100%;
-                height: auto !important;
-                object-fit: contain;
-            }
-
-            .language-toggle {
-                padding: 0.5rem 1rem;
-                font-size: 0.9rem;
-                margin: 3px;
-                position: relative;
-                z-index: 20;
-            }
-
-            footer {
-                padding: 0.75rem 0;
-                margin-top: 1rem;
-            }
-
-            .footer-address, .footer-contact {
-                font-size: 0.8rem;
-            }
-
-            .subscription-section {
-                padding: 1.2rem;
-                margin: 1.5rem auto 1rem;
-                max-width: calc(100% - 2rem);
-            }
-
-            .subscription-title {
-                font-size: 1.5rem;
-                margin-bottom: 0.5rem;
-            }
-            
-            .loading-message {
-                font-size: 1.2rem;
-                margin: 1.5rem 0;
-            }
-            
-            .blog-posts {
-                gap: 1.5rem;
-            }
-            
-            .language-toggle {
-                position: relative;
-                z-index: 20;
+            .neon-text-blue {
+                font-size: 1.8rem;
+                margin-bottom: 0.05rem;
             }
         }
 
-        /* Footer Styles */
-        footer {
+        .blog-container {
             width: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            text-align: center;
-            padding: 1rem 0;
+            max-width: 1200px;
+            padding: 0 1rem;
             margin-top: 2rem;
-            font-family: 'Kiona', Arial, sans-serif;
+            margin-bottom: 2rem;
+            flex: 1;
         }
 
-        .footer-content {
+        .blog-title {
+            font-family: 'Kiona', Arial, sans-serif;
+            color: #fff;
+            font-size: 3.6rem;
+            font-weight: bold;
+            text-align: center;
+            text-shadow: 0 0 5px #fff,
+                         0 0 10px #fff,
+                         0 0 20px #ff00de,
+                         0 0 30px #ff00de,
+                         0 0 40px #ff00de;
+            animation: neon 1.5s ease-in-out infinite alternate;
+            margin: 0 0 2rem 0;
+        }
+
+        .blog-posts {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
+            gap: 2rem;
         }
 
-        .footer-address {
-            font-size: 0.9rem;
-        }
-
-        .footer-contact {
-            color: #ff00de;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-
-        .footer-contact:hover {
-            color: white;
-            text-shadow: 0 0 5px #ff00de;
-        }
-
-        /* Subscription Form Styles */
-        .subscription-section {
-            width: 100%;
-            max-width: 450px;
-            margin: 2rem auto 0;
-            padding: 1rem;
-            background: rgba(255, 0, 222, 0.1);
+        .blog-post {
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 15px;
+            padding: 2rem;
             backdrop-filter: blur(5px);
-            color: white;
+        }
+
+        .blog-post-title {
+            font-family: 'Kiona', Arial, sans-serif;
+            color: #fff;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 5px #fff,
+                         0 0 10px #fff,
+                         0 0 20px #00ffff,
+                         0 0 30px #00ffff,
+                         0 0 40px #00ffff;
+            animation: neon-blue 1.5s ease-in-out infinite alternate;
+        }
+
+        .blog-post-date {
+            color: #00ffff;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .blog-post-image {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .blog-post-content {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .blog-post-content p {
+            margin-bottom: 1rem;
+        }
+
+        .subscription-section {
+            background: transparent;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 2rem;
             text-align: center;
         }
 
         .subscription-title {
             font-family: 'Kiona', Arial, sans-serif;
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
             color: #fff;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
             text-shadow: 0 0 5px #fff,
                          0 0 10px #fff,
                          0 0 20px #ff00de,
@@ -357,41 +402,55 @@
                          0 0 40px #ff00de;
             animation: neon 1.5s ease-in-out infinite alternate;
         }
-        
+
         .subscription-section p {
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
         }
-        
-        .signup-form-container {
-            min-height: 40px;
-            max-width: 280px;
-            margin: 0 auto;
-            width: 100%;
+
+        .loading-message {
+            color: #00ffff;
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 2rem;
         }
-        
+
+        .no-posts, .error-message {
+            color: #00ffff;
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 2rem;
+            font-family: 'Kiona', Arial, sans-serif;
+            text-shadow: 0 0 5px #fff,
+                         0 0 10px #fff,
+                         0 0 20px #00ffff,
+                         0 0 30px #00ffff;
+        }
+
         @media screen and (max-width: 768px) {
-            /* ... existing mobile styles ... */
-            
-            .subscription-section {
-                padding: 0.8rem;
-                margin: 1rem auto;
-                max-width: calc(100% - 2rem);
+            .blog-title {
+                font-size: 2.5rem;
+            }
+
+            .blog-post {
+                padding: 1.5rem;
+            }
+
+            .blog-post-title {
+                font-size: 1.8rem;
+            }
+
+            .blog-post-date {
+                font-size: 1rem;
+            }
+
+            .blog-post-content {
+                font-size: 1rem;
             }
 
             .subscription-title {
-                font-size: 1.2rem;
-                margin-bottom: 0.3rem;
-            }
-            
-            .subscription-section p {
-                font-size: 0.8rem;
-                margin-bottom: 0.4rem;
-            }
-            
-            .signup-form-container {
-                max-width: 250px;
-                min-height: 35px;
+                font-size: 1.8rem;
             }
         }
     </style>
@@ -551,43 +610,30 @@
                 
                 // Check if posts were returned
                 if (data.posts && data.posts.length > 0) {
-                    // Clear the container
+                    // Clear loading message
                     postsContainer.innerHTML = '';
                     
-                    // Render each post
+                    // Create and append post elements
                     data.posts.forEach(post => {
-                        const postElement = document.createElement('div');
-                        postElement.className = 'blog-post';
-                        
-                        // Add feature image if available
-                        const featureImage = post.feature_image ? 
-                            `<img src="${post.feature_image}" alt="${post.title}" class="blog-post-image">` : '';
-                        
-                        postElement.innerHTML = `
-                            <h2 class="blog-post-title">${post.title}</h2>
-                            <div class="blog-post-date">${formatDate(post.published_at)}</div>
-                            ${featureImage}
-                            <div class="blog-post-content">${post.html}</div>
-                        `;
-                        
+                        const postElement = createPostElement(post);
                         postsContainer.appendChild(postElement);
                     });
                 } else {
-                    // No posts found
-                    postsContainer.innerHTML = `<div class="loading-message">${translations[currentLang].noPosts}</div>`;
+                    postsContainer.innerHTML = `<div class="no-posts">${translations[currentLang].noPosts}</div>`;
                 }
             } catch (error) {
                 console.error('Error fetching blog posts:', error);
-                postsContainer.innerHTML = `<div class="loading-message">${translations[currentLang].errorLoading}</div>`;
+                postsContainer.innerHTML = `<div class="error-message">${translations[currentLang].errorLoading}</div>`;
             }
         }
 
         // Initialize language and fetch posts on page load
         document.addEventListener('DOMContentLoaded', function() {
-            // Set initial language toggle text
+            // Set initial language
+            currentLang = localStorage.getItem('preferredLanguage') || 'en';
             document.querySelector('.language-toggle').textContent = currentLang === 'en' ? 'Español' : 'English';
-            // Update all translations
             updateLanguage();
+            
             // Fetch blog posts
             fetchBlogPosts();
         });
