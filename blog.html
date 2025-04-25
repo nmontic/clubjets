@@ -868,17 +868,50 @@
                 if (ogDesc) ogDesc.content = description;
                 if (twitterDesc) twitterDesc.content = description;
                 
-                // Update image
-                const imageUrl = post.feature_image || 'https://clubjetsmx.com/images/clubjetsmx.png';
+                // Update image - ensure full URL is used
+                const imageUrl = post.feature_image ? 
+                    (post.feature_image.startsWith('http') ? post.feature_image : `https://clubjetsmx.com${post.feature_image}`) : 
+                    'https://clubjetsmx.com/images/clubjetsmx.png';
+                
                 const ogImage = document.querySelector('meta[property="og:image"]');
                 const twitterImage = document.querySelector('meta[name="twitter:image"]');
                 if (ogImage) ogImage.content = imageUrl;
                 if (twitterImage) twitterImage.content = imageUrl;
                 
-                // Update URL
+                // Update URL - ensure full URL is used
                 const postUrl = `https://clubjetsmx.com/blog.html?post=${post.slug}`;
                 const ogUrl = document.querySelector('meta[property="og:url"]');
                 if (ogUrl) ogUrl.content = postUrl;
+
+                // Add additional Open Graph tags for better Facebook sharing
+                const ogType = document.querySelector('meta[property="og:type"]') || document.createElement('meta');
+                ogType.setAttribute('property', 'og:type');
+                ogType.content = 'article';
+                if (!document.querySelector('meta[property="og:type"]')) {
+                    document.head.appendChild(ogType);
+                }
+
+                const ogSiteName = document.querySelector('meta[property="og:site_name"]') || document.createElement('meta');
+                ogSiteName.setAttribute('property', 'og:site_name');
+                ogSiteName.content = 'ClubJets MX';
+                if (!document.querySelector('meta[property="og:site_name"]')) {
+                    document.head.appendChild(ogSiteName);
+                }
+
+                // Add article specific tags
+                const articlePublishedTime = document.querySelector('meta[property="article:published_time"]') || document.createElement('meta');
+                articlePublishedTime.setAttribute('property', 'article:published_time');
+                articlePublishedTime.content = post.published_at;
+                if (!document.querySelector('meta[property="article:published_time"]')) {
+                    document.head.appendChild(articlePublishedTime);
+                }
+
+                const articleAuthor = document.querySelector('meta[property="article:author"]') || document.createElement('meta');
+                articleAuthor.setAttribute('property', 'article:author');
+                articleAuthor.content = post.primary_author?.name || 'ClubJets MX';
+                if (!document.querySelector('meta[property="article:author"]')) {
+                    document.head.appendChild(articleAuthor);
+                }
             } catch (error) {
                 console.error('Error updating metadata:', error);
             }
