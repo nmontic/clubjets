@@ -635,11 +635,13 @@
                 // Construct the API URL with parameters
                 const apiUrl = `${ghostApiUrl}?key=${ghostApiKey}&limit=5&include=tags,authors&fields=title,html,feature_image,published_at,slug,url`;
                 
-                console.log(`Fetching posts from: ${apiUrl}`);
+                console.log('Attempting to fetch posts...');
+                console.log('API URL:', apiUrl);
                 
                 // Fetch posts from Ghost API
                 const response = await fetch(apiUrl);
-                console.log(`Response status: ${response.status}`);
+                console.log('Response status:', response.status);
+                console.log('Response headers:', response.headers);
                 
                 if (!response.ok) {
                     throw new Error(`API response was not ok: ${response.status}`);
@@ -650,6 +652,7 @@
                 
                 // Check if posts were returned
                 if (data.posts && data.posts.length > 0) {
+                    console.log('Number of posts found:', data.posts.length);
                     // Clear loading message
                     postsContainer.innerHTML = '';
                     
@@ -659,12 +662,50 @@
                         postsContainer.appendChild(postElement);
                     });
                 } else {
+                    console.log('No posts found in response');
                     postsContainer.innerHTML = `<div class="no-posts">${translations[currentLang].noPosts}</div>`;
                 }
             } catch (error) {
                 console.error('Error fetching blog posts:', error);
                 postsContainer.innerHTML = `<div class="error-message">${translations[currentLang].errorLoading}</div>`;
             }
+        }
+
+        // Function to create a blog post element
+        function createPostElement(post) {
+            const postElement = document.createElement('div');
+            postElement.className = 'blog-post';
+            
+            // Create post title
+            const titleElement = document.createElement('h2');
+            titleElement.className = 'blog-post-title';
+            titleElement.textContent = post.title;
+            
+            // Create post date
+            const dateElement = document.createElement('div');
+            dateElement.className = 'blog-post-date';
+            dateElement.textContent = formatDate(post.published_at);
+            
+            // Create post content
+            const contentElement = document.createElement('div');
+            contentElement.className = 'blog-post-content';
+            contentElement.innerHTML = post.html;
+            
+            // Add featured image if available
+            if (post.feature_image) {
+                const imageElement = document.createElement('img');
+                imageElement.className = 'blog-post-image';
+                imageElement.src = post.feature_image;
+                imageElement.alt = post.title;
+                postElement.appendChild(imageElement);
+            }
+            
+            // Append all elements to the post container
+            postElement.appendChild(titleElement);
+            postElement.appendChild(dateElement);
+            postElement.appendChild(contentElement);
+            
+            return postElement;
         }
 
         // Initialize language and fetch posts on page load
