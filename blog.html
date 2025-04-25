@@ -571,44 +571,68 @@
 
         .share-buttons {
             display: flex;
-            gap: 1rem;
+            gap: 1.5rem;
             margin-top: 1.5rem;
             padding-top: 1rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 0, 0, 0.2);
         }
 
         .share-button {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid #ff0000;
             color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
+            padding: 0.6rem 1.2rem;
+            border-radius: 0;
             cursor: pointer;
             font-family: 'Kiona', Arial, sans-serif;
             transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            min-width: 100px;
+            text-align: center;
+        }
+
+        .share-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 0, 0, 0.2),
+                transparent
+            );
+            transition: 0.5s;
         }
 
         .share-button:hover {
-            background: rgba(255, 0, 0, 0.2);
-            box-shadow: 0 0 10px #ff0000;
+            background: rgba(0, 0, 0, 0.9);
+            box-shadow: 0 0 10px #ff0000,
+                       0 0 20px rgba(255, 0, 0, 0.5);
+            transform: translateY(-2px);
         }
 
-        .share-button i {
-            font-size: 1.2rem;
+        .share-button:hover::before {
+            left: 100%;
         }
 
         @media screen and (max-width: 768px) {
             .share-buttons {
                 flex-wrap: wrap;
                 justify-content: center;
+                gap: 1rem;
             }
             
             .share-button {
-                padding: 0.4rem 0.8rem;
-                font-size: 0.9rem;
+                padding: 0.5rem 1rem;
+                font-size: 0.7rem;
+                min-width: 80px;
             }
         }
     </style>
@@ -655,74 +679,11 @@
     
     <script>
         let currentLang = localStorage.getItem('preferredLanguage') || 'en';
-        let postTranslations = {};
 
         // Function to load translations
         async function loadTranslations() {
             // No longer needed as we're using Google Translate
             return;
-        }
-
-        // Function to translate text using Google Translate
-        async function translateText(text, targetLang) {
-            try {
-                // Split the text into HTML tags and text content
-                const segments = text.split(/(<[^>]+>)/);
-                
-                // Translate each text segment (non-HTML)
-                const translatedSegments = await Promise.all(segments.map(async segment => {
-                    if (segment.startsWith('<')) {
-                        // Keep HTML tags exactly as they are
-                        return segment;
-                    } else if (segment.trim()) {
-                        // Only translate non-empty text segments
-                        const response = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=${targetLang}&dt=t&q=${encodeURIComponent(segment)}`);
-                        
-                        if (!response.ok) {
-                            throw new Error(`Translation failed: ${response.status}`);
-                        }
-
-                        const data = await response.json();
-                        return data[0].map(item => item[0]).join('');
-                    } else {
-                        // Keep whitespace as is
-                        return segment;
-                    }
-                }));
-
-                // Join all segments back together
-                return translatedSegments.join('');
-            } catch (error) {
-                console.error('Translation error:', error);
-                return text;
-            }
-        }
-
-        // Function to get translated post content
-        async function getTranslatedPost(post) {
-            // If language is English, return the post as is
-            if (currentLang === 'en') {
-                return {
-                    ...post,
-                    title: post.title,
-                    html: post.html
-                };
-            }
-            
-            // Only translate if language is Spanish
-            try {
-                const translatedTitle = await translateText(post.title, 'es');
-                const translatedContent = await translateText(post.html, 'es');
-                
-                return {
-                    ...post,
-                    title: translatedTitle,
-                    html: translatedContent
-                };
-            } catch (error) {
-                console.error('Error translating post:', error);
-                return post;
-            }
         }
 
         // Initialize language and fetch posts on page load
@@ -768,7 +729,7 @@
             // Update UI text
             updateLanguage();
             
-            // Re-fetch and translate posts
+            // Re-fetch posts
             await fetchBlogPosts();
         }
 
@@ -830,7 +791,7 @@
                     
                     // Add posts one by one with loading states
                     for (const post of data.posts) {
-                        const postElement = await createPostElement(post);
+                        const postElement = createPostElement(post);
                         postsWrapper.appendChild(postElement);
                     }
                     
@@ -886,38 +847,37 @@
         }
 
         // Function to create a blog post element
-        async function createPostElement(post) {
+        function createPostElement(post) {
             const postElement = document.createElement('div');
             postElement.className = 'blog-post';
             
             try {
-                const translatedPost = await getTranslatedPost(post);
                 const postUrl = `https://clubjetsmx.com/blog.html?post=${post.slug}`;
                 
                 // Update Open Graph metadata for this post
-                updateOpenGraphMetadata(translatedPost);
+                updateOpenGraphMetadata(post);
                 
                 // Create post title
                 const titleElement = document.createElement('h2');
                 titleElement.className = 'blog-post-title';
-                titleElement.textContent = translatedPost.title;
+                titleElement.textContent = post.title;
                 
                 // Create post date
                 const dateElement = document.createElement('div');
                 dateElement.className = 'blog-post-date';
-                dateElement.textContent = formatDate(translatedPost.published_at);
+                dateElement.textContent = formatDate(post.published_at);
                 
                 // Create post content
                 const contentElement = document.createElement('div');
                 contentElement.className = 'blog-post-content';
-                contentElement.innerHTML = translatedPost.html;
+                contentElement.innerHTML = post.html;
                 
                 // Add featured image if available
-                if (translatedPost.feature_image) {
+                if (post.feature_image) {
                     const imageElement = document.createElement('img');
                     imageElement.className = 'blog-post-image';
-                    imageElement.src = translatedPost.feature_image;
-                    imageElement.alt = translatedPost.title;
+                    imageElement.src = post.feature_image;
+                    imageElement.alt = post.title;
                     postElement.appendChild(imageElement);
                 }
                 
@@ -928,19 +888,19 @@
                 // Facebook share button
                 const facebookButton = document.createElement('button');
                 facebookButton.className = 'share-button';
-                facebookButton.innerHTML = '<i>📱</i> Share on Facebook';
-                facebookButton.onclick = () => shareOnFacebook(postUrl, translatedPost.title);
+                facebookButton.textContent = 'Facebook';
+                facebookButton.onclick = () => shareOnFacebook(postUrl, post.title);
                 
                 // Twitter share button
                 const twitterButton = document.createElement('button');
                 twitterButton.className = 'share-button';
-                twitterButton.innerHTML = '<i>🐦</i> Share on Twitter';
-                twitterButton.onclick = () => shareOnTwitter(postUrl, translatedPost.title);
+                twitterButton.textContent = 'Twitter';
+                twitterButton.onclick = () => shareOnTwitter(postUrl, post.title);
                 
                 // Copy link button
                 const copyButton = document.createElement('button');
                 copyButton.className = 'share-button';
-                copyButton.innerHTML = '<i>🔗</i> Copy Link';
+                copyButton.textContent = 'Link';
                 copyButton.onclick = () => copyToClipboard(postUrl);
                 
                 shareButtons.appendChild(facebookButton);
