@@ -633,7 +633,7 @@
             
             try {
                 // Construct the API URL with parameters
-                const apiUrl = `${ghostApiUrl}?key=${ghostApiKey}&limit=5&include=tags,authors&fields=title,html,feature_image,published_at,slug,url`;
+                const apiUrl = `${ghostApiUrl}?key=${ghostApiKey}&limit=5&include=tags,authors&formats=html,plaintext`;
                 
                 console.log('Attempting to fetch posts...');
                 console.log('API URL:', apiUrl);
@@ -689,7 +689,22 @@
             // Create post content
             const contentElement = document.createElement('div');
             contentElement.className = 'blog-post-content';
-            contentElement.innerHTML = post.html;
+            
+            // Debug the HTML content
+            console.log('Post HTML content:', post.html);
+            
+            // Safely set the HTML content
+            if (post.html) {
+                try {
+                    contentElement.innerHTML = post.html;
+                } catch (error) {
+                    console.error('Error setting HTML content:', error);
+                    contentElement.textContent = 'Error loading post content';
+                }
+            } else {
+                console.warn('No HTML content found for post');
+                contentElement.textContent = 'No content available';
+            }
             
             // Add featured image if available
             if (post.feature_image) {
