@@ -47,8 +47,9 @@
         }
 
         .nav-logo {
-            height: 169px;
-            margin-left: 1rem;
+            height: 180px;
+            width: auto;
+            object-fit: contain;
         }
 
         .nav-links {
@@ -76,7 +77,7 @@
             left: 0;
             width: 100%;
             height: 2px;
-            background: #ff00de;
+            background: #ff0000;
             transform: scaleX(0);
             transform-origin: right;
             transition: transform 0.3s ease;
@@ -88,9 +89,9 @@
         }
 
         .nav-link:hover {
-            color: #ff00de;
-            text-shadow: 0 0 5px #ff00de,
-                         0 0 10px #ff00de;
+            color: #ff0000;
+            text-shadow: 0 0 5px #ff0000,
+                         0 0 10px #ff0000;
         }
 
         .neon-text {
@@ -189,6 +190,7 @@
             max-width: 1200px;
             padding: 0 1rem;
             margin-top: 0;
+            flex: 1;
         }
 
         .events-title {
@@ -199,11 +201,31 @@
             text-align: center;
             text-shadow: 0 0 5px #fff,
                          0 0 10px #fff,
-                         0 0 20px #ff00de,
-                         0 0 30px #ff00de,
-                         0 0 40px #ff00de;
+                         0 0 20px #ff0000,
+                         0 0 30px #ff0000,
+                         0 0 40px #ff0000,
+                         0 0 50px #ff0000;
             animation: neon 1.5s ease-in-out infinite alternate;
             margin: 0 0 1rem 0;
+        }
+
+        @keyframes neon {
+            from {
+                text-shadow: 0 0 5px #fff,
+                            0 0 10px #fff,
+                            0 0 20px #ff0000,
+                            0 0 30px #ff0000,
+                            0 0 40px #ff0000,
+                            0 0 50px #ff0000;
+            }
+            to {
+                text-shadow: 0 0 2.5px #fff,
+                            0 0 5px #fff,
+                            0 0 10px #ff0000,
+                            0 0 15px #ff0000,
+                            0 0 20px #ff0000,
+                            0 0 25px #ff0000;
+            }
         }
 
         .phase-section {
@@ -244,7 +266,7 @@
             bottom: 0;
             border-radius: 10px;
             padding: 2px;
-            background: linear-gradient(90deg, transparent, #00ffff, transparent);
+            background: linear-gradient(90deg, transparent, #ff0000, transparent);
             background-size: 200% 100%;
             -webkit-mask: 
                 linear-gradient(#fff 0 0) content-box, 
@@ -314,7 +336,7 @@
         }
 
         .event-subtitle {
-            color: #00ffff;
+            color: #ff0000;
             font-size: 1.2rem;
             margin: 0.5rem 0;
             text-align: center;
@@ -357,7 +379,7 @@
             }
 
             .nav-logo {
-                height: 100px;
+                height: 140px;
                 margin: 0;
             }
 
@@ -430,7 +452,7 @@
 
         .language-toggle {
             background: rgba(0, 0, 0, 0.8);
-            border: 1px solid #ff00de;
+            border: 1px solid #ff0000;
             color: white;
             padding: 0.5rem 1rem;
             border-radius: 5px;
@@ -441,8 +463,8 @@
         }
 
         .language-toggle:hover {
-            background: rgba(255, 0, 222, 0.2);
-            box-shadow: 0 0 10px #ff00de;
+            background: rgba(255, 0, 0, 0.2);
+            box-shadow: 0 0 10px #ff0000;
         }
 
         .event-images {
@@ -565,7 +587,7 @@
             color: white;
             text-align: center;
             padding: 1rem 0;
-            margin-top: 2rem;
+            margin-top: auto;
             font-family: 'Kiona', Arial, sans-serif;
             position: relative;
         }
@@ -594,19 +616,27 @@
         }
 
         .footer-address {
-            font-size: 0.9rem;
+            font-size: 1.2rem;
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.9);
+            transition: all 0.3s ease;
+        }
+
+        .footer-address:hover {
+            color: #ff0000;
+            text-shadow: 0 0 5px #ff0000;
         }
 
         .footer-contact {
-            color: #ff00de;
+            color: rgba(255, 255, 255, 0.9);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 1.2rem;
             transition: all 0.3s ease;
         }
 
         .footer-contact:hover {
-            color: white;
-            text-shadow: 0 0 5px #ff00de;
+            color: #ff0000;
+            text-shadow: 0 0 5px #ff0000;
         }
 
         /* Modal styles */
@@ -682,60 +712,16 @@
     <div class="events-container">
         <h1 class="events-title">Special Events</h1>
         
-        <div class="event-card">
-            <div class="date-circle">
-                <div class="date-weekday">Fri</div>
-                <div class="date-day">18</div>
-                <div class="date-month">Apr</div>
-            </div>
-            <div class="event-details">
-                <div class="event-title">BELLACORE</div>
-                <div class="event-content">
-                    <img src="images/BellacoreImage.png" alt="BELL0CA" class="event-image">
-                    <a href="https://bellacore-puerto-vallarta.boletia.com/?fbclid=PAZXh0bgNhZW0CMTEAAaZ-fVMyoCVdY50BPVoXMGXV36PEmL4XSWeW719Ti1vWLLUXjGVC03S3NKI_aem_yc2Sb8-WhORlrE7e8n5uNA" class="ticket-link" target="_blank">Get Tickets</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="event-card">
-            <div class="date-circle">
-                <div class="date-weekday">Sat</div>
-                <div class="date-day">19</div>
-                <div class="date-month">Apr</div>
-            </div>
-            <div class="event-details">
-                <div class="event-title">AGUJERO NEGRO</div>
-                <div class="event-subtitle">GRAND DEBUT: TECHNO ALL NIGHT</div>
-                <div class="event-content">
-                    <img src="images/agujeronegro.png" alt="Agujero Negro Techno" class="event-image">
-                    <a href="https://agujeronegro.mx/boletos/puertovallarta_debut/" class="ticket-link" target="_blank">Get Tickets</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="event-card">
-            <div class="date-circle">
-                <div class="date-weekday">Sun</div>
-                <div class="date-day">20</div>
-                <div class="date-month">Apr</div>
-            </div>
-            <div class="event-details">
-                <div class="event-title">Kinky Queer Night</div>
-                <div class="event-subtitle">Presenta Semana Santa No Tan Santa</div>
-                <div class="event-content">
-                    <div class="event-images">
-                        <img src="images/KinkyNight1.png" alt="Kinky Queer Night 1" class="event-image">
-                        <img src="images/KinkyNight2.png" alt="Kinky Queer Night 2" class="event-image">
-                    </div>
-                    <a href="https://www.instagram.com/p/DIQQ1aMMzyh/?igsh=amx2c2ptMm0xeTE0" class="info-link" target="_blank">Event Info</a>
-                </div>
+        <div class="section">
+            <div class="section-content" style="text-align: center; padding: 3rem 1rem;">
+                <p style="color: #ff0000; font-size: 1.5rem; font-family: 'Kiona', Arial, sans-serif; text-shadow: 0 0 5px #ff0000;">Check back soon for upcoming events</p>
             </div>
         </div>
     </div>
 
     <footer>
         <div class="footer-content">
-            <div class="footer-address">Basilio Badillo 339, Zona Romántica, Puerto Vallarta</div>
+            <a href="https://maps.app.goo.gl/1UusCfBkLatMsiLp9" target="_blank" class="footer-address">Basilio Badillo 339, Zona Romántica, Puerto Vallarta</a>
             <a href="mailto:info@clubjetsmx.com" class="footer-contact">Contact Us</a>
         </div>
     </footer>
@@ -790,15 +776,7 @@
                 blog: "Blog",
                 ourStory: "Story",
                 specialEvents: "Special Events",
-                getTickets: "Get Tickets",
-                eventInfo: "Event Info",
-                kinkyQueerNight: "Kinky Queer Night",
-                kinkySubtitle: "Presenta Semana Santa No Tan Santa",
-                agujeroNegro: "AGUJERO NEGRO",
-                agujeroSubtitle: "GRAND DEBUT: TECHNO ALL NIGHT",
-                fri: "Fri",
-                sat: "Sat",
-                sun: "Sun",
+                checkBack: "Check back soon for upcoming events",
                 contactUs: "Contact Us"
             },
             es: {
@@ -806,15 +784,7 @@
                 blog: "Blog",
                 ourStory: "Historia",
                 specialEvents: "Eventos Especiales",
-                getTickets: "Obtener Boletos",
-                eventInfo: "Info del Evento",
-                kinkyQueerNight: "Noche Queer Kinky",
-                kinkySubtitle: "Presenta Semana Santa No Tan Santa",
-                agujeroNegro: "AGUJERO NEGRO",
-                agujeroSubtitle: "GRAN DEBUT: TECHNO TODA LA NOCHE",
-                fri: "Vie",
-                sat: "Sáb",
-                sun: "Dom",
+                checkBack: "Próximamente nuevos eventos",
                 contactUs: "Contáctanos"
             }
         };
@@ -840,25 +810,9 @@
 
             // Update section titles
             document.querySelector('.events-title').textContent = lang.specialEvents;
-
-            // Update ticket links
-            document.querySelectorAll('.ticket-link').forEach(link => {
-                link.textContent = lang.getTickets;
-            });
-
-            // Update info link
-            document.querySelector('.info-link').textContent = lang.eventInfo;
-
-            // Update event titles
-            document.querySelectorAll('.event-title')[1].textContent = lang.agujeroNegro;
-            document.querySelectorAll('.event-subtitle')[0].textContent = lang.agujeroSubtitle;
-            document.querySelectorAll('.event-title')[2].textContent = lang.kinkyQueerNight;
-            document.querySelectorAll('.event-subtitle')[1].textContent = lang.kinkySubtitle;
-
-            // Update weekdays in date circles
-            document.querySelectorAll('.date-weekday')[0].textContent = lang.fri;
-            document.querySelectorAll('.date-weekday')[1].textContent = lang.sat;
-            document.querySelectorAll('.date-weekday')[2].textContent = lang.sun;
+            
+            // Update check back message
+            document.querySelector('.section-content p').textContent = lang.checkBack;
 
             // Update footer
             document.querySelector('.footer-contact').textContent = lang.contactUs;

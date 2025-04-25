@@ -7,7 +7,7 @@ class Particle {
         this.size = Math.random() * 3 + 1;
         this.speedX = Math.random() * 2 - 1;
         this.speedY = Math.random() * 2 - 1;
-        this.color = `hsl(${Math.random() * 60 + 200}, 70%, 50%)`;
+        this.color = `hsl(${Math.random() * 20 - 10}, 100%, 50%)`;  // Red hues (350-10)
     }
 
     update(mouse) {

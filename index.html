@@ -41,7 +41,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: #ff00de;
+            background: #ff0000;
             z-index: 1000;
             transform: scaleY(0);
             transform-origin: bottom;
@@ -54,17 +54,18 @@
         }
 
         .image-container {
-            margin-bottom: 0;
-            width: 100%;
             display: flex;
             justify-content: center;
-            margin-top: -20px;
+            align-items: center;
+            margin-top: 50px;
+            margin-bottom: 30px;
         }
 
-        img {
-            max-width: 100%;
+        .image-container img {
+            max-width: 600px;
+            width: 90%;
             height: auto;
-            display: block; /* Remove any unwanted space */
+            object-fit: contain;
         }
 
         .neon-text {
@@ -75,11 +76,11 @@
             text-align: center;
             text-shadow: 0 0 5px #fff,
                          0 0 10px #fff,
-                         0 0 20px #ff00de,
-                         0 0 30px #ff00de,
-                         0 0 40px #ff00de,
-                         0 0 50px #ff00de,
-                         0 0 60px #ff00de;
+                         0 0 20px #ff0000,
+                         0 0 30px #ff0000,
+                         0 0 40px #ff0000,
+                         0 0 50px #ff0000,
+                         0 0 60px #ff0000;
             animation: neon 1.5s ease-in-out infinite alternate;
             margin: 0.1rem 0;
             position: relative;
@@ -90,11 +91,11 @@
             transform: scale(1.05);
             text-shadow: 0 0 10px #fff,
                          0 0 20px #fff,
-                         0 0 30px #ff00de,
-                         0 0 40px #ff00de,
-                         0 0 50px #ff00de,
-                         0 0 60px #ff00de,
-                         0 0 70px #ff00de;
+                         0 0 30px #ff0000,
+                         0 0 40px #ff0000,
+                         0 0 50px #ff0000,
+                         0 0 60px #ff0000,
+                         0 0 70px #ff0000;
         }
 
         .neon-text-blue {
@@ -106,10 +107,10 @@
             margin-bottom: 0.1rem;
             text-shadow: 0 0 5px #fff,
                          0 0 10px #fff,
-                         0 0 20px #00ffff,
-                         0 0 30px #00ffff,
-                         0 0 40px #00ffff,
-                         0 0 50px #00ffff;
+                         0 0 20px #ff0000,
+                         0 0 30px #ff0000,
+                         0 0 40px #ff0000,
+                         0 0 50px #ff0000;
             animation: neon-blue 1.5s ease-in-out infinite alternate;
             transition: all 0.3s ease;
         }
@@ -118,26 +119,26 @@
             transform: scale(1.05);
             text-shadow: 0 0 10px #fff,
                          0 0 20px #fff,
-                         0 0 30px #00ffff,
-                         0 0 40px #00ffff,
-                         0 0 50px #00ffff,
-                         0 0 60px #00ffff;
+                         0 0 30px #ff0000,
+                         0 0 40px #ff0000,
+                         0 0 50px #ff0000,
+                         0 0 60px #ff0000;
         }
 
         @keyframes neon {
             from {
                 text-shadow: 0 0 5px #fff,
                             0 0 10px #fff,
-                            0 0 20px #ff00de,
-                            0 0 30px #ff00de,
-                            0 0 40px #ff00de;
+                            0 0 20px #ff0000,
+                            0 0 30px #ff0000,
+                            0 0 40px #ff0000;
             }
             to {
                 text-shadow: 0 0 2.5px #fff,
                             0 0 5px #fff,
-                            0 0 10px #ff00de,
-                            0 0 15px #ff00de,
-                            0 0 20px #ff00de;
+                            0 0 10px #ff0000,
+                            0 0 15px #ff0000,
+                            0 0 20px #ff0000;
             }
         }
 
@@ -145,16 +146,16 @@
             from {
                 text-shadow: 0 0 5px #fff,
                             0 0 10px #fff,
-                            0 0 20px #00ffff,
-                            0 0 30px #00ffff,
-                            0 0 40px #00ffff;
+                            0 0 20px #ff0000,
+                            0 0 30px #ff0000,
+                            0 0 40px #ff0000;
             }
             to {
                 text-shadow: 0 0 2.5px #fff,
                             0 0 5px #fff,
-                            0 0 10px #00ffff,
-                            0 0 15px #00ffff,
-                            0 0 20px #00ffff;
+                            0 0 10px #ff0000,
+                            0 0 15px #ff0000,
+                            0 0 20px #ff0000;
             }
         }
 
@@ -205,7 +206,7 @@
             }
 
             .nav-logo {
-                height: 100px;
+                height: 140px;
                 margin: 0;
             }
 
@@ -306,7 +307,7 @@
             left: 0;
             width: 100%;
             height: 2px;
-            background: #ff00de;
+            background: #ff0000;
             transform: scaleX(0);
             transform-origin: right;
             transition: transform 0.3s ease;
@@ -318,9 +319,9 @@
         }
 
         .nav-link:hover {
-            color: #ff00de;
-            text-shadow: 0 0 5px #ff00de,
-                         0 0 10px #ff00de;
+            color: #ff0000;
+            text-shadow: 0 0 5px #ff0000,
+                         0 0 10px #ff0000;
         }
 
         .language-toggle-container {
@@ -338,7 +339,7 @@
 
         .language-toggle {
             background: rgba(0, 0, 0, 0.8);
-            border: 1px solid #ff00de;
+            border: 1px solid #ff0000;
             color: white;
             padding: 0.5rem 1rem;
             border-radius: 5px;
@@ -349,8 +350,8 @@
         }
 
         .language-toggle:hover {
-            background: rgba(255, 0, 222, 0.2);
-            box-shadow: 0 0 10px #ff00de;
+            background: rgba(255, 0, 0, 0.2);
+            box-shadow: 0 0 10px #ff0000;
         }
 
         /* Footer Styles */
@@ -390,18 +391,32 @@
 
         .footer-address {
             font-size: 0.9rem;
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.9);
+            transition: all 0.3s ease;
+        }
+
+        .footer-address:hover {
+            color: #ff0000;
+            text-shadow: 0 0 5px #ff0000;
         }
 
         .footer-contact {
-            color: #ff00de;
+            color: rgba(255, 255, 255, 0.9);
             text-decoration: none;
             font-size: 0.9rem;
             transition: all 0.3s ease;
         }
 
         .footer-contact:hover {
-            color: white;
-            text-shadow: 0 0 5px #ff00de;
+            color: #ff0000;
+            text-shadow: 0 0 5px #ff0000;
+        }
+
+        .nav-logo {
+            height: 180px;
+            width: auto;
+            object-fit: contain;
         }
     </style>
 </head>
@@ -424,7 +439,7 @@
         QUEER ELECTRONIC TECHNO HAUS
     </div>
     <div class="neon-text">
-        4.18.25
+        5.2.25
     </div>
     
     <footer>
@@ -440,7 +455,7 @@
                     <img src="images/JetsPrivateBoatToursIcon.png" alt="Jet's Private Boat Tours">
                 </a>
             </div>
-            <div class="footer-address">Basilio Badillo 339, Zona Romántica, Puerto Vallarta</div>
+            <a href="https://maps.app.goo.gl/1UusCfBkLatMsiLp9" target="_blank" class="footer-address">Basilio Badillo 339, Zona Romántica, Puerto Vallarta</a>
             <a href="mailto:info@clubjetsmx.com" class="footer-contact">Contact Us</a>
         </div>
     </footer>
@@ -448,7 +463,7 @@
         const translations = {
             en: {
                 subtitle: "QUEER ELECTRONIC TECHNO HAUS",
-                date: "4.18.25",
+                date: "5.2.25",
                 events: "Events",
                 blog: "Blog",
                 ourStory: "Story",
@@ -456,7 +471,7 @@
             },
             es: {
                 subtitle: "QUEER ELECTRONIC TECHNO HAUS",
-                date: "18.4.25",
+                date: "2.5.25",
                 events: "Eventos",
                 blog: "Blog",
                 ourStory: "Historia",
