@@ -447,6 +447,36 @@
             line-height: 1.6;
         }
 
+        .blog-post-content a {
+            color: #ff0000;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .blog-post-content a:hover {
+            color: #ff0000;
+            text-shadow: 0 0 5px #ff0000,
+                         0 0 10px #ff0000;
+        }
+
+        .blog-post-content a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: #ff0000;
+            opacity: 0.5;
+            transition: all 0.3s ease;
+        }
+
+        .blog-post-content a:hover::after {
+            opacity: 1;
+            box-shadow: 0 0 5px #ff0000;
+        }
+
         .blog-post-content img {
             max-width: 100%;
             height: auto;
