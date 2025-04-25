@@ -925,8 +925,23 @@
 
         // Function to share on Facebook
         function shareOnFacebook(url, title) {
-            const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
-            window.open(shareUrl, '_blank', 'width=600,height=400');
+            // Ensure URL is using HTTPS
+            const secureUrl = url.startsWith('http://') ? url.replace('http://', 'https://') : url;
+            
+            // Create a more complete share URL with additional parameters
+            const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(secureUrl)}&quote=${encodeURIComponent(title)}&hashtag=%23ClubJetsMX`;
+            
+            // Open in a popup window
+            const width = 600;
+            const height = 400;
+            const left = (window.innerWidth - width) / 2;
+            const top = (window.innerHeight - height) / 2;
+            
+            window.open(
+                shareUrl,
+                'facebook-share-dialog',
+                `width=${width},height=${height},left=${left},top=${top},toolbar=0,menubar=0,location=0,status=0`
+            );
         }
 
         // Function to share on Twitter
