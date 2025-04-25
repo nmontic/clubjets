@@ -493,6 +493,36 @@
                 font-size: 1.8rem;
             }
         }
+
+        .blog-posts-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            transition: opacity 0.3s ease;
+        }
+        
+        .loading-message {
+            color: #ff0000;
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 2rem;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+        
+        .blog-post {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        
+        .blog-post.loading {
+            opacity: 0.5;
+            transform: scale(0.98);
+        }
     </style>
 </head>
 <body>
@@ -536,83 +566,130 @@
     </footer>
     
     <script>
-        const translations = {
-            en: {
-                events: "Events",
-                blog: "Blog",
-                ourStory: "Story",
-                loadingMessage: "Loading blog posts...",
-                noPosts: "No posts found. Check back soon!",
-                errorLoading: "Error loading blog posts. Please try again later.",
-                contactUs: "Contact Us",
-                subscribe: "Subscribe to Updates",
-                subscribeInfo: "Stay up to date with the latest events, news, and exclusive content.",
-                namePlaceholder: "Your Name",
-                emailPlaceholder: "Your Email",
-                subscribeButton: "Subscribe",
-                subscribeSuccess: "Thank you for subscribing!",
-                subscribeError: "Something went wrong. Please try again.",
-                blogTitle: "Latest News"
-            },
-            es: {
-                events: "Eventos",
-                blog: "Blog",
-                ourStory: "Historia",
-                loadingMessage: "Cargando publicaciones del blog...",
-                noPosts: "No se encontraron publicaciones. ¡Vuelve pronto!",
-                errorLoading: "Error al cargar las publicaciones del blog. Por favor, inténtalo de nuevo más tarde.",
-                contactUs: "Contáctanos",
-                subscribe: "Suscribirse",
-                subscribeInfo: "Mantente al día con los últimos eventos, noticias y contenido exclusivo.",
-                namePlaceholder: "Tu Nombre",
-                emailPlaceholder: "Tu Email",
-                subscribeButton: "Suscribirse",
-                subscribeSuccess: "¡Gracias por suscribirte!",
-                subscribeError: "Algo salió mal. Por favor, inténtalo de nuevo.",
-                blogTitle: "Últimas Noticias"
-            }
-        };
-
-        // Get the saved language preference or default to English
         let currentLang = localStorage.getItem('preferredLanguage') || 'en';
+        let postTranslations = {};
 
-        function toggleLanguage() {
-            currentLang = currentLang === 'en' ? 'es' : 'en';
-            // Save the language preference
-            localStorage.setItem('preferredLanguage', currentLang);
-            updateLanguage();
-            document.querySelector('.language-toggle').textContent = currentLang === 'en' ? 'Español' : 'English';
-            
-            // Reload blog posts with new language
-            fetchBlogPosts();
+        // Function to load translations
+        async function loadTranslations() {
+            // No longer needed as we're using Google Translate
+            return;
         }
 
-        function updateLanguage() {
-            const lang = translations[currentLang];
+        // Function to translate text using Google Translate
+        async function translateText(text, targetLang) {
+            try {
+                // Split the text into HTML tags and text content
+                const segments = text.split(/(<[^>]+>)/);
+                
+                // Translate each text segment (non-HTML)
+                const translatedSegments = await Promise.all(segments.map(async segment => {
+                    if (segment.startsWith('<')) {
+                        // Keep HTML tags exactly as they are
+                        return segment;
+                    } else if (segment.trim()) {
+                        // Only translate non-empty text segments
+                        const response = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=${targetLang}&dt=t&q=${encodeURIComponent(segment)}`);
+                        
+                        if (!response.ok) {
+                            throw new Error(`Translation failed: ${response.status}`);
+                        }
+
+                        const data = await response.json();
+                        return data[0].map(item => item[0]).join('');
+                    } else {
+                        // Keep whitespace as is
+                        return segment;
+                    }
+                }));
+
+                // Join all segments back together
+                return translatedSegments.join('');
+            } catch (error) {
+                console.error('Translation error:', error);
+                return text;
+            }
+        }
+
+        // Function to get translated post content
+        async function getTranslatedPost(post) {
+            if (currentLang === 'en') {
+                return post;
+            }
             
+            try {
+                const translatedTitle = await translateText(post.title, 'es');
+                const translatedContent = await translateText(post.html, 'es');
+                
+                return {
+                    ...post,
+                    title: translatedTitle,
+                    html: translatedContent
+                };
+            } catch (error) {
+                console.error('Error translating post:', error);
+                return post;
+            }
+        }
+
+        // Initialize language and fetch posts on page load
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Set initial language
+            currentLang = localStorage.getItem('preferredLanguage') || 'en';
+            document.querySelector('.language-toggle').textContent = currentLang === 'en' ? 'Español' : 'English';
+            
+            // Update UI text first
+            updateLanguage();
+            
+            // Then fetch and display posts
+            await fetchBlogPosts();
+        });
+
+        // Function to toggle language
+        async function toggleLanguage() {
+            // Show loading state
+            const postsContainer = document.getElementById('blog-posts-container');
+            postsContainer.innerHTML = `
+                <div class="loading-message">
+                    ${currentLang === 'en' ? 'Switching to Spanish...' : 'Cambiando a inglés...'}
+                </div>
+            `;
+
+            // Update language
+            currentLang = currentLang === 'en' ? 'es' : 'en';
+            localStorage.setItem('preferredLanguage', currentLang);
+            document.querySelector('.language-toggle').textContent = currentLang === 'en' ? 'Español' : 'English';
+            
+            // Update UI text
+            updateLanguage();
+            
+            // Re-fetch and translate posts
+            await fetchBlogPosts();
+        }
+
+        // Function to update language
+        function updateLanguage() {
             // Update navigation
-            document.querySelectorAll('.nav-link')[0].textContent = lang.events;
-            document.querySelectorAll('.nav-link')[1].textContent = lang.blog;
-            document.querySelectorAll('.nav-link')[2].textContent = lang.ourStory;
+            document.querySelectorAll('.nav-link')[0].textContent = currentLang === 'en' ? 'Events' : 'Eventos';
+            document.querySelectorAll('.nav-link')[1].textContent = currentLang === 'en' ? 'Blog' : 'Blog';
+            document.querySelectorAll('.nav-link')[2].textContent = currentLang === 'en' ? 'Story' : 'Historia';
 
             // Update blog title
-            document.querySelector('.blog-title').textContent = lang.blogTitle;
+            document.querySelector('.blog-title').textContent = currentLang === 'en' ? 'Latest News' : 'Últimas Noticias';
 
             // Update loading message if it exists
             const loadingMessage = document.querySelector('.loading-message');
             if (loadingMessage) {
-                loadingMessage.textContent = lang.loadingMessage;
+                loadingMessage.textContent = currentLang === 'en' ? 'Loading blog posts...' : 'Cargando publicaciones del blog...';
             }
 
-            // Update subscription section (only the static text, not the form)
-            document.querySelector('.subscription-title').textContent = lang.subscribeTitle;
-            document.querySelector('.subscription-section p').textContent = lang.subscribeInfo;
+            // Update subscription section
+            document.querySelector('.subscription-title').textContent = currentLang === 'en' ? 'Subscribe to Updates' : 'Suscribirse';
+            document.querySelector('.subscription-section p').textContent = currentLang === 'en' 
+                ? 'Stay up to date with the latest events, news, and exclusive content.'
+                : 'Mantente al día con los últimos eventos, noticias y contenido exclusivo.';
 
             // Update footer
-            document.querySelector('.footer-contact').textContent = lang.contactUs;
-
-            // Update the toggle button text
-            document.querySelector('.language-toggle').textContent = currentLang === 'en' ? 'Español' : 'English';
+            document.querySelector('.footer-contact').textContent = currentLang === 'en' ? 'Contact Us' : 'Contáctanos';
         }
 
         // Function to format date based on current language
@@ -629,110 +706,93 @@
         // Function to fetch blog posts from Ghost API
         async function fetchBlogPosts() {
             const postsContainer = document.getElementById('blog-posts-container');
-            postsContainer.innerHTML = `<div class="loading-message">${translations[currentLang].loadingMessage}</div>`;
             
             try {
-                // Construct the API URL with parameters
                 const apiUrl = `${ghostApiUrl}?key=${ghostApiKey}&limit=5&include=tags,authors&formats=html,plaintext`;
-                
-                console.log('Attempting to fetch posts...');
-                console.log('API URL:', apiUrl);
-                
-                // Fetch posts from Ghost API
                 const response = await fetch(apiUrl);
-                console.log('Response status:', response.status);
-                console.log('Response headers:', response.headers);
                 
                 if (!response.ok) {
                     throw new Error(`API response was not ok: ${response.status}`);
                 }
                 
                 const data = await response.json();
-                console.log('Received data:', data);
                 
-                // Check if posts were returned
                 if (data.posts && data.posts.length > 0) {
-                    console.log('Number of posts found:', data.posts.length);
-                    // Clear loading message
-                    postsContainer.innerHTML = '';
+                    // Create a container for all posts
+                    const postsWrapper = document.createElement('div');
+                    postsWrapper.className = 'blog-posts-wrapper';
                     
-                    // Create and append post elements
-                    data.posts.forEach(post => {
-                        const postElement = createPostElement(post);
-                        postsContainer.appendChild(postElement);
-                    });
+                    // Add posts one by one with loading states
+                    for (const post of data.posts) {
+                        const postElement = await createPostElement(post);
+                        postsWrapper.appendChild(postElement);
+                    }
+                    
+                    postsContainer.innerHTML = '';
+                    postsContainer.appendChild(postsWrapper);
                 } else {
-                    console.log('No posts found in response');
-                    postsContainer.innerHTML = `<div class="no-posts">${translations[currentLang].noPosts}</div>`;
+                    postsContainer.innerHTML = `
+                        <div class="no-posts">
+                            ${currentLang === 'en' ? 'No posts found. Check back soon!' : 'No se encontraron publicaciones. ¡Vuelve pronto!'}
+                        </div>
+                    `;
                 }
             } catch (error) {
                 console.error('Error fetching blog posts:', error);
-                postsContainer.innerHTML = `<div class="error-message">${translations[currentLang].errorLoading}</div>`;
+                postsContainer.innerHTML = `
+                    <div class="error-message">
+                        ${currentLang === 'en' ? 'Error loading blog posts. Please try again later.' : 'Error al cargar las publicaciones del blog. Por favor, inténtalo de nuevo más tarde.'}
+                    </div>
+                `;
             }
         }
 
         // Function to create a blog post element
-        function createPostElement(post) {
+        async function createPostElement(post) {
             const postElement = document.createElement('div');
             postElement.className = 'blog-post';
             
-            // Create post title
-            const titleElement = document.createElement('h2');
-            titleElement.className = 'blog-post-title';
-            titleElement.textContent = post.title;
-            
-            // Create post date
-            const dateElement = document.createElement('div');
-            dateElement.className = 'blog-post-date';
-            dateElement.textContent = formatDate(post.published_at);
-            
-            // Create post content
-            const contentElement = document.createElement('div');
-            contentElement.className = 'blog-post-content';
-            
-            // Debug the HTML content
-            console.log('Post HTML content:', post.html);
-            
-            // Safely set the HTML content
-            if (post.html) {
-                try {
-                    contentElement.innerHTML = post.html;
-                } catch (error) {
-                    console.error('Error setting HTML content:', error);
-                    contentElement.textContent = 'Error loading post content';
+            try {
+                const translatedPost = await getTranslatedPost(post);
+                
+                // Create post title
+                const titleElement = document.createElement('h2');
+                titleElement.className = 'blog-post-title';
+                titleElement.textContent = translatedPost.title;
+                
+                // Create post date
+                const dateElement = document.createElement('div');
+                dateElement.className = 'blog-post-date';
+                dateElement.textContent = formatDate(translatedPost.published_at);
+                
+                // Create post content
+                const contentElement = document.createElement('div');
+                contentElement.className = 'blog-post-content';
+                contentElement.innerHTML = translatedPost.html;
+                
+                // Add featured image if available
+                if (translatedPost.feature_image) {
+                    const imageElement = document.createElement('img');
+                    imageElement.className = 'blog-post-image';
+                    imageElement.src = translatedPost.feature_image;
+                    imageElement.alt = translatedPost.title;
+                    postElement.appendChild(imageElement);
                 }
-            } else {
-                console.warn('No HTML content found for post');
-                contentElement.textContent = 'No content available';
+                
+                postElement.appendChild(titleElement);
+                postElement.appendChild(dateElement);
+                postElement.appendChild(contentElement);
+            } catch (error) {
+                console.error('Error creating post element:', error);
+                postElement.innerHTML = `
+                    <div class="error-message">
+                        ${currentLang === 'en' ? 'Error loading post. Please try again later.' : 'Error al cargar la publicación. Por favor, inténtalo de nuevo más tarde.'}
+                    </div>
+                `;
             }
-            
-            // Add featured image if available
-            if (post.feature_image) {
-                const imageElement = document.createElement('img');
-                imageElement.className = 'blog-post-image';
-                imageElement.src = post.feature_image;
-                imageElement.alt = post.title;
-                postElement.appendChild(imageElement);
-            }
-            
-            // Append all elements to the post container
-            postElement.appendChild(titleElement);
-            postElement.appendChild(dateElement);
-            postElement.appendChild(contentElement);
             
             return postElement;
         }
-
-        // Initialize language and fetch posts on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            // Set initial language
-            currentLang = localStorage.getItem('preferredLanguage') || 'en';
-            document.querySelector('.language-toggle').textContent = currentLang === 'en' ? 'Español' : 'English';
-            updateLanguage();
-            
-            // Fetch blog posts
-            fetchBlogPosts();
-        });
     </script>
 </body>
 </html> 
