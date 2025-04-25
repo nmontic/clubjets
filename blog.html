@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ClubJets - Blog</title>
     <link rel="icon" href="images/favicon.png" type="image/png">
+    
     <!-- Open Graph Meta Tags -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="ClubJets MX">
@@ -12,12 +13,19 @@
     <meta property="og:title" content="ClubJets MX - Latest News">
     <meta property="og:description" content="Stay up to date with the latest events, news, and exclusive content from ClubJets MX.">
     <meta property="og:image" content="https://clubjetsmx.com/images/clubjetsmx.png">
+    
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@clubjetsmx">
     <meta name="twitter:title" content="ClubJets MX - Latest News">
     <meta name="twitter:description" content="Stay up to date with the latest events, news, and exclusive content from ClubJets MX.">
     <meta name="twitter:image" content="https://clubjetsmx.com/images/clubjetsmx.png">
+    
+    <!-- Additional Meta Tags -->
+    <meta name="description" content="Stay up to date with the latest events, news, and exclusive content from ClubJets MX.">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="ClubJets MX">
+    
     <script src="particles.js" defer></script>
     <style>
         @font-face {
@@ -692,10 +700,16 @@
 
         // Function to get translated post content
         async function getTranslatedPost(post) {
+            // If language is English, return the post as is
             if (currentLang === 'en') {
-                return post;
+                return {
+                    ...post,
+                    title: post.title,
+                    html: post.html
+                };
             }
             
+            // Only translate if language is Spanish
             try {
                 const translatedTitle = await translateText(post.title, 'es');
                 const translatedContent = await translateText(post.html, 'es');
@@ -713,34 +727,43 @@
 
         // Initialize language and fetch posts on page load
         document.addEventListener('DOMContentLoaded', async function() {
-            // Set initial language
+            // Set initial language from localStorage or default to English
             currentLang = localStorage.getItem('preferredLanguage') || 'en';
-            document.querySelector('.language-toggle').textContent = currentLang === 'en' ? 'Español' : 'English';
+            
+            // Set the toggle button text based on current language
+            const toggleButton = document.querySelector('.language-toggle');
+            if (toggleButton) {
+                toggleButton.textContent = currentLang === 'en' ? 'Español' : 'English';
+            }
             
             // Update UI text first
             updateLanguage();
             
             // Then fetch and display posts
             await fetchBlogPosts();
-            
-            // Handle URL parameters
-            handleUrlParameters();
         });
 
         // Function to toggle language
         async function toggleLanguage() {
             // Show loading state
             const postsContainer = document.getElementById('blog-posts-container');
-            postsContainer.innerHTML = `
-                <div class="loading-message">
-                    ${currentLang === 'en' ? 'Switching to Spanish...' : 'Cambiando a inglés...'}
-                </div>
-            `;
+            if (postsContainer) {
+                postsContainer.innerHTML = `
+                    <div class="loading-message">
+                        ${currentLang === 'en' ? 'Switching to Spanish...' : 'Cambiando a inglés...'}
+                    </div>
+                `;
+            }
 
-            // Update language
+            // Toggle language
             currentLang = currentLang === 'en' ? 'es' : 'en';
             localStorage.setItem('preferredLanguage', currentLang);
-            document.querySelector('.language-toggle').textContent = currentLang === 'en' ? 'Español' : 'English';
+            
+            // Update toggle button text
+            const toggleButton = document.querySelector('.language-toggle');
+            if (toggleButton) {
+                toggleButton.textContent = currentLang === 'en' ? 'Español' : 'English';
+            }
             
             // Update UI text
             updateLanguage();
@@ -830,6 +853,38 @@
             }
         }
 
+        // Function to update Open Graph metadata
+        function updateOpenGraphMetadata(post) {
+            try {
+                // Update title
+                const ogTitle = document.querySelector('meta[property="og:title"]');
+                const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+                if (ogTitle) ogTitle.content = post.title;
+                if (twitterTitle) twitterTitle.content = post.title;
+                
+                // Update description
+                const description = post.excerpt || post.meta_description || 'Stay up to date with the latest events, news, and exclusive content from ClubJets MX.';
+                const ogDesc = document.querySelector('meta[property="og:description"]');
+                const twitterDesc = document.querySelector('meta[name="twitter:description"]');
+                if (ogDesc) ogDesc.content = description;
+                if (twitterDesc) twitterDesc.content = description;
+                
+                // Update image
+                const imageUrl = post.feature_image || 'https://clubjetsmx.com/images/clubjetsmx.png';
+                const ogImage = document.querySelector('meta[property="og:image"]');
+                const twitterImage = document.querySelector('meta[name="twitter:image"]');
+                if (ogImage) ogImage.content = imageUrl;
+                if (twitterImage) twitterImage.content = imageUrl;
+                
+                // Update URL
+                const postUrl = `https://clubjetsmx.com/blog.html?post=${post.slug}`;
+                const ogUrl = document.querySelector('meta[property="og:url"]');
+                if (ogUrl) ogUrl.content = postUrl;
+            } catch (error) {
+                console.error('Error updating metadata:', error);
+            }
+        }
+
         // Function to create a blog post element
         async function createPostElement(post) {
             const postElement = document.createElement('div');
@@ -838,6 +893,9 @@
             try {
                 const translatedPost = await getTranslatedPost(post);
                 const postUrl = `https://clubjetsmx.com/blog.html?post=${post.slug}`;
+                
+                // Update Open Graph metadata for this post
+                updateOpenGraphMetadata(translatedPost);
                 
                 // Create post title
                 const titleElement = document.createElement('h2');
@@ -907,13 +965,13 @@
 
         // Function to share on Facebook
         function shareOnFacebook(url, title) {
-            const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(title)}`;
+            const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
             window.open(shareUrl, '_blank', 'width=600,height=400');
         }
 
         // Function to share on Twitter
         function shareOnTwitter(url, title) {
-            const shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`;
+            const shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}`;
             window.open(shareUrl, '_blank', 'width=600,height=400');
         }
 
@@ -925,20 +983,6 @@
                 console.error('Failed to copy text: ', err);
             });
         }
-
-        // Function to handle URL parameters
-        function handleUrlParameters() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const postSlug = urlParams.get('post');
-            
-            if (postSlug) {
-                // Scroll to the specific post if it exists
-                const postElement = document.querySelector(`[data-post-slug="${postSlug}"]`);
-                if (postElement) {
-                    postElement.scrollIntoView({ behavior: 'smooth' });
-                }
-            }
-        }
     </script>
 </body>
-</html> 
+</html>

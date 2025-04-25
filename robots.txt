@@ -1,0 +1,64 @@
+User-agent: *
+Allow: /
+Disallow: /private/
+Disallow: /admin/
+Disallow: /cgi-bin/
+Disallow: /tmp/
+Disallow: /?*
+
+# Allow social media crawlers
+User-agent: facebookexternalhit
+Allow: /
+Crawl-delay: 1
+
+User-agent: Twitterbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Instagram
+Allow: /
+Crawl-delay: 1
+
+User-agent: LinkedInBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Pinterest
+Allow: /
+Crawl-delay: 1
+
+# Allow Google crawlers
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Googlebot-Image
+Allow: /
+Crawl-delay: 1
+
+User-agent: Googlebot-Mobile
+Allow: /
+Crawl-delay: 1
+
+User-agent: Googlebot-News
+Allow: /
+Crawl-delay: 1
+
+User-agent: Googlebot-Video
+Allow: /
+Crawl-delay: 1
+
+User-agent: Mediapartners-Google
+Allow: /
+Crawl-delay: 1
+
+User-agent: AdsBot-Google
+Allow: /
+Crawl-delay: 1
+
+User-agent: AdsBot-Google-Mobile
+Allow: /
+Crawl-delay: 1
+
+# Sitemap
+Sitemap: https://clubjetsmx.com/sitemap.xml 
