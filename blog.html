@@ -411,6 +411,41 @@
             padding: 2rem;
             backdrop-filter: blur(5px);
             position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .blog-post:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .blog-post.expanded {
+            cursor: default;
+        }
+
+        .blog-post-summary {
+            display: block;
+        }
+
+        .blog-post-full {
+            display: none;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 0, 0, 0.2);
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .blog-post.expanded .blog-post-summary {
+            display: block;
+        }
+
+        .blog-post.expanded .blog-post-summary .read-more-button {
+            display: none;
+        }
+
+        .blog-post.expanded .blog-post-full {
+            display: block;
         }
 
         .blog-post-title {
@@ -425,12 +460,88 @@
                          0 0 30px #ff0000,
                          0 0 40px #ff0000;
             animation: neon-blue 1.5s ease-in-out infinite alternate;
+            text-align: center;
+        }
+
+        .read-more-button {
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid #ff0000;
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 0;
+            cursor: pointer;
+            font-family: 'Kiona', Arial, sans-serif;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            min-width: 120px;
+            text-align: center;
+            margin: 1rem auto;
+            display: block;
+        }
+
+        .read-more-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 0, 0, 0.2),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .read-more-button:hover {
+            background: rgba(0, 0, 0, 0.9);
+            box-shadow: 0 0 10px #ff0000,
+                       0 0 20px rgba(255, 0, 0, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .read-more-button:hover::before {
+            left: 100%;
+        }
+
+        .blog-post-excerpt {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .blog-post-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            padding: 0 1rem;
         }
 
         .blog-post-date {
             color: #ff0000;
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
+        }
+
+        .blog-post-author {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .blog-post-author img {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
         }
 
         .blog-post-image {
@@ -438,7 +549,64 @@
             max-width: 600px;
             height: auto;
             border-radius: 8px;
-            margin: 1rem 0;
+            margin: 1rem auto;
+            display: block;
+        }
+
+        .blog-post-full p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .blog-post-full h1,
+        .blog-post-full h2,
+        .blog-post-full h3,
+        .blog-post-full h4,
+        .blog-post-full h5,
+        .blog-post-full h6 {
+            color: #fff;
+            font-family: 'Kiona', Arial, sans-serif;
+            margin: 1.5rem 0 1rem;
+        }
+
+        .blog-post-full a {
+            color: #ff0000;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .blog-post-full a:hover {
+            color: #ff0000;
+            text-shadow: 0 0 5px #ff0000;
+        }
+
+        .blog-post-full img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 1rem auto;
+            display: block;
+        }
+
+        .blog-post-full ul,
+        .blog-post-full ol {
+            color: rgba(255, 255, 255, 0.9);
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .blog-post-full li {
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-post-full blockquote {
+            border-left: 3px solid #ff0000;
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            color: rgba(255, 255, 255, 0.8);
+            font-style: italic;
         }
 
         @media screen and (max-width: 768px) {
@@ -710,7 +878,7 @@
 
     <footer>
         <div class="footer-content">
-            <a href="https://maps.app.goo.gl/1UusCfBkLatMsiLp9" target="_blank" class="footer-address">Basilio Badillo 339, Zona Romántica, Puerto Vallarta</a>
+            <a href="https://maps.app.goo.gl/1UusCfBkLatMsiLp9" target="_blank" class="footer-address">Basilio Badillo 339B, Zona Romántica, Puerto Vallarta</a>
             <a href="mailto:info@clubjetsmx.com" class="footer-contact">Contact Us</a>
         </div>
     </footer>
@@ -938,10 +1106,24 @@
                 dateElement.className = 'blog-post-date';
                 dateElement.textContent = formatDate(post.published_at);
                 
-                // Create post content
-                const contentElement = document.createElement('div');
-                contentElement.className = 'blog-post-content';
-                contentElement.innerHTML = post.html;
+                // Create post meta section
+                const metaElement = document.createElement('div');
+                metaElement.className = 'blog-post-meta';
+                
+                // Create author section
+                const authorElement = document.createElement('div');
+                authorElement.className = 'blog-post-author';
+                if (post.primary_author?.profile_image) {
+                    const authorImage = document.createElement('img');
+                    authorImage.src = post.primary_author.profile_image;
+                    authorImage.alt = post.primary_author.name;
+                    authorElement.appendChild(authorImage);
+                }
+                authorElement.appendChild(document.createTextNode(post.primary_author?.name || 'ClubJets MX'));
+                
+                // Create excerpt section
+                const excerptElement = document.createElement('div');
+                excerptElement.className = 'blog-post-excerpt';
                 
                 // Add featured image if available
                 if (post.feature_image) {
@@ -949,8 +1131,23 @@
                     imageElement.className = 'blog-post-image';
                     imageElement.src = post.feature_image;
                     imageElement.alt = post.title;
-                    postElement.appendChild(imageElement);
+                    excerptElement.appendChild(imageElement);
                 }
+                
+                // Add excerpt text
+                const excerptText = document.createElement('p');
+                excerptText.textContent = post.excerpt || post.plaintext.substring(0, 200) + '...';
+                excerptElement.appendChild(excerptText);
+                
+                // Create Read More button
+                const readMoreButton = document.createElement('button');
+                readMoreButton.className = 'read-more-button';
+                readMoreButton.textContent = currentLang === 'en' ? 'Read More' : 'Leer Más';
+                
+                // Create full content section
+                const fullContentElement = document.createElement('div');
+                fullContentElement.className = 'blog-post-full';
+                fullContentElement.innerHTML = post.html;
                 
                 // Create share buttons
                 const shareButtons = document.createElement('div');
@@ -978,10 +1175,29 @@
                 shareButtons.appendChild(twitterButton);
                 shareButtons.appendChild(copyButton);
                 
-                postElement.appendChild(titleElement);
-                postElement.appendChild(dateElement);
-                postElement.appendChild(contentElement);
-                postElement.appendChild(shareButtons);
+                // Assemble the post
+                metaElement.appendChild(dateElement);
+                metaElement.appendChild(authorElement);
+                
+                const summaryElement = document.createElement('div');
+                summaryElement.className = 'blog-post-summary';
+                summaryElement.appendChild(titleElement);
+                summaryElement.appendChild(excerptElement);
+                summaryElement.appendChild(readMoreButton);
+                summaryElement.appendChild(metaElement);
+                
+                postElement.appendChild(summaryElement);
+                postElement.appendChild(fullContentElement);
+                fullContentElement.appendChild(shareButtons);
+                
+                // Add click handler for expand/collapse
+                readMoreButton.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    postElement.classList.toggle('expanded');
+                    readMoreButton.textContent = postElement.classList.contains('expanded') 
+                        ? (currentLang === 'en' ? 'Show Less' : 'Mostrar Menos')
+                        : (currentLang === 'en' ? 'Read More' : 'Leer Más');
+                });
             } catch (error) {
                 console.error('Error creating post element:', error);
                 postElement.innerHTML = `
