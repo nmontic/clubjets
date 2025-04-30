@@ -946,7 +946,8 @@
             button.addEventListener('click', function() {
                 const description = this.nextElementSibling;
                 description.classList.toggle('expanded');
-                this.textContent = description.classList.contains('expanded') ? 'Less Info' : 'More Info';
+                const lang = translations[currentLang];
+                this.textContent = description.classList.contains('expanded') ? lang.lessInfo : lang.moreInfo;
             });
         });
 
@@ -964,6 +965,8 @@
                 dateWeekday: "FRI",
                 dateDay: "2",
                 dateMonth: "MAY",
+                moreInfo: "More Info",
+                lessInfo: "Less Info",
                 eventDescription: [
                     "This Friday, May 2nd, get ready to sweat, grind, and let all the party vibes loose at the grand opening of <a href='https://www.instagram.com/clubjetsmx/' target='_blank' style='color: #ff0000; text-decoration: none;'>@clubjetsmx</a>!",
                     "Starting at 10 PM, the dance floor heats up with Elles Quieren Bellakeo Vol. 1 — and yes! With our beloved guest <a href='https://www.instagram.com/dj.conamor/' target='_blank' style='color: #ff0000; text-decoration: none;'>DJ CONAMOR</a>, who'll be dropping a full set to keep your body moving non-stop.",
@@ -991,6 +994,8 @@
                 dateWeekday: "VIE",
                 dateDay: "2",
                 dateMonth: "MAY",
+                moreInfo: "Más Info",
+                lessInfo: "Menos Info",
                 eventDescription: [
                     "¡Este viernes 2 de mayo, prepárate para sudar, bailar y soltar todas las vibras de fiesta en la gran inauguración de <a href='https://www.instagram.com/clubjetsmx/' target='_blank' style='color: #ff0000; text-decoration: none;'>@clubjetsmx</a>!",
                     "A partir de las 10 PM, la pista de baile se calienta con Elles Quieren Bellakeo Vol. 1 — ¡y sí! Con nuestro querido DJ invitado <a href='https://www.instagram.com/dj.conamor/' target='_blank' style='color: #ff0000; text-decoration: none;'>DJ CONAMOR</a>, que estará poniendo un set completo para mantener tu cuerpo en movimiento sin parar.",
