@@ -7,27 +7,23 @@
     <link rel="icon" href="images/favicon.png" type="image/png">
     
     <!-- Base Open Graph Meta Tags -->
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="article">
     <meta property="og:site_name" content="ClubJets MX">
+    <meta property="og:title" content="ClubJets MX - Blog">
+    <meta property="og:description" content="Stay up to date with the latest events, news, and exclusive content from ClubJets MX.">
+    <meta property="og:image" content="https://clubjetsmx.com/images/clubjetsmx.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="ClubJets MX Logo">
-    
-    <!-- Page-Specific Open Graph Meta Tags -->
     <meta property="og:url" content="https://clubjetsmx.com/blog.html">
-    <meta property="og:title" content="ClubJets MX - Latest News">
-    <meta property="og:description" content="Stay up to date with the latest events, news, and exclusive content from ClubJets MX.">
-    <meta property="og:image" content="https://clubjetsmx.com/images/clubjetsmx.png">
     
     <!-- Base Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@clubjetsmx">
-    <meta name="twitter:image:alt" content="ClubJets MX Logo">
-    
-    <!-- Page-Specific Twitter Card Meta Tags -->
-    <meta name="twitter:title" content="ClubJets MX - Latest News">
+    <meta name="twitter:title" content="ClubJets MX - Blog">
     <meta name="twitter:description" content="Stay up to date with the latest events, news, and exclusive content from ClubJets MX.">
     <meta name="twitter:image" content="https://clubjetsmx.com/images/clubjetsmx.png">
+    <meta name="twitter:image:alt" content="ClubJets MX Logo">
     
     <!-- Additional Meta Tags -->
     <meta name="description" content="Stay up to date with the latest events, news, and exclusive content from ClubJets MX.">
@@ -411,7 +407,6 @@
             padding: 2rem;
             backdrop-filter: blur(5px);
             position: relative;
-            cursor: pointer;
             transition: all 0.3s ease;
         }
 
@@ -420,32 +415,26 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
-        .blog-post.expanded {
-            cursor: default;
-        }
-
         .blog-post-summary {
             display: block;
         }
 
         .blog-post-full {
             display: none;
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255, 0, 0, 0.2);
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .blog-post.expanded .blog-post-summary {
-            display: block;
-        }
-
-        .blog-post.expanded .blog-post-summary .read-more-button {
-            display: none;
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.5s ease;
         }
 
         .blog-post.expanded .blog-post-full {
             display: block;
+            opacity: 1;
+            max-height: none;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 0, 0, 0.2);
+            color: rgba(255, 255, 255, 0.9);
         }
 
         .blog-post-title {
@@ -479,8 +468,12 @@
             font-size: 0.8rem;
             min-width: 120px;
             text-align: center;
-            margin: 1rem auto;
+            margin: 1.5rem auto 0;
             display: block;
+        }
+
+        .blog-post.expanded .read-more-button {
+            margin-top: 2rem;
         }
 
         .read-more-button::before {
@@ -892,6 +885,112 @@
             return;
         }
 
+        // Function to update Open Graph metadata
+        function updateOpenGraphMetadata(post) {
+            try {
+                // Update title
+                document.title = `${post.title} - ClubJets MX`;
+                const ogTitle = document.querySelector('meta[property="og:title"]');
+                const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+                if (ogTitle) ogTitle.content = post.title;
+                if (twitterTitle) twitterTitle.content = post.title;
+                
+                // Update description
+                const description = post.excerpt || post.meta_description || post.custom_excerpt || 'Stay up to date with the latest events, news, and exclusive content from ClubJets MX.';
+                const ogDesc = document.querySelector('meta[property="og:description"]');
+                const twitterDesc = document.querySelector('meta[name="twitter:description"]');
+                const metaDesc = document.querySelector('meta[name="description"]');
+                if (ogDesc) ogDesc.content = description;
+                if (twitterDesc) twitterDesc.content = description;
+                if (metaDesc) metaDesc.content = description;
+                
+                // Update image - ensure full URL is used
+                const imageUrl = post.feature_image || 'https://clubjetsmx.com/images/clubjetsmx.png';
+                
+                const ogImage = document.querySelector('meta[property="og:image"]');
+                const twitterImage = document.querySelector('meta[name="twitter:image"]');
+                if (ogImage) ogImage.content = imageUrl;
+                if (twitterImage) twitterImage.content = imageUrl;
+                
+                // Update URL
+                const postUrl = `https://clubjetsmx.com/blog.html?post=${post.slug}`;
+                const ogUrl = document.querySelector('meta[property="og:url"]');
+                if (ogUrl) ogUrl.content = postUrl;
+
+                // Update article specific metadata
+                const articlePublishedTime = document.querySelector('meta[property="article:published_time"]');
+                if (articlePublishedTime) {
+                    articlePublishedTime.content = post.published_at;
+                } else {
+                    const meta = document.createElement('meta');
+                    meta.setAttribute('property', 'article:published_time');
+                    meta.content = post.published_at;
+                    document.head.appendChild(meta);
+                }
+
+                const articleModifiedTime = document.querySelector('meta[property="article:modified_time"]');
+                if (articleModifiedTime) {
+                    articleModifiedTime.content = post.updated_at;
+                } else {
+                    const meta = document.createElement('meta');
+                    meta.setAttribute('property', 'article:modified_time');
+                    meta.content = post.updated_at;
+                    document.head.appendChild(meta);
+                }
+
+                const articleAuthor = document.querySelector('meta[property="article:author"]');
+                if (articleAuthor) {
+                    articleAuthor.content = post.primary_author?.name || 'ClubJets MX';
+                } else {
+                    const meta = document.createElement('meta');
+                    meta.setAttribute('property', 'article:author');
+                    meta.content = post.primary_author?.name || 'ClubJets MX';
+                    document.head.appendChild(meta);
+                }
+            } catch (error) {
+                console.error('Error updating metadata:', error);
+            }
+        }
+
+        // Function to handle direct post loading from URL
+        async function handleDirectPostLoad() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const postSlug = urlParams.get('post');
+            
+            if (postSlug) {
+                try {
+                    const apiUrl = `${ghostApiUrl}slug/${postSlug}/?key=${ghostApiKey}&include=tags,authors&formats=html,plaintext`;
+                    const response = await fetch(apiUrl);
+                    
+                    if (!response.ok) {
+                        throw new Error(`API response was not ok: ${response.status}`);
+                    }
+                    
+                    const data = await response.json();
+                    if (data.posts && data.posts.length > 0) {
+                        const post = data.posts[0];
+                        updateOpenGraphMetadata(post);
+                        
+                        // Expand the post if it exists on the page
+                        setTimeout(() => {
+                            const posts = document.querySelectorAll('.blog-post');
+                            posts.forEach(postElement => {
+                                if (postElement.querySelector('.blog-post-title')?.textContent === post.title) {
+                                    postElement.classList.add('expanded');
+                                    const readMoreButton = postElement.querySelector('.read-more-button');
+                                    if (readMoreButton) {
+                                        readMoreButton.textContent = currentLang === 'en' ? 'Show Less' : 'Mostrar Menos';
+                                    }
+                                }
+                            });
+                        }, 500);
+                    }
+                } catch (error) {
+                    console.error('Error loading specific post:', error);
+                }
+            }
+        }
+
         // Initialize language and fetch posts on page load
         document.addEventListener('DOMContentLoaded', async function() {
             // Set initial language from localStorage or default to English
@@ -908,6 +1007,9 @@
             
             // Then fetch and display posts
             await fetchBlogPosts();
+            
+            // Handle direct post loading from URL
+            await handleDirectPostLoad();
         });
 
         // Function to toggle language
@@ -1020,71 +1122,6 @@
             }
         }
 
-        // Function to update Open Graph metadata
-        function updateOpenGraphMetadata(post) {
-            try {
-                // Update title
-                const ogTitle = document.querySelector('meta[property="og:title"]');
-                const twitterTitle = document.querySelector('meta[name="twitter:title"]');
-                if (ogTitle) ogTitle.content = post.title;
-                if (twitterTitle) twitterTitle.content = post.title;
-                
-                // Update description
-                const description = post.excerpt || post.meta_description || 'Stay up to date with the latest events, news, and exclusive content from ClubJets MX.';
-                const ogDesc = document.querySelector('meta[property="og:description"]');
-                const twitterDesc = document.querySelector('meta[name="twitter:description"]');
-                if (ogDesc) ogDesc.content = description;
-                if (twitterDesc) twitterDesc.content = description;
-                
-                // Update image - ensure full URL is used
-                const imageUrl = post.feature_image ? 
-                    (post.feature_image.startsWith('http') ? post.feature_image : `https://clubjetsmx.com${post.feature_image}`) : 
-                    'https://clubjetsmx.com/images/clubjetsmx.png';
-                
-                const ogImage = document.querySelector('meta[property="og:image"]');
-                const twitterImage = document.querySelector('meta[name="twitter:image"]');
-                if (ogImage) ogImage.content = imageUrl;
-                if (twitterImage) twitterImage.content = imageUrl;
-                
-                // Update URL - ensure full URL is used
-                const postUrl = `https://clubjetsmx.com/blog.html?post=${post.slug}`;
-                const ogUrl = document.querySelector('meta[property="og:url"]');
-                if (ogUrl) ogUrl.content = postUrl;
-
-                // Add additional Open Graph tags for better Facebook sharing
-                const ogType = document.querySelector('meta[property="og:type"]') || document.createElement('meta');
-                ogType.setAttribute('property', 'og:type');
-                ogType.content = 'article';
-                if (!document.querySelector('meta[property="og:type"]')) {
-                    document.head.appendChild(ogType);
-                }
-
-                const ogSiteName = document.querySelector('meta[property="og:site_name"]') || document.createElement('meta');
-                ogSiteName.setAttribute('property', 'og:site_name');
-                ogSiteName.content = 'ClubJets MX';
-                if (!document.querySelector('meta[property="og:site_name"]')) {
-                    document.head.appendChild(ogSiteName);
-                }
-
-                // Add article specific tags
-                const articlePublishedTime = document.querySelector('meta[property="article:published_time"]') || document.createElement('meta');
-                articlePublishedTime.setAttribute('property', 'article:published_time');
-                articlePublishedTime.content = post.published_at;
-                if (!document.querySelector('meta[property="article:published_time"]')) {
-                    document.head.appendChild(articlePublishedTime);
-                }
-
-                const articleAuthor = document.querySelector('meta[property="article:author"]') || document.createElement('meta');
-                articleAuthor.setAttribute('property', 'article:author');
-                articleAuthor.content = post.primary_author?.name || 'ClubJets MX';
-                if (!document.querySelector('meta[property="article:author"]')) {
-                    document.head.appendChild(articleAuthor);
-                }
-            } catch (error) {
-                console.error('Error updating metadata:', error);
-            }
-        }
-
         // Function to create a blog post element
         function createPostElement(post) {
             const postElement = document.createElement('div');
@@ -1092,9 +1129,6 @@
             
             try {
                 const postUrl = `https://clubjetsmx.com/blog.html?post=${post.slug}`;
-                
-                // Update Open Graph metadata for this post
-                updateOpenGraphMetadata(post);
                 
                 // Create post title
                 const titleElement = document.createElement('h2');
@@ -1140,19 +1174,13 @@
                 let text = post.excerpt || post.plaintext;
                 
                 if (text.length > maxLength) {
-                    // Find the last space before maxLength
                     let lastSpace = text.lastIndexOf(' ', maxLength);
-                    if (lastSpace === -1) lastSpace = maxLength; // If no space found, just cut at maxLength
+                    if (lastSpace === -1) lastSpace = maxLength;
                     text = text.substring(0, lastSpace) + '...';
                 }
                 
                 excerptText.textContent = text;
                 excerptElement.appendChild(excerptText);
-                
-                // Create Read More button
-                const readMoreButton = document.createElement('button');
-                readMoreButton.className = 'read-more-button';
-                readMoreButton.textContent = currentLang === 'en' ? 'Read More' : 'Leer Más';
                 
                 // Create full content section
                 const fullContentElement = document.createElement('div');
@@ -1185,29 +1213,43 @@
                 shareButtons.appendChild(twitterButton);
                 shareButtons.appendChild(copyButton);
                 
-                // Assemble the post
-                metaElement.appendChild(dateElement);
-                metaElement.appendChild(authorElement);
+                // Create Read More button
+                const readMoreButton = document.createElement('button');
+                readMoreButton.className = 'read-more-button';
+                readMoreButton.textContent = currentLang === 'en' ? 'Show More' : 'Mostrar Más';
                 
+                // Assemble the post
                 const summaryElement = document.createElement('div');
                 summaryElement.className = 'blog-post-summary';
                 summaryElement.appendChild(titleElement);
-                summaryElement.appendChild(excerptElement);
-                summaryElement.appendChild(readMoreButton);
                 summaryElement.appendChild(metaElement);
+                metaElement.appendChild(dateElement);
+                metaElement.appendChild(authorElement);
+                summaryElement.appendChild(excerptElement);
                 
                 postElement.appendChild(summaryElement);
                 postElement.appendChild(fullContentElement);
                 fullContentElement.appendChild(shareButtons);
+                postElement.appendChild(readMoreButton);
                 
                 // Add click handler for expand/collapse
                 readMoreButton.addEventListener('click', (e) => {
                     e.stopPropagation();
-                    postElement.classList.toggle('expanded');
-                    readMoreButton.textContent = postElement.classList.contains('expanded') 
+                    const isExpanded = postElement.classList.toggle('expanded');
+                    
+                    // Update button text
+                    readMoreButton.textContent = isExpanded
                         ? (currentLang === 'en' ? 'Show Less' : 'Mostrar Menos')
-                        : (currentLang === 'en' ? 'Read More' : 'Leer Más');
+                        : (currentLang === 'en' ? 'Show More' : 'Mostrar Más');
+                    
+                    // Update metadata when expanded
+                    if (isExpanded) {
+                        updateOpenGraphMetadata(post);
+                        // Scroll the expanded post into view smoothly
+                        postElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
                 });
+                
             } catch (error) {
                 console.error('Error creating post element:', error);
                 postElement.innerHTML = `
