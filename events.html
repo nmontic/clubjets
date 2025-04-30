@@ -742,10 +742,9 @@
         </div>
     </nav>
     <div class="events-container">
-        <h1 class="events-title">Special Events</h1>
+        <h1 class="events-title">UPCOMING EVENTS</h1>
         
         <div class="phase-section">
-            <h2 class="phase-title">Upcoming Events</h2>
             <div class="event-card">
                 <div class="date-circle">
                     <div class="date-weekday">Friday</div>
@@ -836,12 +835,15 @@
                 events: "Events",
                 blog: "Blog",
                 ourStory: "Story",
-                specialEvents: "Special Events",
+                specialEvents: "UPCOMING EVENTS",
                 upcomingEvents: "Upcoming Events",
                 checkBack: "Check back soon for upcoming events",
                 contactUs: "Contact Us",
                 eventTitle: "Elles Quieren Bellakeo Volume 1",
                 eventSubtitle: "Grand Opening Night",
+                dateWeekday: "Friday",
+                dateDay: "2",
+                dateMonth: "May",
                 eventDescription: [
                     "This Friday, May 2nd, get ready to sweat, grind, and let all the party vibes loose at the grand opening of @clubjetsmx!",
                     "Starting at 10 PM, the dance floor heats up with Elles Quieren Bellakeo Vol. 1 — and yes! With our beloved guest DJ CONAMOR, who'll be dropping a full set to keep your body moving non-stop.",
@@ -860,12 +862,15 @@
                 events: "Eventos",
                 blog: "Blog",
                 ourStory: "Historia",
-                specialEvents: "Eventos Especiales",
+                specialEvents: "PRÓXIMOS EVENTOS",
                 upcomingEvents: "Próximos Eventos",
                 checkBack: "Próximamente nuevos eventos",
                 contactUs: "Contáctanos",
                 eventTitle: "Elles Quieren Bellakeo Volumen 1",
                 eventSubtitle: "Noche de Inauguración",
+                dateWeekday: "Viernes",
+                dateDay: "2",
+                dateMonth: "Mayo",
                 eventDescription: [
                     "¡Este viernes 2 de mayo, prepárate para sudar, bailar y soltar todas las vibras de fiesta en la gran inauguración de @clubjetsmx!",
                     "A partir de las 10 PM, la pista de baile se calienta con Elles Quieren Bellakeo Vol. 1 — ¡y sí! Con nuestro querido DJ invitado CONAMOR, que estará poniendo un set completo para mantener tu cuerpo en movimiento sin parar.",
@@ -902,15 +907,20 @@
 
             // Update section titles
             document.querySelector('.events-title').textContent = lang.specialEvents;
-            document.querySelector('.phase-title').textContent = lang.upcomingEvents;
             
             // Update event details if they exist
             const eventTitle = document.querySelector('.event-title');
             const eventSubtitle = document.querySelector('.event-subtitle');
             const eventDescription = document.querySelector('.event-description');
+            const dateWeekday = document.querySelector('.date-weekday');
+            const dateDay = document.querySelector('.date-day');
+            const dateMonth = document.querySelector('.date-month');
             
             if (eventTitle) eventTitle.textContent = lang.eventTitle;
             if (eventSubtitle) eventSubtitle.textContent = lang.eventSubtitle;
+            if (dateWeekday) dateWeekday.textContent = lang.dateWeekday;
+            if (dateDay) dateDay.textContent = lang.dateDay;
+            if (dateMonth) dateMonth.textContent = lang.dateMonth;
             if (eventDescription) {
                 const paragraphs = eventDescription.querySelectorAll('p');
                 paragraphs.forEach((p, index) => {
