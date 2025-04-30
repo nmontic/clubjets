@@ -1044,16 +1044,20 @@
             if (dateDay) dateDay.textContent = lang.dateDay;
             if (dateMonth) dateMonth.textContent = lang.dateMonth;
             if (moreInfoButton) moreInfoButton.textContent = currentLang === 'en' ? 'More Info' : 'Más Info';
+            
+            // Update preview text (first two paragraphs)
             if (eventDescriptionPreview) {
                 const previewParagraphs = eventDescriptionPreview.querySelectorAll('p');
                 previewParagraphs[0].innerHTML = lang.eventDescription[0];
                 previewParagraphs[1].innerHTML = lang.eventDescription[1];
             }
+            
+            // Update full description (remaining paragraphs)
             if (eventDescription) {
                 const paragraphs = eventDescription.querySelectorAll('p');
                 paragraphs.forEach((p, index) => {
-                    if (lang.eventDescription[index]) {
-                        p.innerHTML = lang.eventDescription[index];
+                    if (lang.eventDescription[index + 2]) { // Skip first two paragraphs
+                        p.innerHTML = lang.eventDescription[index + 2];
                     }
                 });
             }
