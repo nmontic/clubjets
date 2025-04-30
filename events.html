@@ -433,6 +433,30 @@
             line-height: 1.4;
         }
 
+        .event-description-preview {
+            display: none;
+        }
+
+        .more-info-button {
+            display: none;
+            background: rgba(255, 0, 0, 0.2);
+            color: #ff0000;
+            border: 1px solid #ff0000;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Kiona', Arial, sans-serif;
+            margin: 1rem auto;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .more-info-button:hover {
+            background: rgba(255, 0, 0, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 0 10px #ff0000;
+        }
+
         @media screen and (max-width: 768px) {
             .nav-menu {
                 height: auto;
@@ -503,6 +527,25 @@
             
             .date-month {
                 font-size: 0.7rem !important;
+            }
+
+            .event-description {
+                display: none;
+            }
+
+            .event-description-preview {
+                display: block;
+                font-size: 1rem;
+                color: rgba(255, 255, 255, 0.8);
+                line-height: 1.4;
+            }
+
+            .more-info-button {
+                display: block;
+            }
+
+            .event-description.expanded {
+                display: block;
             }
         }
 
@@ -825,6 +868,11 @@
                                 <img src="images/5.2.25.png" alt="Elles Quieren Bellakeo Volume 1" class="event-image">
                             </div>
                         </div>
+                        <div class="event-description-preview">
+                            <p>This Friday, May 2nd, get ready to sweat, grind, and let all the party vibes loose at the grand opening of <a href='https://www.instagram.com/clubjetsmx/' target='_blank' style='color: #ff0000; text-decoration: none;'>@clubjetsmx</a>!</p>
+                            <p>Starting at 10 PM, the dance floor heats up with Elles Quieren Bellakeo Vol. 1 — and yes! With our beloved guest <a href='https://www.instagram.com/dj.conamor/' target='_blank' style='color: #ff0000; text-decoration: none;'>DJ CONAMOR</a>, who'll be dropping a full set to keep your body moving non-stop.</p>
+                        </div>
+                        <button class="more-info-button">More Info</button>
                         <div class="event-description">
                             <p>This Friday, May 2nd, get ready to sweat, grind, and let all the party vibes loose at the grand opening of <a href='https://www.instagram.com/clubjetsmx/' target='_blank' style='color: #ff0000; text-decoration: none;'>@clubjetsmx</a>!</p>
                             <p>Starting at 10 PM, the dance floor heats up with Elles Quieren Bellakeo Vol. 1 — and yes! With our beloved guest <a href='https://www.instagram.com/dj.conamor/' target='_blank' style='color: #ff0000; text-decoration: none;'>DJ CONAMOR</a>, who'll be dropping a full set to keep your body moving non-stop.</p>
@@ -892,6 +940,15 @@
             // Add new click handler that ensures the link works
             link.addEventListener('click', function(e) {
                 window.open(this.href, '_blank');
+            });
+        });
+
+        // Add expand/collapse functionality for event description
+        document.querySelectorAll('.more-info-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const description = this.nextElementSibling;
+                description.classList.toggle('expanded');
+                this.textContent = description.classList.contains('expanded') ? 'Less Info' : 'More Info';
             });
         });
 
@@ -977,15 +1034,23 @@
             const eventTitle = document.querySelector('.event-title');
             const eventSubtitle = document.querySelector('.event-subtitle');
             const eventDescription = document.querySelector('.event-description');
+            const eventDescriptionPreview = document.querySelector('.event-description-preview');
             const dateWeekday = document.querySelector('.date-weekday');
             const dateDay = document.querySelector('.date-day');
             const dateMonth = document.querySelector('.date-month');
+            const moreInfoButton = document.querySelector('.more-info-button');
             
             if (eventTitle) eventTitle.textContent = lang.eventTitle;
             if (eventSubtitle) eventSubtitle.textContent = lang.eventSubtitle;
             if (dateWeekday) dateWeekday.textContent = lang.dateWeekday;
             if (dateDay) dateDay.textContent = lang.dateDay;
             if (dateMonth) dateMonth.textContent = lang.dateMonth;
+            if (moreInfoButton) moreInfoButton.textContent = currentLang === 'en' ? 'More Info' : 'Más Info';
+            if (eventDescriptionPreview) {
+                const previewParagraphs = eventDescriptionPreview.querySelectorAll('p');
+                previewParagraphs[0].innerHTML = lang.eventDescription[0];
+                previewParagraphs[1].innerHTML = lang.eventDescription[1];
+            }
             if (eventDescription) {
                 const paragraphs = eventDescription.querySelectorAll('p');
                 paragraphs.forEach((p, index) => {
