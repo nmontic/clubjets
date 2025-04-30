@@ -956,7 +956,9 @@
                 const fullDescription = description.previousElementSibling;
                 fullDescription.classList.toggle('expanded');
                 const lang = translations[currentLang];
-                this.textContent = fullDescription.classList.contains('expanded') ? lang.lessInfo : lang.moreInfo;
+                this.textContent = fullDescription.classList.contains('expanded') ? 
+                    (currentLang === 'en' ? lang.lessInfo : 'Menos Info') : 
+                    (currentLang === 'en' ? lang.moreInfo : 'Más Info');
             });
         });
 
