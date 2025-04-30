@@ -1134,9 +1134,19 @@
                     excerptElement.appendChild(imageElement);
                 }
                 
-                // Add excerpt text
+                // Add excerpt text with proper word cutoff
                 const excerptText = document.createElement('p');
-                excerptText.textContent = post.excerpt || post.plaintext.substring(0, 200) + '...';
+                const maxLength = 200;
+                let text = post.excerpt || post.plaintext;
+                
+                if (text.length > maxLength) {
+                    // Find the last space before maxLength
+                    let lastSpace = text.lastIndexOf(' ', maxLength);
+                    if (lastSpace === -1) lastSpace = maxLength; // If no space found, just cut at maxLength
+                    text = text.substring(0, lastSpace) + '...';
+                }
+                
+                excerptText.textContent = text;
                 excerptElement.appendChild(excerptText);
                 
                 // Create Read More button
