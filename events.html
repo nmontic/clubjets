@@ -434,10 +434,16 @@
             font-size: 1rem;
             color: rgba(255, 255, 255, 0.8);
             line-height: 1.4;
+            display: block;
+            width: 100%;
         }
 
         .event-description-preview {
             display: none;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.4;
+            width: 100%;
         }
 
         .more-info-button {
@@ -536,18 +542,15 @@
                 display: none;
             }
 
+            .event-description.expanded {
+                display: block;
+            }
+
             .event-description-preview {
                 display: block;
-                font-size: 1rem;
-                color: rgba(255, 255, 255, 0.8);
-                line-height: 1.4;
             }
 
             .more-info-button {
-                display: block;
-            }
-
-            .event-description.expanded {
                 display: block;
             }
         }
@@ -871,12 +874,9 @@
                                 <img src="images/5.2.25.png" alt="Elles Quieren Bellakeo Volume 1" class="event-image">
                             </div>
                         </div>
-                        <div class="event-description-preview">
+                        <div class="event-description">
                             <p>This Friday, May 2nd, get ready to sweat, grind, and let all the party vibes loose at the grand opening of <a href='https://www.instagram.com/clubjetsmx/' target='_blank' style='color: #ff0000; text-decoration: none;'>@clubjetsmx</a>!</p>
                             <p>Starting at 10 PM, the dance floor heats up with Elles Quieren Bellakeo Vol. 1 — and yes! With our beloved guest <a href='https://www.instagram.com/dj.conamor/' target='_blank' style='color: #ff0000; text-decoration: none;'>DJ CONAMOR</a>, who'll be dropping a full set to keep your body moving non-stop.</p>
-                        </div>
-                        <button class="more-info-button">More Info</button>
-                        <div class="event-description">
                             <p>PRESALE: $50 | COVER: $100</p>
                             <p>Make a reservation and lock in the presale price at the door. Don't say we didn't warn you!</p>
                             <p>Everyone dances with everyone here — all are welcome.</p>
@@ -887,6 +887,11 @@
                             <p>And here, you come to perrear — or you don't come at all.</p>
                             <p>SPREAD THE WORD! Vallarta now has a place where you can party without judgment.</p>
                         </div>
+                        <div class="event-description-preview">
+                            <p>This Friday, May 2nd, get ready to sweat, grind, and let all the party vibes loose at the grand opening of <a href='https://www.instagram.com/clubjetsmx/' target='_blank' style='color: #ff0000; text-decoration: none;'>@clubjetsmx</a>!</p>
+                            <p>Starting at 10 PM, the dance floor heats up with Elles Quieren Bellakeo Vol. 1 — and yes! With our beloved guest <a href='https://www.instagram.com/dj.conamor/' target='_blank' style='color: #ff0000; text-decoration: none;'>DJ CONAMOR</a>, who'll be dropping a full set to keep your body moving non-stop.</p>
+                        </div>
+                        <button class="more-info-button">More Info</button>
                     </div>
                 </div>
             </div>
@@ -1053,21 +1058,19 @@
             if (dateMonth) dateMonth.textContent = lang.dateMonth;
             if (moreInfoButton) moreInfoButton.textContent = currentLang === 'en' ? 'More Info' : 'Más Info';
             
-            // Update preview text (first two paragraphs)
+            // Update full description
+            if (eventDescription) {
+                const paragraphs = eventDescription.querySelectorAll('p');
+                paragraphs.forEach((p, index) => {
+                    p.innerHTML = lang.eventDescription[index];
+                });
+            }
+            
+            // Update preview text
             if (eventDescriptionPreview) {
                 const previewParagraphs = eventDescriptionPreview.querySelectorAll('p');
                 previewParagraphs[0].innerHTML = lang.eventDescription[0];
                 previewParagraphs[1].innerHTML = lang.eventDescription[1];
-            }
-            
-            // Update full description (remaining paragraphs)
-            if (eventDescription) {
-                const paragraphs = eventDescription.querySelectorAll('p');
-                paragraphs.forEach((p, index) => {
-                    if (lang.eventDescription[index + 2]) { // Skip first two paragraphs
-                        p.innerHTML = lang.eventDescription[index + 2];
-                    }
-                });
             }
 
             // Update footer
