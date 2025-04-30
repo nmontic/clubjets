@@ -273,6 +273,7 @@
             font-size: 2rem;
             margin-bottom: 1.5rem;
             text-shadow: 0 0 10px #00ffff;
+            text-align: center;
         }
 
         .event-card {
@@ -743,9 +744,38 @@
     <div class="events-container">
         <h1 class="events-title">Special Events</h1>
         
-        <div class="section">
-            <div class="section-content" style="text-align: center; padding: 3rem 1rem;">
-                <p style="color: #ff0000; font-size: 1.5rem; font-family: 'Kiona', Arial, sans-serif; text-shadow: 0 0 5px #ff0000;">Check back soon for upcoming events</p>
+        <div class="phase-section">
+            <h2 class="phase-title">Upcoming Events</h2>
+            <div class="event-card">
+                <div class="date-circle">
+                    <div class="date-weekday">Friday</div>
+                    <div class="date-day">2</div>
+                    <div class="date-month">May</div>
+                </div>
+                <div class="event-details">
+                    <h3 class="event-title">Elles Quieren Bellakeo Volume 1</h3>
+                    <p class="event-subtitle">Grand Opening Night</p>
+                    <div class="event-content">
+                        <div class="event-images-container">
+                            <div class="event-images">
+                                <img src="images/5.2.25.png" alt="Elles Quieren Bellakeo Volume 1" class="event-image">
+                            </div>
+                        </div>
+                        <div class="event-description">
+                            <p>This Friday, May 2nd, get ready to sweat, grind, and let all the party vibes loose at the grand opening of @clubjetsmx!</p>
+                            <p>Starting at 10 PM, the dance floor heats up with Elles Quieren Bellakeo Vol. 1 — and yes! With our beloved guest DJ CONAMOR, who'll be dropping a full set to keep your body moving non-stop.</p>
+                            <p>PRESALE: $50 | COVER: $100</p>
+                            <p>Make a reservation and lock in the presale price at the door. Don't say we didn't warn you!</p>
+                            <p>Everyone dances with everyone here — all are welcome.</p>
+                            <p>A free, inclusive, and unfiltered club where perreo is for everyone, by everyone.</p>
+                            <p>Top-tier dance space, phenomenal sound, lights that set the night on fire, and two bars to keep the energy up.</p>
+                            <p>This isn't just any spot…</p>
+                            <p>This is CLUB JETS.</p>
+                            <p>And here, you come to perrear — or you don't come at all.</p>
+                            <p>SPREAD THE WORD! Vallarta now has a place where you can party without judgment.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -807,16 +837,48 @@
                 blog: "Blog",
                 ourStory: "Story",
                 specialEvents: "Special Events",
+                upcomingEvents: "Upcoming Events",
                 checkBack: "Check back soon for upcoming events",
-                contactUs: "Contact Us"
+                contactUs: "Contact Us",
+                eventTitle: "Elles Quieren Bellakeo Volume 1",
+                eventSubtitle: "Grand Opening Night",
+                eventDescription: [
+                    "This Friday, May 2nd, get ready to sweat, grind, and let all the party vibes loose at the grand opening of @clubjetsmx!",
+                    "Starting at 10 PM, the dance floor heats up with Elles Quieren Bellakeo Vol. 1 — and yes! With our beloved guest DJ CONAMOR, who'll be dropping a full set to keep your body moving non-stop.",
+                    "PRESALE: $50 | COVER: $100",
+                    "Make a reservation and lock in the presale price at the door. Don't say we didn't warn you!",
+                    "Everyone dances with everyone here — all are welcome.",
+                    "A free, inclusive, and unfiltered club where perreo is for everyone, by everyone.",
+                    "Top-tier dance space, phenomenal sound, lights that set the night on fire, and two bars to keep the energy up.",
+                    "This isn't just any spot…",
+                    "This is CLUB JETS.",
+                    "And here, you come to perrear — or you don't come at all.",
+                    "SPREAD THE WORD! Vallarta now has a place where you can party without judgment."
+                ]
             },
             es: {
                 events: "Eventos",
                 blog: "Blog",
                 ourStory: "Historia",
                 specialEvents: "Eventos Especiales",
+                upcomingEvents: "Próximos Eventos",
                 checkBack: "Próximamente nuevos eventos",
-                contactUs: "Contáctanos"
+                contactUs: "Contáctanos",
+                eventTitle: "Elles Quieren Bellakeo Volumen 1",
+                eventSubtitle: "Noche de Inauguración",
+                eventDescription: [
+                    "¡Este viernes 2 de mayo, prepárate para sudar, bailar y soltar todas las vibras de fiesta en la gran inauguración de @clubjetsmx!",
+                    "A partir de las 10 PM, la pista de baile se calienta con Elles Quieren Bellakeo Vol. 1 — ¡y sí! Con nuestro querido DJ invitado CONAMOR, que estará poniendo un set completo para mantener tu cuerpo en movimiento sin parar.",
+                    "PREVENTA: $50 | COVER: $100",
+                    "Haz una reservación y asegura el precio de preventa en la puerta. ¡No digas que no te avisamos!",
+                    "Aquí todos bailan con todos — todos son bienvenidos.",
+                    "Un club libre, inclusivo y sin filtros donde el perreo es para todos, por todos.",
+                    "Espacio de baile de primera, sonido fenomenal, luces que encienden la noche y dos barras para mantener la energía alta.",
+                    "Este no es cualquier lugar…",
+                    "Este es CLUB JETS.",
+                    "Y aquí, vienes a perrear — o no vienes.",
+                    "¡CORRE LA VOZ! Vallarta ahora tiene un lugar donde puedes fiestar sin juicios."
+                ]
             }
         };
 
@@ -825,7 +887,6 @@
 
         function toggleLanguage() {
             currentLang = currentLang === 'en' ? 'es' : 'en';
-            // Save the language preference
             localStorage.setItem('preferredLanguage', currentLang);
             updateLanguage();
             document.querySelector('.language-toggle').textContent = currentLang === 'en' ? 'Español' : 'English';
@@ -841,9 +902,23 @@
 
             // Update section titles
             document.querySelector('.events-title').textContent = lang.specialEvents;
+            document.querySelector('.phase-title').textContent = lang.upcomingEvents;
             
-            // Update check back message
-            document.querySelector('.section-content p').textContent = lang.checkBack;
+            // Update event details if they exist
+            const eventTitle = document.querySelector('.event-title');
+            const eventSubtitle = document.querySelector('.event-subtitle');
+            const eventDescription = document.querySelector('.event-description');
+            
+            if (eventTitle) eventTitle.textContent = lang.eventTitle;
+            if (eventSubtitle) eventSubtitle.textContent = lang.eventSubtitle;
+            if (eventDescription) {
+                const paragraphs = eventDescription.querySelectorAll('p');
+                paragraphs.forEach((p, index) => {
+                    if (lang.eventDescription[index]) {
+                        p.textContent = lang.eventDescription[index];
+                    }
+                });
+            }
 
             // Update footer
             document.querySelector('.footer-contact').textContent = lang.contactUs;
