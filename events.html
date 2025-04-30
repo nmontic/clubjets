@@ -952,10 +952,11 @@
         // Add expand/collapse functionality for event description
         document.querySelectorAll('.more-info-button').forEach(button => {
             button.addEventListener('click', function() {
-                const description = this.nextElementSibling;
-                description.classList.toggle('expanded');
+                const description = this.previousElementSibling;
+                const fullDescription = description.previousElementSibling;
+                fullDescription.classList.toggle('expanded');
                 const lang = translations[currentLang];
-                this.textContent = description.classList.contains('expanded') ? lang.lessInfo : lang.moreInfo;
+                this.textContent = fullDescription.classList.contains('expanded') ? lang.lessInfo : lang.moreInfo;
             });
         });
 
