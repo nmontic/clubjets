@@ -424,7 +424,7 @@
 
         .event-image {
             width: 100%;
-            max-width: 300px;
+            max-width: 400px;
             height: auto;
             border-radius: 8px;
             margin: 1rem 0;
@@ -555,7 +555,7 @@
             }
         }
 
-        .ticket-link, .info-link {
+        .ticket-link, .info-link, .register-button {
             display: inline-block;
             padding: 0.5rem 1.5rem;
             background: rgba(0, 255, 255, 0.2);
@@ -573,10 +573,26 @@
             cursor: pointer;
         }
 
-        .ticket-link:hover, .info-link:hover {
+        .ticket-link:hover, .info-link:hover, .register-button:hover {
             background: rgba(0, 255, 255, 0.3);
             transform: translateY(-2px);
             box-shadow: 0 0 10px #00ffff;
+        }
+
+        .register-button {
+            display: block;
+            margin: 1.5rem auto;
+            font-size: 1.2rem;
+            padding: 0.75rem 2rem;
+            text-align: center;
+            background: rgba(255, 0, 0, 0.2);
+            color: #ff0000;
+            border: 1px solid #ff0000;
+        }
+
+        .register-button:hover {
+            background: rgba(255, 0, 0, 0.3);
+            box-shadow: 0 0 10px #ff0000;
         }
 
         .language-toggle-container {
@@ -619,8 +635,8 @@
         }
 
         .event-images .event-image {
-            width: 280px;
-            max-width: 280px;
+            width: 400px;
+            max-width: 400px;
             height: auto;
             object-fit: cover;
             border-radius: 8px;
@@ -707,13 +723,13 @@
                 display: flex !important;
                 flex-direction: column !important;
                 width: 100% !important;
-                max-width: 280px !important;
+                max-width: 400px !important;
             }
             
             .event-images .event-image {
                 display: block !important;
                 width: 100% !important;
-                max-width: 280px !important;
+                max-width: 400px !important;
                 margin: 0 auto 0.5rem auto !important;
             }
             
@@ -886,10 +902,55 @@
                             <p>This is CLUB JETS.</p>
                             <p>And here, you come to perrear — or you don't come at all.</p>
                             <p>SPREAD THE WORD! Vallarta now has a place where you can party without judgment.</p>
+                            <a href='https://clubjetspv.com/boletos/ellesquierenbellakeo/' target='_blank' class="register-button">REGISTER HERE</a>
                         </div>
                         <div class="event-description-preview">
                             <p>This Friday, May 2nd, get ready to sweat, grind, and let all the party vibes loose at the grand opening of <a href='https://www.instagram.com/clubjetsmx/' target='_blank' style='color: #ff0000; text-decoration: none;'>@clubjetsmx</a>!</p>
                             <p>Starting at 10 PM, the dance floor heats up with Elles Quieren Bellakeo Vol. 1 — and yes! With our beloved guest <a href='https://www.instagram.com/dj.conamor/' target='_blank' style='color: #ff0000; text-decoration: none;'>DJ CONAMOR</a>, who'll be dropping a full set to keep your body moving non-stop.</p>
+                        </div>
+                        <button class="more-info-button">More Info</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="phase-section">
+            <div class="event-card">
+                <div class="date-circle">
+                    <div class="date-weekday">SAT</div>
+                    <div class="date-day">3</div>
+                    <div class="date-month">MAY</div>
+                </div>
+                <div class="event-details">
+                    <h3 class="event-title">Noche de Techno</h3>
+                    <p class="event-subtitle">Club Jets MX | Zona Romantica</p>
+                    <div class="event-content">
+                        <div class="event-images-container">
+                            <div class="event-images">
+                                <img src="images/5_3_25.png" alt="Noche de Techno" class="event-image">
+                            </div>
+                        </div>
+                        <div class="event-description">
+                            <p>Get ready for a mind-blowing night with the hardest techno beats.</p>
+                            <p>Club Jets MX is a queer space where everyone is welcome and the energy never stops.</p>
+                            <p>LINEUP:</p>
+                            <p>GOMMO AURIOLO | WICCHHI | MEMO PEARLS</p>
+                            <p>SNZ | CACHI MX | JAMES RABBITT</p>
+                            <p>🕙 10:00 PM – 4:00 AM</p>
+                            <p>🔞 18+ event | ID required</p>
+                            <p>🎟️ FREE TICKETS AVAILABLE NOW!</p>
+                            <a href='https://clubjetspv.com/boletos/noche_techno/' target='_blank' class="register-button">REGISTER HERE</a>
+                        </div>
+                        <div class="event-description-preview">
+                            <p>Get ready for a mind-blowing night with the hardest techno beats.</p>
+                            <p>Club Jets MX is a queer space where everyone is welcome and the energy never stops.</p>
+                            <p>LINEUP:</p>
+                            <p>GOMMO AURIOLO | WICCHHI | MEMO PEARLS</p>
+                            <p>SNZ | CACHI MX | JAMES RABBITT</p>
+                            <p>🕙 10:00 PM – 4:00 AM</p>
+                            <p>🔞 18+ event | ID required</p>
+                            <p>🎟️ FREE TICKETS AVAILABLE NOW!</p>
+                            <a href='https://clubjetspv.com/boletos/noche_techno/' target='_blank' class="register-button">REGISTER HERE</a>
                         </div>
                         <button class="more-info-button">More Info</button>
                     </div>
@@ -989,7 +1050,24 @@
                     "This isn't just any spot…",
                     "This is CLUB JETS.",
                     "And here, you come to perrear — or you don't come at all.",
-                    "SPREAD THE WORD! Vallarta now has a place where you can party without judgment."
+                    "SPREAD THE WORD! Vallarta now has a place where you can party without judgment.",
+                    "REGISTER HERE"
+                ],
+                technoEventTitle: "Noche de Techno",
+                technoEventSubtitle: "Club Jets MX | Zona Romantica",
+                technoDateWeekday: "SAT",
+                technoDateDay: "3",
+                technoDateMonth: "MAY",
+                technoEventDescription: [
+                    "Get ready for a mind-blowing night with the hardest techno beats.",
+                    "Club Jets MX is a queer space where everyone is welcome and the energy never stops.",
+                    "LINEUP:",
+                    "GOMMO AURIOLO | WICCHHI | MEMO PEARLS",
+                    "SNZ | CACHI MX | JAMES RABBITT",
+                    "🕙 10:00 PM – 4:00 AM",
+                    "🔞 18+ event | ID required",
+                    "🎟️ FREE TICKETS AVAILABLE NOW!",
+                    "REGISTER HERE"
                 ]
             },
             es: {
@@ -1018,7 +1096,24 @@
                     "Este no es cualquier lugar…",
                     "Este es CLUB JETS.",
                     "Y aquí, vienes a perrear — o no vienes.",
-                    "¡CORRE LA VOZ! Vallarta ahora tiene un lugar donde puedes fiestar sin juicios."
+                    "¡CORRE LA VOZ! Vallarta ahora tiene un lugar donde puedes fiestar sin juicios.",
+                    "REGÍSTRATE AQUÍ"
+                ],
+                technoEventTitle: "Noche de Techno",
+                technoEventSubtitle: "Club Jets MX | Zona Romántica",
+                technoDateWeekday: "SÁB",
+                technoDateDay: "3",
+                technoDateMonth: "MAY",
+                technoEventDescription: [
+                    "Prepárate para una noche alucinante con los beats más duros del techno.",
+                    "Club Jets MX es un espacio queer donde todos son bienvenidos y la energía nunca se detiene.",
+                    "LINEUP:",
+                    "GOMMO AURIOLO | WICCHHI | MEMO PEARLS",
+                    "SNZ | CACHI MX | JAMES RABBITT",
+                    "🕙 10:00 PM – 4:00 AM",
+                    "🔞 Evento +18 | Identificación requerida",
+                    "🎟️ ¡BOLETOS GRATIS DISPONIBLES AHORA!",
+                    "REGÍSTRATE AQUÍ"
                 ]
             }
         };
@@ -1044,37 +1139,76 @@
             // Update section titles
             document.querySelector('.events-title').textContent = lang.specialEvents;
             
-            // Update event details if they exist
-            const eventTitle = document.querySelector('.event-title');
-            const eventSubtitle = document.querySelector('.event-subtitle');
-            const eventDescription = document.querySelector('.event-description');
-            const eventDescriptionPreview = document.querySelector('.event-description-preview');
-            const dateWeekday = document.querySelector('.date-weekday');
-            const dateDay = document.querySelector('.date-day');
-            const dateMonth = document.querySelector('.date-month');
-            const moreInfoButton = document.querySelector('.more-info-button');
+            // Update all event cards
+            const eventCards = document.querySelectorAll('.event-card');
             
-            if (eventTitle) eventTitle.textContent = lang.eventTitle;
-            if (eventSubtitle) eventSubtitle.textContent = lang.eventSubtitle;
-            if (dateWeekday) dateWeekday.textContent = lang.dateWeekday;
-            if (dateDay) dateDay.textContent = lang.dateDay;
-            if (dateMonth) dateMonth.textContent = lang.dateMonth;
-            if (moreInfoButton) moreInfoButton.textContent = currentLang === 'en' ? 'More Info' : 'Más Info';
-            
-            // Update full description
-            if (eventDescription) {
-                const paragraphs = eventDescription.querySelectorAll('p');
-                paragraphs.forEach((p, index) => {
-                    p.innerHTML = lang.eventDescription[index];
-                });
+            // First event (Elles Quieren Bellakeo)
+            if (eventCards[0]) {
+                const firstEvent = eventCards[0];
+                firstEvent.querySelector('.event-title').textContent = lang.eventTitle;
+                firstEvent.querySelector('.event-subtitle').textContent = lang.eventSubtitle;
+                firstEvent.querySelector('.date-weekday').textContent = lang.dateWeekday;
+                firstEvent.querySelector('.date-day').textContent = lang.dateDay;
+                firstEvent.querySelector('.date-month').textContent = lang.dateMonth;
+                
+                const description = firstEvent.querySelector('.event-description');
+                if (description) {
+                    const paragraphs = description.querySelectorAll('p');
+                    paragraphs.forEach((p, index) => {
+                        p.innerHTML = lang.eventDescription[index];
+                    });
+                    // Update register button text
+                    const registerButton = description.querySelector('.register-button');
+                    if (registerButton) {
+                        registerButton.textContent = lang.eventDescription[11];
+                    }
+                }
+                
+                const preview = firstEvent.querySelector('.event-description-preview');
+                if (preview) {
+                    const previewParagraphs = preview.querySelectorAll('p');
+                    previewParagraphs[0].innerHTML = lang.eventDescription[0];
+                    previewParagraphs[1].innerHTML = lang.eventDescription[1];
+                }
             }
             
-            // Update preview text
-            if (eventDescriptionPreview) {
-                const previewParagraphs = eventDescriptionPreview.querySelectorAll('p');
-                previewParagraphs[0].innerHTML = lang.eventDescription[0];
-                previewParagraphs[1].innerHTML = lang.eventDescription[1];
+            // Second event (Noche de Techno)
+            if (eventCards[1]) {
+                const secondEvent = eventCards[1];
+                secondEvent.querySelector('.event-title').textContent = lang.technoEventTitle;
+                secondEvent.querySelector('.event-subtitle').textContent = lang.technoEventSubtitle;
+                secondEvent.querySelector('.date-weekday').textContent = lang.technoDateWeekday;
+                secondEvent.querySelector('.date-day').textContent = lang.technoDateDay;
+                secondEvent.querySelector('.date-month').textContent = lang.technoDateMonth;
+                
+                const description = secondEvent.querySelector('.event-description');
+                if (description) {
+                    const paragraphs = description.querySelectorAll('p');
+                    paragraphs.forEach((p, index) => {
+                        if (index < paragraphs.length) {
+                            p.innerHTML = lang.technoEventDescription[index];
+                        }
+                    });
+                    // Update register button text
+                    const registerButton = description.querySelector('.register-button');
+                    if (registerButton) {
+                        registerButton.textContent = lang.technoEventDescription[8];
+                    }
+                }
+                
+                const preview = secondEvent.querySelector('.event-description-preview');
+                if (preview) {
+                    const previewParagraphs = preview.querySelectorAll('p');
+                    previewParagraphs[0].innerHTML = lang.technoEventDescription[0];
+                    previewParagraphs[1].innerHTML = lang.technoEventDescription[1];
+                }
             }
+
+            // Update all More Info buttons
+            document.querySelectorAll('.more-info-button').forEach(button => {
+                const description = button.previousElementSibling.previousElementSibling;
+                button.textContent = description.classList.contains('expanded') ? lang.lessInfo : lang.moreInfo;
+            });
 
             // Update footer
             document.querySelector('.footer-contact').textContent = lang.contactUs;
