@@ -944,13 +944,6 @@
                         <div class="event-description-preview">
                             <p>Get ready for a mind-blowing night with the hardest techno beats.</p>
                             <p>Club Jets MX is a queer space where everyone is welcome and the energy never stops.</p>
-                            <p>LINEUP:</p>
-                            <p>GOMMO AURIOLO | WICCHHI | MEMO PEARLS</p>
-                            <p>SNZ | CACHI MX | JAMES RABBITT</p>
-                            <p>🕙 10:00 PM – 4:00 AM</p>
-                            <p>🔞 18+ event | ID required</p>
-                            <p>🎟️ FREE TICKETS AVAILABLE NOW!</p>
-                            <a href='https://clubjetspv.com/boletos/noche_techno/' target='_blank' class="register-button">REGISTER HERE</a>
                         </div>
                         <button class="more-info-button">More Info</button>
                     </div>
@@ -1015,11 +1008,25 @@
             button.addEventListener('click', function() {
                 const description = this.previousElementSibling;
                 const fullDescription = description.previousElementSibling;
+                const isExpanded = fullDescription.classList.contains('expanded');
+                
+                // Toggle the expanded class
                 fullDescription.classList.toggle('expanded');
+                
+                // Update button text
                 const lang = translations[currentLang];
-                this.textContent = fullDescription.classList.contains('expanded') ? 
-                    (currentLang === 'en' ? lang.lessInfo : 'Menos Info') : 
-                    (currentLang === 'en' ? lang.moreInfo : 'Más Info');
+                this.textContent = isExpanded ? 
+                    (currentLang === 'en' ? lang.moreInfo : 'Más Info') : 
+                    (currentLang === 'en' ? lang.lessInfo : 'Menos Info');
+                
+                // Hide/show the preview and full description appropriately
+                if (isExpanded) {
+                    description.style.display = 'block';
+                    fullDescription.style.display = 'none';
+                } else {
+                    description.style.display = 'none';
+                    fullDescription.style.display = 'block';
+                }
             });
         });
 
